@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public class Section : MonoBehaviour
+{
+    [Range(2, 100), SerializeField]
+    int columns;
+    [Range(2, 100), SerializeField]
+    int rows;
+
+    [SerializeField]
+    Grid grid;
+
+    //Propiedad solo de lectura que devuelve la mitad del ancho de la seccion en unidades
+    //Mitad de columnas multiplicado por el tamno de anocho de una celda del grid
+    public float HalfWidth
+    {
+        get
+        {
+            return ((columns / 2) * grid.cellSize.x);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        //Si hay un grid , intenta obtrenerlo
+        if (grid == null) grid = GetComponentInChildren<Grid>();
+        //Si no lo ha podido obtener, cortamos la ejecucion del metodo.
+        if (grid == null) return;
+        //Seteamo el color del gizzmo segun si las columnas y files son pares o no
+        if (columns % 2 == 0 && rows % 2 == 0)
+        {
+            Gizmos.color = Color.green;
+
+        }
+        else { Gizmos.color = Color.red; }
+
+        //Mostramos el gizzmo
+        Gizmos.DrawWireCube(transform.position, new Vector3(columns * grid.cellSize.x,
+                                                             rows * grid.cellSize.y,
+                                                             0f));
+    }
+
+
+
+}
