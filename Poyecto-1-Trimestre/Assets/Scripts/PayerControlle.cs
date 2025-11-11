@@ -15,6 +15,8 @@ public class PayerControlle : MonoBehaviour
     [SerializeField]
     LayerMask Detectable;
     [SerializeField]
+    LayerMask noDetectables;
+    [SerializeField]
     Transform detetablePoint;
 
     [SerializeField]
@@ -170,19 +172,20 @@ public class PayerControlle : MonoBehaviour
     // se deslice 
     private void WallSlide()
     {
-
-
-        RaycastHit2D hit = Physics2D.Raycast(panza.transform.position, Vector2.up, wallContact);
+        RaycastHit2D hit = Physics2D.Raycast(panza.transform.position, Vector2.up, wallContact, noDetectables);
 
 
         if (hit)
         {
+            
 
             _rB.linearVelocityX = Vector2.zero.x;
 
         }
-
     }
+
+
+
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
     {

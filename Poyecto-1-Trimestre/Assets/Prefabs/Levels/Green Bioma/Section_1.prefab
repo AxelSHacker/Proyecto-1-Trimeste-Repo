@@ -2456,6 +2456,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9207594485166912537}
     m_Modifications:
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.data[0].ratio
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 3967691410985003712, guid: 772da79ea767bae42bc861b195c65df8, type: 3}
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 3831114799898231302, guid: 3262e202bbe683444bbcb8c41ee040a5, type: 3}
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8444325038290891213, guid: c0c2bbb489affc241834faf58a07ec8c, type: 3}
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 4807385322447484960, guid: 77582bb4bc83f5a4ea39202b9179ae2f, type: 3}
+    - target: {fileID: 1448395521582688902, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
+      propertyPath: prefas.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 7035487583159185562, guid: 69cc5e1ee3b778441b52ef8e8b0090d5, type: 3}
     - target: {fileID: 4215468546642225777, guid: 32dca806e6e672f4a89d7c64d2cb0ddf, type: 3}
       propertyPath: m_Name
       value: Spawn Point

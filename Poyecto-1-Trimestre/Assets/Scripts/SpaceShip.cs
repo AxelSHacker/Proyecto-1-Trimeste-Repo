@@ -25,6 +25,10 @@ public class SpaceShip : MonoBehaviour
     [SerializeField]
     float smoothing;
     [SerializeField]
+    float velocity;
+    [SerializeField]
+    float maxDistance;
+    
     
 
 
@@ -32,31 +36,32 @@ public class SpaceShip : MonoBehaviour
     {
         currentTime = waitTime;
         minScale = transforObject.localScale;
+        maxDistance = Mathf.Abs(playerPosition.position.x - transform.position.x);
     }
 
 
     private void Update()
     {
-
         FollowPayer();
         ScaleControl();
     }
 
+//Con esta funcion seguimos al player
     private void FollowPayer()
     {
-        
+        //Posicion de el game object
         Vector3 objectPosition = transform.position;
         currentTime -= Time.deltaTime;
-
+        //Pasado determinado tiempo el game oject perseguira llentatmente al pllayer
         if (currentTime <= 0f && offSetX <= 0f)
         {
 
-            offSetX += Time.deltaTime;
+            offSetX += velocity;
 
 
 
         }
-
+        //Ajustamos la posicion inicial de el gameobject
         objectPosition.x = playerPosition.transform.position.x + offSetX;
 
         transform.position = objectPosition;
@@ -67,14 +72,16 @@ public class SpaceShip : MonoBehaviour
 
     private void ScaleControl()
     {
-
         float distance;
 
-        distance = Vector2.Distance(transform.position, playerPosition.position);
-
-        float percent = Mathf.InverseLerp(8.5f, 7.35f, distance);
-
-        transforObject.localScale = Vector2.Lerp(minScale, maxScale, percent);
+        //Distancia entre los 2 gameobjects
+        distance = Mathf.Abs(playerPosition.position.x - transform.position.x);
+        
+        //Factor entre 00 y 1 para controlar la escala con rspecto a la distatncia
+        float faktor = Mathf.Clamp01(maxDistance / distance);
+        
+        //Ajustatmos la escala con respecto al faktor
+        transforObject.localScale = Vector2.Lerp(minScale, maxScale, faktor);
 
         
     }

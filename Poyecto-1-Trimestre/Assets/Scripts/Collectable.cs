@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    [Header("VARIABBLES")]
+    public int point;
     [Header("REFERENCES"), SerializeField]
     Collider2D thisCollider;
     [SerializeField]
@@ -17,6 +19,7 @@ public class Collectable : MonoBehaviour
         if (collision.TryGetComponent(out PayerControlle player))
         {
             FeedBBack(player);
+            GameManager.Instance.PicupCollectable(point);
             Desactivate();
         }
     }
