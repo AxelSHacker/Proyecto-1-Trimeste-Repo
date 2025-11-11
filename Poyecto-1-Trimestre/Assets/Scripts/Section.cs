@@ -9,7 +9,8 @@ public class Section : MonoBehaviour
 
     [SerializeField]
     Grid grid;
-
+    [SerializeField]
+     public Camera gameCamera;
     //Propiedad solo de lectura que devuelve la mitad del ancho de la seccion en unidades
     //Mitad de columnas multiplicado por el tamno de anocho de una celda del grid
     public float HalfWidth
@@ -20,6 +21,23 @@ public class Section : MonoBehaviour
         }
     }
 
+
+    void Update()
+    {
+        //Calculamos el lado izquierdo de la pantalla en el mundo
+        //a propiedad ortographic size es el lalto de la camara
+        //screen.width es el ancho de la pantalla en pixels
+        //screen.height es el ato de la pantalla en pixels
+        //con estos datos realitamos una relga de tres:
+        //altura Ortho -- Anchura Ortho
+        //        height -- width
+        //anchura Ortho == (altura Ortho * width) / height
+        float leftSideOfScreen = gameCamera.transform.position.x - gameCamera.orthographicSize * Screen.width / Screen.height;
+        if (transform.position.x <(leftSideOfScreen- HalfWidth))
+        {
+            DestroySection();
+        }
+    }
     void OnDrawGizmos()
     {
         //Si hay un grid , intenta obtrenerlo
@@ -38,6 +56,14 @@ public class Section : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(columns * grid.cellSize.x,
                                                              rows * grid.cellSize.y,
                                                              0f));
+    }
+/// <summary>
+/// Manda generar una seccion nueva y destruye la actual
+/// </summary>
+    private void DestroySection()
+    {
+        SectionSpawnerController.Instance.SpawnSection();
+        Destroy(gameObject);
     }
 
 
