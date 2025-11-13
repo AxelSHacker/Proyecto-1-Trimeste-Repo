@@ -225,10 +225,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rB: {fileID: 392079331125167511}
   _anim: {fileID: 9180147691765463106}
-  offSet: {x: 0.5, y: 0.04}
+  offSet: {x: 0.7, y: 0.04}
   Detectable:
     serializedVersion: 2
     m_Bits: 8
+  noDetectables:
+    serializedVersion: 2
+    m_Bits: 0
   detetablePoint: {fileID: 349242001714350870}
   panza: {fileID: 4109945057273828685}
   _spriteRenderer: {fileID: 4515453891670070707}

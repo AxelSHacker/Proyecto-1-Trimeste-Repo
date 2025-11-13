@@ -47,7 +47,7 @@ public class PayerControlle : MonoBehaviour
     float normalGravity;
 
     [Header("PLAYERSPAWN")]
-    Transform playerSpawn;
+    Vector2 playerSpawn;
 
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
@@ -56,17 +56,21 @@ public class PayerControlle : MonoBehaviour
     void Start()
     {
         normalGravity = _rB.gravityScale;
-        playerSpawn = transform;
+        playerSpawn = transform.position;
     }
 
     
     void Update()
     {
         AnimatorController();
-        Movement();
-        WallSlide();
         GroundCheck();
-        PlayerSpawn();
+        //PlayerSpawn();
+        WallSlide();
+    }
+    void FixedUpdate()
+    {
+        
+        Movement();
     }
 
 
@@ -209,7 +213,9 @@ public class PayerControlle : MonoBehaviour
     {
         if (transform.position.y <= -8f)
         {
-            transform.position = playerSpawn.position;
+            Debug.Log("Aqui entramos");
+            transform.position = playerSpawn;
+            Debug.Log(playerSpawn);
         }
     }
     /// <summary>
