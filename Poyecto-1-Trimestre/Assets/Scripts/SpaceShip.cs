@@ -20,6 +20,8 @@ public class SpaceShip : MonoBehaviour
     Vector2 minScale;
     [SerializeField]
     Vector2 maxScale;
+    [SerializeField]
+    PayerControlle _payerController;
 
 
     [Header("PARAMETER")]
@@ -52,52 +54,76 @@ public class SpaceShip : MonoBehaviour
 
     private void Update()
     {
-        FollowPayer();
         ScaleControl();
+        FollowPayer();
     }
+
 
     //Con esta funcion seguimos al player
     private void FollowPayer()
     {
+
         //Posicion de el game object
         Vector3 shipVector = transform.position;
+        //Activamos la cuenta atras
         currentTime -= Time.deltaTime;
-
-        //Pasado determinado tiempo el game oject perseguira llentatmente al pllayer
-        if (currentTime <= 0f && offSetX <= 0f)
+        //Pasado determinado tiempo la nabe persegauira al player
+        //flotante que almacena la distancia entre 2 posiciones en x
+        float separacion = Mathf.Abs(playerPosition.position.x - transform.position.x);
+        //Redondeamos la separacion para que pille la entrada si no , no se por que , pero no  
+        if (Math.Round(separacion) == 0)
         {
+            //La nabe se queda en la posicion x del player y se ejecuta la absorcion y la pantalla
+            //De carga a la siguiene fase
+            Vector3 rotation = new Vector3(0f, 0f, Time.deltaTime);
+            playerRB.linearVelocity = Vector2.zero;
+            maxPlayerVelocity.x = 0f;
+            playerRB.gravityScale = -0.5f;
+
+            playerPosition.Rotate(rotation, Space.Self);
+        }
+
+
+            
+
+
+
+
+
+
+        if (currentTime <= 0f)
+        {
+
+
+            //Cuando la velocidad maxima del player es menor que nuestra velocidad
             if (maxPlayerVelocity.x < playerRB.linearVelocityX)
-            {
+            {//La velocidad de la naba es igual a la velocidad del player
                 maxPlayerVelocity.x = playerRB.linearVelocityX;
             }
-
+            //Si es player se queda parado ,bajamos la velocidad de la nabbe la mitad
             if (playerRB.linearVelocityX == 0)
             {
                 _rb.linearVelocityX = maxPlayerVelocity.x / 2;
             }
+            //Si no la velocidad de la nabe es igual a la velocida maxima del player
             else
             {
-                Vector2.Lerp(_rb.linearVelocity, maxPlayerVelocity, 2f );
+                _rb.linearVelocityX = maxPlayerVelocity.x;
             }
-                
-            
-
+            currentTime = 0;
         }
+        //Si aun no ha terminado la cuenta ,la nabe persigue al player en uns distancia fija
         else
         {
             shipVector.x = playerPosition.position.x + offSetX;
 
             transform.position = shipVector;
         }
-
-
-
-
-
-
-
     }
 
+
+    //Con esta funcion lo que quiero es controlar la escala de la nabe con 
+    //respecto a la distancia que esta del player
     private void ScaleControl()
     {
         float distance;
@@ -105,14 +131,30 @@ public class SpaceShip : MonoBehaviour
         //Distancia entre los 2 gameobjects
         distance = Mathf.Abs(playerPosition.position.x - transform.position.x);
 
-        //Factor entre 00 y 1 para controlar la escala con rspecto a la distatncia
-        float faktor = Mathf.Clamp01(maxDistance / distance);
+        
+
+        //Factor entre 00 y 1 para controlar la escala con respecto a la distatncia
+        float faktor = Mathf.Clamp01(distance / maxDistance);
+        
 
         //Ajustatmos la escala con respecto al faktor
-        transforObject.localScale = Vector2.Lerp(minScale, maxScale, faktor);
+        transforObject.localScale = Vector2.Lerp(maxScale, minScale, faktor);
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

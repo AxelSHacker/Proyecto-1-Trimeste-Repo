@@ -25,6 +25,7 @@ public class PayerControlle : MonoBehaviour
     SpriteRenderer _spriteRenderer;
 
     [Header("MOVEMENT"), SerializeField]
+    
     float speed;
     [SerializeField]
     float maxSpeed;
@@ -119,6 +120,8 @@ public class PayerControlle : MonoBehaviour
 //Funcion de movimiento
     private void Movement()
     {
+        
+
         _rB.AddForce(transform.right * speed, ForceMode2D.Force);
 
         if (_rB.linearVelocityX >= maxSpeed)

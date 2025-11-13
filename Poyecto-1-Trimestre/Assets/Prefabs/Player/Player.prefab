@@ -231,18 +231,18 @@ MonoBehaviour:
     m_Bits: 8
   noDetectables:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 59
   detetablePoint: {fileID: 349242001714350870}
   panza: {fileID: 4109945057273828685}
   _spriteRenderer: {fileID: 4515453891670070707}
-  speed: 3
-  maxSpeed: 5.5
-  jumpForce: 5
+  speed: 5
+  maxSpeed: 75
+  jumpForce: 7
   maxJump: 0
   isGrounded: 0
   wallContact: 1.2
-  dashForce: 0
-  dashRepeat: 0
+  dashForce: 500
+  dashRepeat: 1
   normalGravity: 0
 --- !u!114 &7281957861879465619
 MonoBehaviour:
