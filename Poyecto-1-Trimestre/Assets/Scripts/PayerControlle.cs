@@ -129,7 +129,7 @@ public class PayerControlle : MonoBehaviour
 
         if (maxJump <= 0)
         {
-
+            _rB.linearVelocityY = 0f;
             maxJump++;
             _rB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -200,7 +200,7 @@ public class PayerControlle : MonoBehaviour
         if (dashRepeat <= 1)
         {
             float actualVelocity = _rB.linearVelocityX;;
-            _rB.AddForce(transform.right * dashForce, ForceMode2D.Impulse);
+            _rB.AddForce(transform.right * dashForce * actualVelocity, ForceMode2D.Impulse);
             Debug.Log("CAraculo");
         }
     }
