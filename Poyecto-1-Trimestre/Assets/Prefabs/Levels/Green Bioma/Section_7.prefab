@@ -286,6 +286,7 @@ Transform:
   - {fileID: 4218865802785421421}
   - {fileID: 1014673966431811747}
   - {fileID: 7583523925222629144}
+  - {fileID: 4565389876497718005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3378341166327774922
@@ -2890,6 +2891,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6724384905762096271, guid: e4e4e6927b4a52941ad7dd26e4b635bc, type: 3}
   m_PrefabInstance: {fileID: 5291393019928195103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6040160708535740149
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4430584299797169900}
+    m_Modifications:
+    - target: {fileID: 6753902262865292568, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753902262865292568, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591058084778422504, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+      propertyPath: m_Name
+      value: Spawn Enemy Point
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+--- !u!4 &4565389876497718005 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7820909560587418624, guid: ee7747c43829f33438fb5198ec94eb26, type: 3}
+  m_PrefabInstance: {fileID: 6040160708535740149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6417992534865654113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2908,7 +2979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5453505872152403722, guid: ba47af743bbfde349aa67bdf58e5bb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.79
+      value: -2.834
       objectReference: {fileID: 0}
     - target: {fileID: 5453505872152403722, guid: ba47af743bbfde349aa67bdf58e5bb83, type: 3}
       propertyPath: m_LocalPosition.z
