@@ -24,8 +24,9 @@ public class PayerControlle : MonoBehaviour
     [SerializeField]
     SpriteRenderer _spriteRenderer;
 
-    [Header("MOVEMENT"), SerializeField]
-    
+    [Header("MOVEMENT")]
+    public bool isMoving = true;
+    [SerializeField]
     float speed;
     [SerializeField]
     float maxSpeed;
@@ -53,14 +54,14 @@ public class PayerControlle : MonoBehaviour
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
 
-    
+
     void Start()
     {
         normalGravity = _rB.gravityScale;
         playerSpawn = transform.position;
     }
 
-    
+
     void Update()
     {
         AnimatorController();
@@ -70,7 +71,7 @@ public class PayerControlle : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+
         Movement();
     }
 
@@ -82,6 +83,14 @@ public class PayerControlle : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(panza.transform.position, Vector2.up * wallContact);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Death();
+        }
     }
 
     /// <summary>
@@ -113,14 +122,14 @@ public class PayerControlle : MonoBehaviour
     {
         if (context.started)
         {
-            
+
             Dash();
         }
     }
-//Funcion de movimiento
+    //Funcion de movimiento
     private void Movement()
     {
-        
+        if (!isMoving) return;
 
         _rB.AddForce(transform.right * speed, ForceMode2D.Force);
 
@@ -129,7 +138,7 @@ public class PayerControlle : MonoBehaviour
             _rB.linearVelocityX = maxSpeed;
         }
     }
-//Funcion que controla la fuerza de salto , el numero de saltos
+    //Funcion que controla la fuerza de salto , el numero de saltos
     private void Jump()
     {
 
@@ -142,11 +151,11 @@ public class PayerControlle : MonoBehaviour
         }
     }
 
-//Funcion que comprueba si estamos tocando el suelo
+    //Funcion que comprueba si estamos tocando el suelo
     private void GroundCheck()
     {
 
-        if (Physics2D.OverlapBox(detetablePoint.position, offSet, 0, Detectable))
+        if (Physics2D.OverlapBox(detetablePoint.position, offSet, 0 ,Detectable))
         {
             isGrounded = true;
             maxJump = 0;
@@ -157,7 +166,7 @@ public class PayerControlle : MonoBehaviour
 
         }
     }
-//Controlador de las animaciones
+    //Controlador de las animaciones
     private void AnimatorController()
     {
         float velocity = Math.Abs(_rB.linearVelocityX);
@@ -184,13 +193,14 @@ public class PayerControlle : MonoBehaviour
 
         if (hit)
         {
-            
+
 
             _rB.linearVelocityX = Vector2.zero.x;
 
         }
     }
 
+    //Funcion para controlar la muerte de el player
 
 
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
@@ -201,15 +211,29 @@ public class PayerControlle : MonoBehaviour
             _rB.gravityScale = 5f;
         }
     }
-    
+
     private void Dash()
     {
         if (dashRepeat <= 1)
         {
-            float actualVelocity = _rB.linearVelocityX;;
+            float actualVelocity = _rB.linearVelocityX; ;
             _rB.AddForce(transform.right * dashForce * actualVelocity, ForceMode2D.Impulse);
             Debug.Log("CAraculo");
         }
+    }
+    private void Death()
+    {
+        isMoving = false;
+        //Desactivamos el movimiento
+        _rB.linearVelocity = Vector2.zero;
+        //Activamos la animacion de muerte
+        _anim.SetBool("Death", true);
+        //se instancia el panel de derrota
+        Invoke("EndGame", 1.5f);
+    }
+    private void EndGame()
+    {
+        GameManager.Instance.EndGame();
     }
 
     private void PlayerSpawn()

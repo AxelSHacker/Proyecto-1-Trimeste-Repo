@@ -9,15 +9,18 @@ public class EnemyCrawler : MonoBehaviour
     [SerializeField]
     Transform[] patrol;
     [SerializeField]
+    ParticleSystem sparks;
+
+    [SerializeField, Header("VARIABLES")]
     int currentPatrolIndex;
     [SerializeField]
     float patrolSpeed;
-   
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +28,28 @@ public class EnemyCrawler : MonoBehaviour
     {
         Movement();
     }
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && collision.contactCount > 0)
+        {
+            sparks.transform.position = collision.GetContact(0).point;
+
+            sparks.Play();
+        }
+
+
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            sparks.Stop();
+        }
+    }
+
+
+
+    //El  Enemigo va patrullando una zona delimtada por 2 transforms
     private void Movement()
     {
         if (patrol.Length < 2) return;

@@ -39,6 +39,8 @@ public class SpaceShip : MonoBehaviour
     float maxDistance;
     [SerializeField]
     Vector2 maxPlayerVelocity;
+    [SerializeField]
+    float rotationVelocity;
 
 
 
@@ -75,27 +77,22 @@ public class SpaceShip : MonoBehaviour
         {
             //La nabe se queda en la posicion x del player y se ejecuta la absorcion y la pantalla
             //De carga a la siguiene fase
-            Vector3 rotation = new Vector3(0f, 0f, Time.deltaTime);
-            playerRB.linearVelocity = Vector2.zero;
-            maxPlayerVelocity.x = 0f;
+
+            _payerController.isMoving = false;
+            maxPlayerVelocity = Vector2.zero;
+            _rb.linearVelocity = Vector2.zero;
             playerRB.gravityScale = -0.5f;
 
-            playerPosition.Rotate(rotation, Space.Self);
+            return;
+
+
         }
-
-
-            
-
-
-
-
-
 
         if (currentTime <= 0f)
         {
 
 
-            //Cuando la velocidad maxima del player es menor que nuestra velocidad
+            //Cuando la velocidad maxima del nabe es menor a la velocidad del player
             if (maxPlayerVelocity.x < playerRB.linearVelocityX)
             {//La velocidad de la naba es igual a la velocidad del player
                 maxPlayerVelocity.x = playerRB.linearVelocityX;
@@ -103,14 +100,15 @@ public class SpaceShip : MonoBehaviour
             //Si es player se queda parado ,bajamos la velocidad de la nabbe la mitad
             if (playerRB.linearVelocityX == 0)
             {
-                _rb.linearVelocityX = maxPlayerVelocity.x / 2;
+                _rb.linearVelocityX = maxPlayerVelocity.x / 4;
             }
             //Si no la velocidad de la nabe es igual a la velocida maxima del player
             else
-            {
+            { 
+                
                 _rb.linearVelocityX = maxPlayerVelocity.x;
             }
-            currentTime = 0;
+           
         }
         //Si aun no ha terminado la cuenta ,la nabe persigue al player en uns distancia fija
         else
@@ -120,6 +118,15 @@ public class SpaceShip : MonoBehaviour
             transform.position = shipVector;
         }
     }
+
+    
+
+
+
+
+
+
+
 
 
     //Con esta funcion lo que quiero es controlar la escala de la nabe con 
@@ -131,17 +138,18 @@ public class SpaceShip : MonoBehaviour
         //Distancia entre los 2 gameobjects
         distance = Mathf.Abs(playerPosition.position.x - transform.position.x);
 
-        
+
 
         //Factor entre 00 y 1 para controlar la escala con respecto a la distatncia
         float faktor = Mathf.Clamp01(distance / maxDistance);
-        
+
 
         //Ajustatmos la escala con respecto al faktor
         transforObject.localScale = Vector2.Lerp(maxScale, minScale, faktor);
 
 
     }
+
 
 
 
