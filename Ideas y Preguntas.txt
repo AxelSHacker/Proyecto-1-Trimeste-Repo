@@ -1,1 +1,3 @@
-EL player corre de una nave espacial, apaeceran colleccionables y objetos que te quitaran vida
+EL player corre de una nave espacial, apaeceran colleccionables y uno de ellos te quitara puntos y el resto te va a ir subiendo , 
+si te atrapa la nave , te teletransportara a la siguiente escena con su pantalla de carga y tal, 
+si llegas a los 100 puntos la nave te alcazara y te teletransportara a la siguiente escena, en la primera escena nada te quitara vida, todo ira en funcion al puntuaje

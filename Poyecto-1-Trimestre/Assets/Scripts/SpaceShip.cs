@@ -78,7 +78,7 @@ public class SpaceShip : MonoBehaviour
             //La nabe se queda en la posicion x del player y se ejecuta la absorcion y la pantalla
             //De carga a la siguiene fase
 
-            _payerController.isMoving = false;
+            _payerController.autoMovement = false;
             maxPlayerVelocity = Vector2.zero;
             _rb.linearVelocity = Vector2.zero;
             playerRB.gravityScale = -0.5f;

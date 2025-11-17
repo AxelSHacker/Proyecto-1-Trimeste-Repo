@@ -1,10 +1,18 @@
 using System;
 using System.Collections;
+using System.Data.Common;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PayerControlle : MonoBehaviour
 {
+
+    public enum State
+    {
+        EndLessRunner,
+
+        Platform,
+    }
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _rB;
@@ -25,11 +33,13 @@ public class PayerControlle : MonoBehaviour
     SpriteRenderer _spriteRenderer;
 
     [Header("MOVEMENT")]
-    public bool isMoving = true;
+    public bool autoMovement = true;
     [SerializeField]
     float speed;
     [SerializeField]
     float maxSpeed;
+    [SerializeField]
+    float xMotion;
 
     [Header("JUMP"), SerializeField]
     float jumpForce;
@@ -40,7 +50,7 @@ public class PayerControlle : MonoBehaviour
     [SerializeField]
     float wallContact;
 
-    [Header("Dash"), SerializeField]
+    [Header("DASCH"), SerializeField]
     float dashForce;
     [SerializeField]
     int dashRepeat;
@@ -48,8 +58,12 @@ public class PayerControlle : MonoBehaviour
     [Header("FALLING"), SerializeField]
     float normalGravity;
 
-    [Header("PLAYERSPAWN")]
-    Vector2 playerSpawn;
+    [Header("ATTACK"), SerializeField]
+    int attackCount = 1;
+    [SerializeField]
+    float timer;
+    [SerializeField]
+    bool atttacking = false;
 
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
@@ -58,7 +72,7 @@ public class PayerControlle : MonoBehaviour
     void Start()
     {
         normalGravity = _rB.gravityScale;
-        playerSpawn = transform.position;
+
     }
 
 
@@ -66,14 +80,55 @@ public class PayerControlle : MonoBehaviour
     {
         AnimatorController();
         GroundCheck();
-        //PlayerSpawn();
+
         WallSlide();
+
+
+
+
     }
     void FixedUpdate()
     {
+        if (attackCount >= 0)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 2)
+            {
+                attackCount = 0;
+                _anim.SetInteger("Combo", 0);
+            }
 
-        Movement();
+        }
+
+
+        if (autoMovement)
+        {
+            UpdateState(State.EndLessRunner);
+        }
+        else
+        {
+
+            UpdateState(State.Platform);
+        }
+
+
     }
+    private void UpdateState(State actualState)
+    {
+        switch (actualState)
+        {
+            case State.EndLessRunner:
+                Movement();
+                Dash();
+                break;
+            case State.Platform:
+
+                PlatformMovement();
+
+                break;
+        }
+    }
+
 
 
     void OnDrawGizmos()
@@ -126,10 +181,34 @@ public class PayerControlle : MonoBehaviour
             Dash();
         }
     }
+    public void OnAttacking(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+
+            Attack();
+
+        }
+
+    }
+    public void OnMovement(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 input = context.ReadValue<Vector2>();
+            xMotion = input.x;
+        }
+        if (context.canceled)
+        {
+            xMotion = 0f;
+        }
+    }
+
+
     //Funcion de movimiento
     private void Movement()
     {
-        if (!isMoving) return;
+        if (!autoMovement) return;
 
         _rB.AddForce(transform.right * speed, ForceMode2D.Force);
 
@@ -141,8 +220,6 @@ public class PayerControlle : MonoBehaviour
     //Funcion que controla la fuerza de salto , el numero de saltos
     private void Jump()
     {
-
-
         if (maxJump <= 0)
         {
             _rB.linearVelocityY = 0f;
@@ -151,11 +228,12 @@ public class PayerControlle : MonoBehaviour
         }
     }
 
+
     //Funcion que comprueba si estamos tocando el suelo
     private void GroundCheck()
     {
 
-        if (Physics2D.OverlapBox(detetablePoint.position, offSet, 0 ,Detectable))
+        if (Physics2D.OverlapBox(detetablePoint.position, offSet, 0, Detectable))
         {
             isGrounded = true;
             maxJump = 0;
@@ -199,10 +277,6 @@ public class PayerControlle : MonoBehaviour
 
         }
     }
-
-    //Funcion para controlar la muerte de el player
-
-
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
     {
@@ -211,19 +285,10 @@ public class PayerControlle : MonoBehaviour
             _rB.gravityScale = 5f;
         }
     }
-
-    private void Dash()
-    {
-        if (dashRepeat <= 1)
-        {
-            float actualVelocity = _rB.linearVelocityX; ;
-            _rB.AddForce(transform.right * dashForce * actualVelocity, ForceMode2D.Impulse);
-            Debug.Log("CAraculo");
-        }
-    }
+    //Funcion para controlar la muerte de el player
     private void Death()
     {
-        isMoving = false;
+        autoMovement = false;
         //Desactivamos el movimiento
         _rB.linearVelocity = Vector2.zero;
         //Activamos la animacion de muerte
@@ -236,15 +301,6 @@ public class PayerControlle : MonoBehaviour
         GameManager.Instance.EndGame();
     }
 
-    private void PlayerSpawn()
-    {
-        if (transform.position.y <= -8f)
-        {
-            Debug.Log("Aqui entramos");
-            transform.position = playerSpawn;
-            Debug.Log(playerSpawn);
-        }
-    }
     /// <summary>
     /// Asigna el colo del flash e inicia la corutina de recuperacion del color
     /// en el tiempo indicado
@@ -266,6 +322,13 @@ public class PayerControlle : MonoBehaviour
 
     private IEnumerator ColorRecover(float time)
 
+
+
+
+
+
+
+
     {
         //Inicialiamos el contado de tiempo
         float timeCounter = 0f;
@@ -282,7 +345,68 @@ public class PayerControlle : MonoBehaviour
 
     }
 
+    /// FUNCIONES PARA LA FASE PLATFORM
+
+    private void PlatformMovement()
+    {
+        if (!autoMovement)
+        {
 
 
+            //Aqui le indicamos que se mueva al rigidbody
+            _rB.AddForceX(xMotion * maxSpeed, ForceMode2D.Force);
+            //Velocidad maxima del desplazamiento del player
+            if (_rB.linearVelocityX >= maxSpeed)
+            {
+                _rB.linearVelocityX = maxSpeed;
+            }
 
+            //Codigo para que el personaje mire hacia un lugar u otro segundo a donde se dirija
+            if (xMotion < 0)
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            else if (xMotion > 0)
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
+        }
+    }
+
+    private void Dash()
+    {
+        if (dashRepeat <= 1)
+        {
+
+            if (transform.rotation.y == 0)
+            {
+                _rB.AddForceX(dashForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                _rB.AddForceX(-dashForce, ForceMode2D.Impulse);
+            }
+
+
+        }
+    }
+
+    private void Attack()
+    {
+        if (attackCount == 0)
+        {
+            attackCount = 1;
+            _anim.SetTrigger("Attacking");
+            _anim.SetInteger("Combo", attackCount);
+        }
+        
+
+        
+
+
+    }
 }
+
+
+
+
+
+
