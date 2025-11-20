@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         canvasGroup.SetEnable(false);
         endGameCanvasGroup.SetEnable(true);
         finalScoreTMP.text = collectableCount.ToString();
+        
 
     }
     

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Data.Common;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PayerControlle : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class PayerControlle : MonoBehaviour
     Transform panza;
     [SerializeField]
     SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    ParticleSystem dust;
+   
 
     [Header("MOVEMENT")]
     public bool autoMovement = true;
@@ -59,11 +63,11 @@ public class PayerControlle : MonoBehaviour
     float normalGravity;
 
     [Header("ATTACK"), SerializeField]
-    int attackCount = 1;
+    int attackCount;
     [SerializeField]
     float timer;
     [SerializeField]
-    bool atttacking = false;
+    bool attacking = false;
 
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
@@ -78,38 +82,33 @@ public class PayerControlle : MonoBehaviour
 
     void Update()
     {
+
         AnimatorController();
         GroundCheck();
-
-        WallSlide();
-
-
-
-
+        
+        DeathFalling();
+        
     }
+
+
+
+
+
     void FixedUpdate()
     {
-        if (attackCount >= 0)
-        {
-            timer += Time.deltaTime;
-            if (timer >= 2)
-            {
-                attackCount = 0;
-                _anim.SetInteger("Combo", 0);
-            }
 
-        }
-
-
-        if (autoMovement)
+        if (SceneManager.GetActiveScene().name == "EndLessRuner")
         {
             UpdateState(State.EndLessRunner);
+
         }
-        else
+        else if (SceneManager.GetActiveScene().name == "Platform 2D")
         {
 
             UpdateState(State.Platform);
         }
+
+
 
 
     }
@@ -118,12 +117,16 @@ public class PayerControlle : MonoBehaviour
         switch (actualState)
         {
             case State.EndLessRunner:
+
                 Movement();
-                Dash();
+
                 break;
             case State.Platform:
 
+                Dash();
                 PlatformMovement();
+                Falling();
+                Attack();
 
                 break;
         }
@@ -136,8 +139,7 @@ public class PayerControlle : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(detetablePoint.position, offSet);
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(panza.transform.position, Vector2.up * wallContact);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -237,6 +239,7 @@ public class PayerControlle : MonoBehaviour
         {
             isGrounded = true;
             maxJump = 0;
+            
         }
         else
         {
@@ -262,22 +265,8 @@ public class PayerControlle : MonoBehaviour
 
 
     }
-    //Para que cuando choque contra una pared la fuerza no lo presione contra el colliser , si no que,
-    // se deslice 
-    private void WallSlide()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(panza.transform.position, Vector2.up, wallContact, noDetectables);
-
-
-        if (hit)
-        {
-
-
-            _rB.linearVelocityX = Vector2.zero.x;
-
-        }
-    }
-    //Funcion que aumenta la gravedad cuiando pulsamos una tecla
+    
+     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
     {
         if (!isGrounded)
@@ -288,14 +277,22 @@ public class PayerControlle : MonoBehaviour
     //Funcion para controlar la muerte de el player
     private void Death()
     {
+        //Paramos el movimiento automaico del player
+
         autoMovement = false;
-        //Desactivamos el movimiento
-        _rB.linearVelocity = Vector2.zero;
         //Activamos la animacion de muerte
         _anim.SetBool("Death", true);
         //se instancia el panel de derrota
         Invoke("EndGame", 1.5f);
     }
+    private void DeathFalling()
+    {
+        if (transform.position.y < -5.8f)
+        {
+            Death();
+        }
+    }
+
     private void EndGame()
     {
         GameManager.Instance.EndGame();
@@ -345,7 +342,9 @@ public class PayerControlle : MonoBehaviour
 
     }
 
-    /// FUNCIONES PARA LA FASE PLATFORM
+    /// <summary> Platafomas 2D
+    /// Funciones exclusivas de las fase de plataformas 2d
+    /// </summary>
 
     private void PlatformMovement()
     {
@@ -393,15 +392,41 @@ public class PayerControlle : MonoBehaviour
     {
         if (attackCount == 0)
         {
-            attackCount = 1;
+            attackCount++;
             _anim.SetTrigger("Attacking");
             _anim.SetInteger("Combo", attackCount);
         }
+
+        if (attacking)
+        {
+            attackCount++;
+            _anim.SetInteger("Combo", attackCount);
+            _anim.SetTrigger("Attacking");
+            attacking = false;
+        }
+
+
+
+    }
+
+/// <summary> Animation Events
+/// Animation Events
+/// </summary>
+    public void EnableCombo()
+    {
+        attacking = true;
+    }
+    public void ResetCombo()
+    {
+        attackCount = 0;
+        _anim.SetInteger("Combo", attackCount);
+        attacking = false;
+    }
+
+    public void DustEffect()
+    {
+        dust.Play();
         
-
-        
-
-
     }
 }
 
