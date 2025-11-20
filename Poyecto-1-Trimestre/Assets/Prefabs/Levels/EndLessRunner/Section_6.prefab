@@ -2745,6 +2745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Three_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4542717731336901382, guid: e8b4c2c1cb7d8014e95633f4bc85bca4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.09
+      objectReference: {fileID: 0}
     - target: {fileID: 6366712235245143869, guid: e8b4c2c1cb7d8014e95633f4bc85bca4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.92

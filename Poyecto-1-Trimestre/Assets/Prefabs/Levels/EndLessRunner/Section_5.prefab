@@ -3186,6 +3186,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_4
       objectReference: {fileID: 0}
+    - target: {fileID: 4590406638442713872, guid: 3a65527bf0f23fc41b9fbb53e35b93b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590406638442713872, guid: 3a65527bf0f23fc41b9fbb53e35b93b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7204283235732640432, guid: 3a65527bf0f23fc41b9fbb53e35b93b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.88
