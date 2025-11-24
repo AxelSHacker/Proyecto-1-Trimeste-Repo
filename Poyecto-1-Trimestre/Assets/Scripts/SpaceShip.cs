@@ -70,7 +70,7 @@ public class SpaceShip : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerRB.gravityScale = 0f;
-            Time.timeScale = 0;
+            _rb.linearVelocity = Vector2.zero;
         }
     }
         

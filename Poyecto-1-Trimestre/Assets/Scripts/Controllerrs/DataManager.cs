@@ -13,15 +13,17 @@ public class DataManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
+            Load();
         }
         else
         {
             Destroy(this);
         }
+
     }
-        /// <summary>
-        /// guardado de datos n los playeperfs
- public void Save()
+    /// <summary>
+    /// guardado de datos n los playeperfs
+    public void Save()
     {
         PlayerPrefs.SetInt("maxScore", maxScore);
 
@@ -31,7 +33,7 @@ public class DataManager : MonoBehaviour
     /// </summary>
     public void Load()
     {
-        if(!PlayerPrefs.HasKey("maxScore")) return;
+        if (!PlayerPrefs.HasKey("maxScore")) return;
         maxScore = PlayerPrefs.GetInt("maxScore");
     }
     /// <summary>
@@ -42,9 +44,9 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    
+
     void Update()
     {
-        
+
     }
 }

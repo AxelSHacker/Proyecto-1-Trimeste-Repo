@@ -82,7 +82,7 @@ public class PayerControlle : MonoBehaviour
     [SerializeField]
     float speedUpVelocity;
     [SerializeField]
-    bool canDie;
+    bool canDie = true;
 
 
 
@@ -125,7 +125,7 @@ public class PayerControlle : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (SceneManager.GetActiveScene().name == "EndLessRuner")
+        if (SceneManager.GetActiveScene().name == "EndLessRuner" || SceneManager.GetActiveScene().name == "Tutorial")
         {
             UpdateState(State.EndLessRunner);
 
@@ -194,6 +194,7 @@ public class PayerControlle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+
             collisionObject = collision.gameObject;
             if (canDie) Death();
         }
