@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Invencibility
+  - Speed Up
+  - Power Up
   layers:
   - Default
   - TransparentFX

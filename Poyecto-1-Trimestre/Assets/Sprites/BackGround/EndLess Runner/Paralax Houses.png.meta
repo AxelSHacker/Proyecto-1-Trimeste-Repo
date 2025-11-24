@@ -1,0 +1,2210 @@
+fileFormatVersion: 2
+guid: e4bb2dfe7509e4248be737b527f3d016
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8671595036810107769
+    second: Paralax Houses_0
+  - first:
+      213: -7385823318847873230
+    second: Paralax Houses_1
+  - first:
+      213: 6467987749323897618
+    second: Paralax Houses_2
+  - first:
+      213: -3755666897430488967
+    second: Paralax Houses_3
+  - first:
+      213: -7814161320188229688
+    second: Paralax Houses_4
+  - first:
+      213: -1870813815580134206
+    second: Paralax Houses_5
+  - first:
+      213: -6202396714940564327
+    second: Paralax Houses_6
+  - first:
+      213: 1690742280887438357
+    second: Paralax Houses_7
+  - first:
+      213: 1332211211859661969
+    second: Paralax Houses_8
+  - first:
+      213: 4979030182369953209
+    second: Paralax Houses_9
+  - first:
+      213: -8102122205315994832
+    second: Paralax Houses_10
+  - first:
+      213: 2059642807022678171
+    second: Paralax Houses_11
+  - first:
+      213: -7192962004185833884
+    second: Paralax Houses_12
+  - first:
+      213: -1003322605322046581
+    second: Paralax Houses_13
+  - first:
+      213: -6740389983726160870
+    second: Paralax Houses_14
+  - first:
+      213: -1621797451183191205
+    second: Paralax Houses_15
+  - first:
+      213: -4016232861468647298
+    second: Paralax Houses_16
+  - first:
+      213: -458820879117705405
+    second: Paralax Houses_17
+  - first:
+      213: 7393421406209811265
+    second: Paralax Houses_18
+  - first:
+      213: -8726065772760003568
+    second: Paralax Houses_19
+  - first:
+      213: 3503643601064042113
+    second: Paralax Houses_20
+  - first:
+      213: -310162420451522622
+    second: Paralax Houses_21
+  - first:
+      213: -6749250658398645315
+    second: Paralax Houses_22
+  - first:
+      213: -2348148711808011564
+    second: Paralax Houses_23
+  - first:
+      213: 6099385827611903565
+    second: Paralax Houses_24
+  - first:
+      213: -6807809224108709394
+    second: Paralax Houses_25
+  - first:
+      213: -3486690145094507522
+    second: Paralax Houses_26
+  - first:
+      213: 1944542490745471041
+    second: Paralax Houses_27
+  - first:
+      213: 8474925114968239968
+    second: Paralax Houses_28
+  - first:
+      213: -9198650663308338758
+    second: Paralax Houses_29
+  - first:
+      213: -1564172440016386490
+    second: Paralax Houses_30
+  - first:
+      213: -5310521353385795354
+    second: Paralax Houses_31
+  - first:
+      213: 6818327674331024854
+    second: Paralax Houses_32
+  - first:
+      213: 7578867681587558465
+    second: Paralax Houses_33
+  - first:
+      213: -1979056982397624621
+    second: Paralax Houses_34
+  - first:
+      213: 6393153883056267548
+    second: Paralax Houses_35
+  - first:
+      213: -6796121654421667379
+    second: Paralax Houses_36
+  - first:
+      213: 6755308422375500231
+    second: Paralax Houses_37
+  - first:
+      213: -6583199571453996896
+    second: Paralax Houses_38
+  - first:
+      213: 1513475941723242462
+    second: Paralax Houses_39
+  - first:
+      213: -6204788995626218065
+    second: Paralax Houses_40
+  - first:
+      213: -8311428761320829967
+    second: Paralax Houses_41
+  - first:
+      213: -7684994434434119935
+    second: Paralax Houses_42
+  - first:
+      213: 6302290414823578591
+    second: Paralax Houses_43
+  - first:
+      213: -6067548333700460196
+    second: Paralax Houses_44
+  - first:
+      213: 4395033194305650453
+    second: Paralax Houses_45
+  - first:
+      213: -8697870817499468803
+    second: Paralax Houses_46
+  - first:
+      213: -8936770539724351985
+    second: Paralax Houses_47
+  - first:
+      213: 5588424534928892858
+    second: Paralax Houses_48
+  - first:
+      213: -3483250941120697345
+    second: Paralax Houses_49
+  - first:
+      213: -2955245162140780087
+    second: Paralax Houses_50
+  - first:
+      213: 6161027012214937342
+    second: Paralax Houses_51
+  - first:
+      213: -7527833114523027709
+    second: Paralax Houses_52
+  - first:
+      213: 3173168857099702356
+    second: Paralax Houses_53
+  - first:
+      213: -1469326537260471838
+    second: Paralax Houses_54
+  - first:
+      213: -9090485602241360458
+    second: Paralax Houses_55
+  - first:
+      213: 6440936677947654176
+    second: Paralax Houses_56
+  - first:
+      213: 939496408957178864
+    second: Paralax Houses_57
+  - first:
+      213: -2028871053710030740
+    second: Paralax Houses_58
+  - first:
+      213: -7042098336376388891
+    second: Paralax Houses_59
+  - first:
+      213: 3673539668204949296
+    second: Paralax Houses_60
+  - first:
+      213: 8499422848184873881
+    second: Paralax Houses_61
+  - first:
+      213: 6285697266979475747
+    second: Paralax Houses_62
+  - first:
+      213: -9160913974313226216
+    second: Paralax Houses_63
+  - first:
+      213: 1720016409393970051
+    second: Paralax Houses_64
+  - first:
+      213: 205829819144891039
+    second: Paralax Houses_65
+  - first:
+      213: -5992886227646430790
+    second: Paralax Houses_66
+  - first:
+      213: -7359063344032326249
+    second: Paralax Houses_67
+  - first:
+      213: 5568216670446826772
+    second: Paralax Houses_68
+  - first:
+      213: -4648267935201888460
+    second: Paralax Houses_69
+  - first:
+      213: 4995427766896361382
+    second: Paralax Houses_70
+  - first:
+      213: 934025479152122912
+    second: Paralax Houses_71
+  - first:
+      213: -5961654594617237782
+    second: Paralax Houses_72
+  - first:
+      213: -2382193331850873122
+    second: Paralax Houses_73
+  - first:
+      213: -7912262772425599305
+    second: Paralax Houses_74
+  - first:
+      213: -7396523714614462738
+    second: Paralax Houses_75
+  - first:
+      213: 1134679614953825515
+    second: Paralax Houses_76
+  - first:
+      213: -6814928660220522033
+    second: Paralax Houses_77
+  - first:
+      213: 145449002950784836
+    second: Paralax Houses_78
+  - first:
+      213: 5858171262735039905
+    second: Paralax Houses_79
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Paralax Houses_0
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 119
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97b5b1dedb1b75870800000000000000
+      internalID: 8671595036810107769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_1
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 133
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23f9642c2d8408990800000000000000
+      internalID: -7385823318847873230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_2
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 125
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b7702d698e2c950800000000000000
+      internalID: 6467987749323897618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_3
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 152
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97856fbead031ebc0800000000000000
+      internalID: -3755666897430488967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_4
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 127
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c745943ea58e8390800000000000000
+      internalID: -7814161320188229688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_5
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 142
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c4f3792fb88906e0800000000000000
+      internalID: -1870813815580134206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_6
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 136
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99cfae9ac09ace9a0800000000000000
+      internalID: -6202396714940564327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_7
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 126
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c87038529b67710800000000000000
+      internalID: 1690742280887438357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_8
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 133
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19410b0f907fc7210800000000000000
+      internalID: 1332211211859661969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_9
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 133
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b50c122291191540800000000000000
+      internalID: 4979030182369953209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_10
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 139
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03be559f7ca7f8f80800000000000000
+      internalID: -8102122205315994832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_11
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 132
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9076c47832559c10800000000000000
+      internalID: 2059642807022678171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_12
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 130
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46e1f99ca277d2c90800000000000000
+      internalID: -7192962004185833884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_13
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 135
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b83f8a2086b7312f0800000000000000
+      internalID: -1003322605322046581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_14
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 137
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a14b66c95035572a0800000000000000
+      internalID: -6740389983726160870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_15
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 127
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b87909fc73e79e0800000000000000
+      internalID: -1621797451183191205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_16
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 131
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7029eccd797348c0800000000000000
+      internalID: -4016232861468647298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_17
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 125
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34f18a467d0f1a9f0800000000000000
+      internalID: -458820879117705405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_18
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 105
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143a7efc895ba9660800000000000000
+      internalID: 7393421406209811265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_19
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 114
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c02ff8969c6e680800000000000000
+      internalID: -8726065772760003568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_20
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 124
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e1ef4ca417f9030800000000000000
+      internalID: 3503643601064042113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_21
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 129
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c7cf420ce412bbf0800000000000000
+      internalID: -310162420451522622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_22
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 128
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3d3160948d552a0800000000000000
+      internalID: -6749250658398645315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_23
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 132
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d274e80033b96fd0800000000000000
+      internalID: -2348148711808011564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_24
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 94
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d460cd2281f55a450800000000000000
+      internalID: 6099385827611903565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_25
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 105
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee96f5a749dc581a0800000000000000
+      internalID: -6807809224108709394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_26
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 112
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef369cb49c9cc9fc0800000000000000
+      internalID: -3486690145094507522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_27
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 102
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 140898bb7176cfa10800000000000000
+      internalID: 1944542490745471041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_28
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 104
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06fe7bf6d7bfc9570800000000000000
+      internalID: 8474925114968239968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_29
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 93
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab9589055f3d75080800000000000000
+      internalID: -9198650663308338758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_30
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 82
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6460e510471fa4ae0800000000000000
+      internalID: -1564172440016386490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_31
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 85
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e0205727fc3d46b0800000000000000
+      internalID: -5310521353385795354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_32
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 89
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dd47be05e09f9e50800000000000000
+      internalID: 6818327674331024854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_33
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 96
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 148f6b8700c8d2960800000000000000
+      internalID: 7578867681587558465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_34
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 98
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dedee5f82af884e0800000000000000
+      internalID: -1979056982397624621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_35
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 72
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c116af1959b09b850800000000000000
+      internalID: 6393153883056267548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_36
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 64
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc14bd9dc535fa1a0800000000000000
+      internalID: -6796121654421667379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_37
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 60
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c965ef083dafbd50800000000000000
+      internalID: 6755308422375500231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_38
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 59
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a01bf97ed6c3a4a0800000000000000
+      internalID: -6583199571453996896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_39
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 35
+        width: 66
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf738aa952f00510800000000000000
+      internalID: 1513475941723242462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_40
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 65
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad4279684924e9a0800000000000000
+      internalID: -6204788995626218065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_41
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 23
+        width: 20
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fbc181d39fd7ac80800000000000000
+      internalID: -8311428761320829967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_42
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 72
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10743ba574a695590800000000000000
+      internalID: -7684994434434119935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_43
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 39
+        width: 72
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdb98e6cdbb367750800000000000000
+      internalID: 6302290414823578591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_44
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 38
+        width: 48
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51554010fcbbcba0800000000000000
+      internalID: -6067548333700460196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_45
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 71
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f73a2876b4efc30800000000000000
+      internalID: 4395033194305650453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_46
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 39
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb25b42394fa4780800000000000000
+      internalID: -8697870817499468803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_47
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 44
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f06dd8c0b863af380800000000000000
+      internalID: -8936770539724351985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_48
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 58
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab3a38a71821e8d40800000000000000
+      internalID: 5588424534928892858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_49
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 52
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffba4fe59b109afc0800000000000000
+      internalID: -3483250941120697345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_50
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 46
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c9386ebe2cdcf6d0800000000000000
+      internalID: -2955245162140780087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_51
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 44
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef658a2dc6d508550800000000000000
+      internalID: 6161027012214937342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_52
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 24
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 307be60aaa3c78790800000000000000
+      internalID: -7527833114523027709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_53
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 43
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45092cb634c590c20800000000000000
+      internalID: 3173168857099702356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_54
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 28
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e9e8879c47eb9be0800000000000000
+      internalID: -1469326537260471838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_55
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 46
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bdc99a128b18d180800000000000000
+      internalID: -9090485602241360458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_56
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 45
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020cad578cdc26950800000000000000
+      internalID: 6440936677947654176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_57
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 18
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f3d5ab9103c90d00800000000000000
+      internalID: 939496408957178864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_58
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 31
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c688a8ca68008d3e0800000000000000
+      internalID: -2028871053710030740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_59
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 20
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e28aeaafd0754e90800000000000000
+      internalID: -7042098336376388891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_60
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 30
+        width: 25
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f89af6dd80bf230800000000000000
+      internalID: 3673539668204949296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_61
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 32
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 993f5ed6c0404f570800000000000000
+      internalID: 8499422848184873881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_62
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 31
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32194fb7c584b3750800000000000000
+      internalID: 6285697266979475747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_63
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 31
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 810f527e645edd080800000000000000
+      internalID: -9160913974313226216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_64
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 10
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38b35c1bfc9bed710800000000000000
+      internalID: 1720016409393970051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_65
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 12
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a605641214bd200800000000000000
+      internalID: 205829819144891039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_66
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 20
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1cdc54abdf4dca0800000000000000
+      internalID: -5992886227646430790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_67
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 31
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79dda5be0ea5fd990800000000000000
+      internalID: -7359063344032326249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_68
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 21
+        width: 60
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41534626f87464d40800000000000000
+      internalID: 5568216670446826772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_69
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 22
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 437f375c0f80e7fb0800000000000000
+      internalID: -4648267935201888460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_70
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 27
+        width: 25
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6affafa4613535540800000000000000
+      internalID: 4995427766896361382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_71
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 29
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02cb600893356fc00800000000000000
+      internalID: 934025479152122912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_72
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 28
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aee934e7bb2f34da0800000000000000
+      internalID: -5961654594617237782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_73
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 28
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed679bc39cfb0fed0800000000000000
+      internalID: -2382193331850873122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_74
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 15
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b65600fdeef13290800000000000000
+      internalID: -7912262772425599305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_75
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 15
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee6f6a9bed44a5990800000000000000
+      internalID: -7396523714614462738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_76
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 11
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4233719113fbf00800000000000000
+      internalID: 1134679614953825515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_77
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 16
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc15de59d728c61a0800000000000000
+      internalID: -6814928660220522033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_78
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 16
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447f0d9f81db40200800000000000000
+      internalID: 145449002950784836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paralax Houses_79
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 12
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ad39bcb9b76c4150800000000000000
+      internalID: 5858171262735039905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Paralax Houses_0: 8671595036810107769
+      Paralax Houses_1: -7385823318847873230
+      Paralax Houses_10: -8102122205315994832
+      Paralax Houses_11: 2059642807022678171
+      Paralax Houses_12: -7192962004185833884
+      Paralax Houses_13: -1003322605322046581
+      Paralax Houses_14: -6740389983726160870
+      Paralax Houses_15: -1621797451183191205
+      Paralax Houses_16: -4016232861468647298
+      Paralax Houses_17: -458820879117705405
+      Paralax Houses_18: 7393421406209811265
+      Paralax Houses_19: -8726065772760003568
+      Paralax Houses_2: 6467987749323897618
+      Paralax Houses_20: 3503643601064042113
+      Paralax Houses_21: -310162420451522622
+      Paralax Houses_22: -6749250658398645315
+      Paralax Houses_23: -2348148711808011564
+      Paralax Houses_24: 6099385827611903565
+      Paralax Houses_25: -6807809224108709394
+      Paralax Houses_26: -3486690145094507522
+      Paralax Houses_27: 1944542490745471041
+      Paralax Houses_28: 8474925114968239968
+      Paralax Houses_29: -9198650663308338758
+      Paralax Houses_3: -3755666897430488967
+      Paralax Houses_30: -1564172440016386490
+      Paralax Houses_31: -5310521353385795354
+      Paralax Houses_32: 6818327674331024854
+      Paralax Houses_33: 7578867681587558465
+      Paralax Houses_34: -1979056982397624621
+      Paralax Houses_35: 6393153883056267548
+      Paralax Houses_36: -6796121654421667379
+      Paralax Houses_37: 6755308422375500231
+      Paralax Houses_38: -6583199571453996896
+      Paralax Houses_39: 1513475941723242462
+      Paralax Houses_4: -7814161320188229688
+      Paralax Houses_40: -6204788995626218065
+      Paralax Houses_41: -8311428761320829967
+      Paralax Houses_42: -7684994434434119935
+      Paralax Houses_43: 6302290414823578591
+      Paralax Houses_44: -6067548333700460196
+      Paralax Houses_45: 4395033194305650453
+      Paralax Houses_46: -8697870817499468803
+      Paralax Houses_47: -8936770539724351985
+      Paralax Houses_48: 5588424534928892858
+      Paralax Houses_49: -3483250941120697345
+      Paralax Houses_5: -1870813815580134206
+      Paralax Houses_50: -2955245162140780087
+      Paralax Houses_51: 6161027012214937342
+      Paralax Houses_52: -7527833114523027709
+      Paralax Houses_53: 3173168857099702356
+      Paralax Houses_54: -1469326537260471838
+      Paralax Houses_55: -9090485602241360458
+      Paralax Houses_56: 6440936677947654176
+      Paralax Houses_57: 939496408957178864
+      Paralax Houses_58: -2028871053710030740
+      Paralax Houses_59: -7042098336376388891
+      Paralax Houses_6: -6202396714940564327
+      Paralax Houses_60: 3673539668204949296
+      Paralax Houses_61: 8499422848184873881
+      Paralax Houses_62: 6285697266979475747
+      Paralax Houses_63: -9160913974313226216
+      Paralax Houses_64: 1720016409393970051
+      Paralax Houses_65: 205829819144891039
+      Paralax Houses_66: -5992886227646430790
+      Paralax Houses_67: -7359063344032326249
+      Paralax Houses_68: 5568216670446826772
+      Paralax Houses_69: -4648267935201888460
+      Paralax Houses_7: 1690742280887438357
+      Paralax Houses_70: 4995427766896361382
+      Paralax Houses_71: 934025479152122912
+      Paralax Houses_72: -5961654594617237782
+      Paralax Houses_73: -2382193331850873122
+      Paralax Houses_74: -7912262772425599305
+      Paralax Houses_75: -7396523714614462738
+      Paralax Houses_76: 1134679614953825515
+      Paralax Houses_77: -6814928660220522033
+      Paralax Houses_78: 145449002950784836
+      Paralax Houses_79: 5858171262735039905
+      Paralax Houses_8: 1332211211859661969
+      Paralax Houses_9: 4979030182369953209
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
