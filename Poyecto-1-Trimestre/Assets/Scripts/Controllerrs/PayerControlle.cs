@@ -151,10 +151,9 @@ public class PayerControlle : MonoBehaviour
                 break;
             case State.Platform:
 
-                Dash();
+                
                 PlatformMovement();
-                Falling();
-                Attack();
+                
 
                 break;
         }

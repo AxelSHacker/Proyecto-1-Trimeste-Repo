@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: a3cf7469bf91e3a4d8d5506fff19bec4
+guid: 33708a7b4c76631499eec7335b7c612d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5119174412412611892
-    second: Tutorial space_0
+      213: 6872277656926211323
+    second: Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_0
+  - first:
+      213: 2184493626360552679
+    second: Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_1
+  - first:
+      213: 8987306763893026198
+    second: Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tutorial space_0
+      name: Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 247
+        y: 654
+        width: 580
+        height: 289
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43d6f1b6106fa0740800000000000000
-      internalID: 5119174412412611892
+      spriteID: bfcc0fa3e1c3f5f50800000000000000
+      internalID: 6872277656926211323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_1
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 306
+        width: 297
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec53551161e05e10800000000000000
+      internalID: 2184493626360552679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_2
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 66
+        width: 228
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d2f4d82e359bc70800000000000000
+      internalID: 8987306763893026198
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tutorial space_0: 5119174412412611892
+      Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_0: 6872277656926211323
+      Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_1: 2184493626360552679
+      Gemini_Generated_Image_q4hl3jq4hl3jq4hl (1) (1)_2: 8987306763893026198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
