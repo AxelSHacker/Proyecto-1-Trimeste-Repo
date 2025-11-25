@@ -21,7 +21,7 @@ public class SpaceShip : MonoBehaviour
     [SerializeField]
     Vector2 maxScale;
     [SerializeField]
-    PayerControlle _payerController;
+    PlayerControllerEndLess _payerController;
 
 
     [Header("PARAMETER")]

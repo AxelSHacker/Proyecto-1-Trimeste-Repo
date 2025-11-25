@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 9180147691765463106}
   - component: {fileID: 532024046937175967}
   - component: {fileID: 392079331125167511}
-  - component: {fileID: 1261331413671354524}
+  - component: {fileID: 2966568159993020101}
   - component: {fileID: 7281957861879465619}
   m_Layer: 0
   m_Name: Player-EndLessRunner-Statts
@@ -214,7 +214,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1261331413671354524
+--- !u!114 &2966568159993020101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,36 +228,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rB: {fileID: 392079331125167511}
   _anim: {fileID: 9180147691765463106}
-  offSet: {x: 0.6, y: 0.04}
+  offSet: {x: 0.55, y: 0.04}
   Detectable:
     serializedVersion: 2
-    m_Bits: 12
-  noDetectables:
-    serializedVersion: 2
-    m_Bits: 59
+    m_Bits: 8
   detetablePoint: {fileID: 349242001714350870}
-  panza: {fileID: 4109945057273828685}
   _spriteRenderer: {fileID: 4515453891670070707}
   dust: {fileID: 2347762914566869386}
   autoMovement: 1
   speed: 5
   maxSpeed: 85
-  xMotion: 0
   jumpForce: 7
   maxJump: 0
   isGrounded: 0
-  wallContact: 1.2
-  dashForce: 500
-  dashRepeat: 1
   normalGravity: 0
-  attackCount: 0
-  timer: 0
-  attacking: 0
-  powerUpTimer: 3
-  maxTimer: 0
+  powerUpTimer: 0
+  maxTimer: 3
   fairy: {fileID: 7529641496524132542}
   speedUp: {fileID: 4955071382077535675}
-  speedUpVelocity: 0.05
+  speedUpVelocity: 0.04
   canDie: 1
 --- !u!114 &7281957861879465619
 MonoBehaviour:
@@ -306,8 +295,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1261331413671354524}
-        m_TargetAssemblyTypeName: PayerControlle, Assembly-CSharp
+      - m_Target: {fileID: 2966568159993020101}
+        m_TargetAssemblyTypeName: PlayerControllerEndLess, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -329,19 +318,7 @@ MonoBehaviour:
     m_ActionId: b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba
     m_ActionName: 'Player/Next[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1261331413671354524}
-        m_TargetAssemblyTypeName: PayerControlle, Assembly-CSharp
-        m_MethodName: OnDasching
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 641cd816-40e6-41b4-8c3d-04687c349290
     m_ActionName: 'Player/Sprint[/Keyboard/leftShift]'
   - m_PersistentCalls:
@@ -386,8 +363,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1261331413671354524}
-        m_TargetAssemblyTypeName: PayerControlle, Assembly-CSharp
+      - m_Target: {fileID: 2966568159993020101}
+        m_TargetAssemblyTypeName: PlayerControllerEndLess, Assembly-CSharp
         m_MethodName: OnFalling
         m_Mode: 0
         m_Arguments:
@@ -412,7 +389,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 798d1274-5233-4348-81d7-8625f39991a4
     m_ActionName: 'Player/Pause[/Keyboard/escape]'

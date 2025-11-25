@@ -81,7 +81,7 @@ MonoBehaviour:
   waitTime: 5
   currentTime: 0
   smoothing: 0
-  velocity: 3.5
+  velocity: 5
   maxDistance: 0
   maxShipVelocity: 4.2
   rotationVelocity: 0

@@ -16,18 +16,30 @@ public class Collectable : MonoBehaviour
     public float flashTTime = 0.4f;
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PayerControlle player))
+        if (collision.TryGetComponent(out PlayerControllerEndLess playerEndLess))
         {
-            FeedBBack(player);
+            FeedBBackEndLEss(playerEndLess);
+            GameManager.Instance.PicupCollectable(point);
+            Desactivate();
+        }
+        if (collision.TryGetComponent(out PlayerControllerPlatform playerPlatform))
+        {
+            FeedBBackPlatform(playerPlatform);
             GameManager.Instance.PicupCollectable(point);
             Desactivate();
         }
     }
 
-    private void FeedBBack(PayerControlle player)
+    private void FeedBBackEndLEss(PlayerControllerEndLess playerEndLess)
     {
         
-            player.StartColorFlash(flashColor, flashTTime);
+        playerEndLess.StartColorFlash(flashColor, flashTTime);
+        
+    }
+    private void FeedBBackPlatform(PlayerControllerPlatform playerPlatfrom)
+    {
+        
+        playerPlatfrom.StartColorFlash(flashColor, flashTTime);
         
     }
     private void Desactivate()

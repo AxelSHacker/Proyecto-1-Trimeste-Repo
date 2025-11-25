@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 8028028206094530501}
   - component: {fileID: 102753094010095488}
   - component: {fileID: 2418397431059185357}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: OneWay Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

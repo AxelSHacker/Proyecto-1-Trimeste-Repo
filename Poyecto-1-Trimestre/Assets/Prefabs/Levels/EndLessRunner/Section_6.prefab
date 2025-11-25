@@ -2208,7 +2208,7 @@ GameObject:
   - component: {fileID: 1966782273789732526}
   - component: {fileID: 5417534289217443071}
   - component: {fileID: 5987192116960361368}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: OneWay Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2965,7 +2965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6058254031758896672, guid: 7c98eaaaf5bc45542bf727e9ec30990b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.84
+      value: 3.62
       objectReference: {fileID: 0}
     - target: {fileID: 6058254031758896672, guid: 7c98eaaaf5bc45542bf727e9ec30990b, type: 3}
       propertyPath: m_LocalPosition.y
