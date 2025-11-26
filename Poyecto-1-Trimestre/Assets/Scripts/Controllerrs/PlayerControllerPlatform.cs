@@ -25,6 +25,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     SpriteRenderer _spriteRenderer;
     [SerializeField]
     ParticleSystem dust;
+    [SerializeField]
+    Healt _healt;
 
 
 
@@ -128,15 +130,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         }
     }
     //Collision para manejar la colisiones
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-
-            collisionObject = collision.gameObject;
-            if (canDie) Death();
-        }
-    }
+    
     #endregion
     #region New Impu System
     public void OnJump(InputAction.CallbackContext context)
@@ -198,7 +192,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         }
         if (context.canceled)
         {
-            schieldOn = false;
+            _healt.noDamage = false;
         }
     }
     #endregion
@@ -262,7 +256,7 @@ public class PlayerControllerPlatform : MonoBehaviour
             _anim.SetBool("OnAir", false);
         }
 
-        _anim.SetBool("SchieldOn", schieldOn);
+        _anim.SetBool("SchieldOn", _healt.noDamage);
     }
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
@@ -284,7 +278,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
-            Healt.Instance.health = 0;
+            EndGame();
+           _healt.health = 0;
         }
     }
     private void EndGame()
@@ -332,7 +327,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     private void SchieldOn()
     {
-        schieldOn = true;
+        _healt.noDamage = true;
+        _rB.linearVelocity = Vector2.zero;
 
     }
 
@@ -367,6 +363,13 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     }
     #endregion
+
+
+
+
+
+
+
     #region Animation Event
     public void EnableCombo()
     {

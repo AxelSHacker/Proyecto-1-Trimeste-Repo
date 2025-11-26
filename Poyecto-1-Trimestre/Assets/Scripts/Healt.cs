@@ -2,35 +2,27 @@ using UnityEngine;
 
 public class Healt : MonoBehaviour
 {
-    private static Healt _instance;
-
-    public static Healt Instance => _instance;
+  
     public int health;
     public int maxHealt;
+    public bool noDamage = false;
 
-    //[SerializeField]
-    // AudioSource aS;
-    void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        
-    }
+    
     private void Start()
     {
         health = maxHealt;
 
-       
+
     }
     public void Damage(int damage)
     {
+        if (noDamage) return;
+
         health -= damage;
         //Sonido de espada
     }
-        
-       
-           
-            
+
+
+
+
 }

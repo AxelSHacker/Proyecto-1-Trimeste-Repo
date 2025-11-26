@@ -4,16 +4,32 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField]
     int damage;
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            if (collision.gameObject.TryGetComponent<Healt>(out Healt _healt)) 
-            {
-                _healt.Damage(damage);
-                
-            }
 
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.TryGetComponent<Healt>(out Healt _healt);
+
+            _healt.Damage(damage);
         }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.TryGetComponent<Healt>(out Healt _healt);
+
+            _healt.Damage(damage);
+        }
+
     }
+
+
+
+
+
+
+
+
+
 }

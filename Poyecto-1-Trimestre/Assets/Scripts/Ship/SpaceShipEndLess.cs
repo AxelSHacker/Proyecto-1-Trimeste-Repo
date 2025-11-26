@@ -58,12 +58,13 @@ public class SpaceShipEndLess : MonoBehaviour
 
     private void Update()
     {
-        ScaleControl();
+        
 
     }
 
     void FixedUpdate()
     {
+        ScaleControl();
         FollowPayer();
     }
 

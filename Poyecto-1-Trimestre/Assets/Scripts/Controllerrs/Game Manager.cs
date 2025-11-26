@@ -68,30 +68,29 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void EndGame()
     {
-        if (Healt.Instance.health <= 0)
+
+        bool newRecord = DataManager.Instance.maxScore < collectableCount;
+        //Si la puntuacion obttenida suora la maxima
+        if (newRecord)
         {
-            bool newRecord = DataManager.Instance.maxScore < collectableCount;
-            //Si la puntuacion obttenida suora la maxima
-            if (newRecord)
-            {
-                //Efecto
-                nuke.Play();
-                //Actualizamos el nuevo ecord
-                DataManager.Instance.maxScore = collectableCount;
-                //Guadamos 
-                DataManager.Instance.Save();
-                //Actuaiamos e texto que muestrta el rercord
-                maxScoerTMP.text = collectableCount.ToString();
+            //Efecto
+            nuke.Play();
+            //Actualizamos el nuevo ecord
+            DataManager.Instance.maxScore = collectableCount;
+            //Guadamos 
+            DataManager.Instance.Save();
+            //Actuaiamos e texto que muestrta el rercord
+            maxScoerTMP.text = collectableCount.ToString();
 
-                canvasGroup.SetEnable(false);
-                endGameCanvasGroup.SetEnable(true);
-                finalScoreTMP.text = collectableCount.ToString();
-            }
-
-
-
+            canvasGroup.SetEnable(false);
+            endGameCanvasGroup.SetEnable(true);
+            finalScoreTMP.text = collectableCount.ToString();
         }
     }
+
+
+
+
     // Reinicia la partida
     public void Restart()
     {

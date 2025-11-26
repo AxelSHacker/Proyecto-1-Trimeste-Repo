@@ -8117,9 +8117,17 @@ PrefabInstance:
       propertyPath: playerPosition
       value: 
       objectReference: {fileID: 1911357048903662806}
+    - target: {fileID: 4744759886050539842, guid: b4f6e40c5a07ff445961c2ffebc5b976, type: 3}
+      propertyPath: m_Mass
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8191640560364186683, guid: b4f6e40c5a07ff445961c2ffebc5b976, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638844102310887277, guid: b4f6e40c5a07ff445961c2ffebc5b976, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8663120098478249669, guid: b4f6e40c5a07ff445961c2ffebc5b976, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8182,6 +8190,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2112919103}
     m_Modifications:
+    - target: {fileID: 403055568010041059, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2447070645286787690, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
       propertyPath: m_Name
       value: Player-Platform-Sariant (1)
@@ -8190,6 +8202,14 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 341526743}
+    - target: {fileID: 5761567803416694386, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472921132680151442, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6672110218767919743, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9
@@ -8229,6 +8249,10 @@ PrefabInstance:
     - target: {fileID: 6672110218767919743, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647972144338226161, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

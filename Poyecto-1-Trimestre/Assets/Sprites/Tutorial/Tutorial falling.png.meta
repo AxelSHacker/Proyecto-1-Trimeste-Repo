@@ -17,6 +17,12 @@ TextureImporter:
   - first:
       213: 5415726559756807828
     second: Tutorial falling_4
+  - first:
+      213: 9179787382570948470
+    second: Tutorial falling_5
+  - first:
+      213: -8819072781783547985
+    second: Tutorial falling_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,10 +134,10 @@ TextureImporter:
       name: Tutorial falling_0
       rect:
         serializedVersion: 2
-        x: 198
-        y: 486
-        width: 682
-        height: 457
+        x: 367
+        y: 673
+        width: 188
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +156,10 @@ TextureImporter:
       name: Tutorial falling_1
       rect:
         serializedVersion: 2
-        x: 295
-        y: 301
-        width: 307
-        height: 351
+        x: 592
+        y: 675
+        width: 133
+        height: 198
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,10 +178,10 @@ TextureImporter:
       name: Tutorial falling_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 156
-        width: 308
-        height: 248
+        x: 727
+        y: 701
+        width: 163
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +200,10 @@ TextureImporter:
       name: Tutorial falling_3
       rect:
         serializedVersion: 2
-        x: 310
-        y: 74
-        width: 269
-        height: 221
+        x: 740
+        y: 666
+        width: 143
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +222,10 @@ TextureImporter:
       name: Tutorial falling_4
       rect:
         serializedVersion: 2
-        x: 177
-        y: 65
-        width: 92
-        height: 74
+        x: 295
+        y: 301
+        width: 307
+        height: 351
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,6 +236,50 @@ TextureImporter:
       bones: []
       spriteID: 49ee3f2cc96882b40800000000000000
       internalID: 5415726559756807828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tutorial falling_5
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 486
+        width: 187
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67711c3ecf7256f70800000000000000
+      internalID: 9179787382570948470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tutorial falling_6
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 74
+        width: 269
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fafb979c70c5c9580800000000000000
+      internalID: -8819072781783547985
       vertices: []
       indices: 
       edges: []
@@ -253,6 +303,8 @@ TextureImporter:
       Tutorial falling_2: 3026761621293393156
       Tutorial falling_3: -6993726794698802282
       Tutorial falling_4: 5415726559756807828
+      Tutorial falling_5: 9179787382570948470
+      Tutorial falling_6: -8819072781783547985
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

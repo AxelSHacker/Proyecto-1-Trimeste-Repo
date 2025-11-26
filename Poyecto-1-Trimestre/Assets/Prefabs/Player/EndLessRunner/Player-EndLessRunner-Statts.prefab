@@ -236,7 +236,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4515453891670070707}
   dust: {fileID: 2347762914566869386}
   autoMovement: 1
-  speed: 3
+  speed: 5
   maxSpeed: 85
   jumpForce: 7
   maxJump: 0
@@ -393,6 +393,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 798d1274-5233-4348-81d7-8625f39991a4
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: faff5514-901c-44ae-b4bc-22edc04450f1
+    m_ActionName: 'Player/Schield[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 

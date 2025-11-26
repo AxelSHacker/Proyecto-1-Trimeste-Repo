@@ -81,10 +81,11 @@ MonoBehaviour:
   waitTime: 5
   currentTime: 0
   smoothing: 0
-  velocity: 5
+  velocity: 4
   maxDistance: 0
-  maxShipVelocity: 4.2
+  maxShipVelocity: 4.25
   rotationVelocity: 0
+  movementX: 1
 --- !u!50 &2797679567384548247
 Rigidbody2D:
   serializedVersion: 5

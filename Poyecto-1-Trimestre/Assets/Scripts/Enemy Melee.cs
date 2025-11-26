@@ -34,6 +34,8 @@ public class EnemyMelee : MonoBehaviour
     Transform[] patrol;
     [SerializeField]
     Transform playerPosition;
+    [SerializeField]
+    Healt _healt;
     public State currentState;
 
 
@@ -47,9 +49,9 @@ public class EnemyMelee : MonoBehaviour
     void Update()
     {
         _Distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (Healt.Instance.health <= 0)
+        if (_healt.health <= 0)
         {
-            Death();
+            StateUpdate(State.Death);
         }
         else if (_Distance <= attackRadius)
         {
@@ -169,6 +171,7 @@ public class EnemyMelee : MonoBehaviour
     {
 
         _anim.SetBool("Death", true);
+        _Rb.linearVelocity = Vector2.zero;
 
 
     }
