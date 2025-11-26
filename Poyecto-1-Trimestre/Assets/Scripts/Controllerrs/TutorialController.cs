@@ -1,36 +1,40 @@
 using System.Data.Common;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialController : MonoBehaviour
 {
     [SerializeField]
     CanvasGroup canvasGroup;
+   
     [SerializeField]
-    GameObject endlessRuenner;
-    [SerializeField]
-    GameObject platform2D;
+    PlayerControllerEndLess playerCEL;
+    
+
     void Start()
     {
-        canvasGroup.alpha = 0;
+
+
     }
 
     void Update()
     {
         if (GameManager.Instance.collectableCount >= 15)
         {
-            canvasGroup.alpha = 1;
-
+            canvasGroup.SetEnable(true);
+            playerCEL.autoMovement = false;
+            
         }
+
     }
 
     public void ContinueTutorial()
     {
-        endlessRuenner.SetActive(false);
-        platform2D.SetActive(true);
+        SceneManager.LoadScene("Tutorial Platform");
     }
-            
-        
+
+
 
     private void OnDisable()
     {

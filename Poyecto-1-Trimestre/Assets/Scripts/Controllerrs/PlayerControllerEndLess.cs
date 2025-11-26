@@ -95,10 +95,10 @@ public class PlayerControllerEndLess : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Speed Up"))
         {
+            canDie = true;
             Destroy(collision.gameObject);
             maxTimer = powerUpTimer;
             speedUp.Play();
-            canDie = true;
 
         }
     }

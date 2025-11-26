@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2797679567384548247}
   - component: {fileID: 4215853091569857567}
   m_Layer: 0
-  m_Name: Space_Ship
+  m_Name: Space_Ship_EndLess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@ using System;
 using TreeEditor;
 using UnityEngine;
 
-public class SpaceShip : MonoBehaviour
+public class SpaceShipEndLess : MonoBehaviour
 {
     //Distancia a la que se tiene que mantener la nave de manera normal
     [Header("REFERENCES"), SerializeField]
@@ -41,6 +41,8 @@ public class SpaceShip : MonoBehaviour
     float maxShipVelocity;
     [SerializeField]
     float rotationVelocity;
+    [SerializeField]
+    bool movementX = true;
 
 
 
@@ -65,16 +67,16 @@ public class SpaceShip : MonoBehaviour
         FollowPayer();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerRB.gravityScale = 0f;
-            _rb.linearVelocity = Vector2.zero;
+            playerRB.gravityScale = 0.5f;
+
         }
     }
-        
-    
+
+
 
 
     //Con esta funcion seguimos al player
@@ -93,18 +95,18 @@ public class SpaceShip : MonoBehaviour
         {
             //La nabe se queda en la posicion x del player y se ejecuta la absorcion y la pantalla
             //De carga a la siguiene fase
-
+            _rb.AddForce(Vector2.zero);
             _payerController.autoMovement = false;
-
-            _rb.linearVelocity = Vector2.zero;
+            movementX = false;
             playerRB.gravityScale = -0.5f;
-
-            return;
-
-
         }
+
+
+
+
+
         //Cuando termine la cuenta atras la nave avanzara a su propia velocidad
-        if (currentTime <= 0f)
+        if (currentTime <= 0f && movementX)
         {
             _rb.AddForce(transform.right * velocity, ForceMode2D.Force);
             if (_rb.linearVelocityX >= maxShipVelocity)
@@ -113,7 +115,7 @@ public class SpaceShip : MonoBehaviour
             }
         }
         //Si aun no ha terminado la cuenta ,la nabe persigue al player en uns distancia fija
-        else
+        else if (movementX)
         {
             shipVector.x = playerPosition.position.x + offSetX;
             transform.position = shipVector;

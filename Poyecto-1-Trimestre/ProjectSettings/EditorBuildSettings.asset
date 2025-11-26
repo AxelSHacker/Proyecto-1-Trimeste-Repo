@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Platform 2D.unity
     guid: 2698f36fab7ebd94d9df061f68ceaaa2
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/Tutorial EndLess.unity
     guid: 721b8cb620c7bc048bf00af12408ded1
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Platform.unity
+    guid: 452c52a71e5e1bd4691ef63826a327e9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

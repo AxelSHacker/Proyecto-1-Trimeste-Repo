@@ -63,7 +63,7 @@ public class EnemyCrawler : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
 
-        if (Vector2.Distance(transform.position, patrol[currentPatrolIndex].position) < 0.1f)
+        if (Vector2.Distance(transform.position, patrol[currentPatrolIndex].position) < 0.5f)
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrol.Length;
 

@@ -33,6 +33,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     [SerializeField]
     float speed;
     [SerializeField]
+    float speedMultiplier;
+    [SerializeField]
     float maxSpeed;
     [SerializeField]
     float xMotion;
@@ -58,6 +60,9 @@ public class PlayerControllerPlatform : MonoBehaviour
     float timer;
     [SerializeField]
     bool attacking = false;
+
+    [Header("SCHIELD"), SerializeField]
+    bool schieldOn;
     [Header("POWER UP"), SerializeField]
     float powerUpTimer;
     [SerializeField]
@@ -101,7 +106,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(detetablePoint.position, offSet);
     }
-    //Trigger para controllar las colisiones
+    #region Trigger/Collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Invencibility"))
@@ -132,10 +137,8 @@ public class PlayerControllerPlatform : MonoBehaviour
             if (canDie) Death();
         }
     }
-    /// <summary>
-    /// Funciones para asignar mediante el New Impu System
-    /// </summary>
-    /// <param name="context"></param>
+    #endregion
+    #region New Impu System
     public void OnJump(InputAction.CallbackContext context)
     {
 
@@ -187,11 +190,24 @@ public class PlayerControllerPlatform : MonoBehaviour
             xMotion = 0f;
         }
     }
-    //Funcion que controla el movimiento y la rotacion del personaje
+    public void OnSchield(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SchieldOn();
+        }
+        if (context.canceled)
+        {
+            schieldOn = false;
+        }
+    }
+    #endregion
+    #region Funciones 
     private void PlatformMovement()
     {
+        if (attacking) return;
         //Aqui le indicamos que se mueva al rigidbody
-        _rB.AddForceX(xMotion * maxSpeed, ForceMode2D.Force);
+        _rB.linearVelocityX = xMotion * speed * speedMultiplier * Time.deltaTime;
         //Velocidad maxima del desplazamiento del player
         if (_rB.linearVelocityX >= maxSpeed)
         {
@@ -246,7 +262,7 @@ public class PlayerControllerPlatform : MonoBehaviour
             _anim.SetBool("OnAir", false);
         }
 
-
+        _anim.SetBool("SchieldOn", schieldOn);
     }
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
@@ -268,48 +284,13 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
-            Death();
+            Healt.Instance.health = 0;
         }
     }
     private void EndGame()
     {
         GameManager.Instance.EndGame();
     }
-    /// <summary>
-    /// Asigna el colo del flash e inicia la corutina de recuperacion del color
-    /// en el tiempo indicado
-    /// </summary>
-    /// <param name="color"></param>
-    /// <param name="time"></param>
-    public void StartColorFlash(Color color, float time)
-    {
-        //Si ya hay una corutina funcionando , la paro
-        if (colorFlaschCoroutine != null)
-        {
-            StopCoroutine(colorFlaschCoroutine);
-        }
-        //Primero asignamos el color entrante al sprite renderer
-        _spriteRenderer.color = color;
-        //Iniciamos de nuevo la corrutina
-        colorFlaschCoroutine = StartCoroutine(ColorRecover(time));
-    }
-    private IEnumerator ColorRecover(float time)
-    {
-        //Inicialiamos el contado de tiempo
-        float timeCounter = 0f;
-        //Almacenamos el color inicial
-        Color initialColor = _spriteRenderer.color;
-        //Mediante un bbucle while hacemos el cambio de colo a la vey que contamos el tiempo que pasa
-        while (timeCounter < time)
-        {
-            _spriteRenderer.color = Color.Lerp(initialColor, Color.green, timeCounter / time);
-            timeCounter += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        _spriteRenderer.color = Color.white;
-
-    }
-    //Funcion de control de el Dash
     private void Dash()
     {
         if (dashRepeat <= 1)
@@ -348,9 +329,45 @@ public class PlayerControllerPlatform : MonoBehaviour
 
 
     }
-    /// <summary> Animation Events
-    /// Animation Events
-    /// </summary>
+
+    private void SchieldOn()
+    {
+        schieldOn = true;
+
+    }
+
+    #endregion
+    #region Courrotine
+    public void StartColorFlash(Color color, float time)
+    {
+        //Si ya hay una corutina funcionando , la paro
+        if (colorFlaschCoroutine != null)
+        {
+            StopCoroutine(colorFlaschCoroutine);
+        }
+        //Primero asignamos el color entrante al sprite renderer
+        _spriteRenderer.color = color;
+        //Iniciamos de nuevo la corrutina
+        colorFlaschCoroutine = StartCoroutine(ColorRecover(time));
+    }
+    private IEnumerator ColorRecover(float time)
+    {
+        //Inicialiamos el contado de tiempo
+        float timeCounter = 0f;
+        //Almacenamos el color inicial
+        Color initialColor = _spriteRenderer.color;
+        //Mediante un bbucle while hacemos el cambio de colo a la vey que contamos el tiempo que pasa
+        while (timeCounter < time)
+        {
+            _spriteRenderer.color = Color.Lerp(initialColor, Color.green, timeCounter / time);
+            timeCounter += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        _spriteRenderer.color = Color.white;
+
+    }
+    #endregion
+    #region Animation Event
     public void EnableCombo()
     {
         attacking = true;
@@ -366,9 +383,9 @@ public class PlayerControllerPlatform : MonoBehaviour
         dust.Play();
 
     }
-        
+    #endregion
 
-        
+
 
 }
 

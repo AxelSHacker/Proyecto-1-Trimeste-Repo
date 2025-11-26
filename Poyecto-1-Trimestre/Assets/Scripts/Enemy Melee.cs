@@ -1,4 +1,6 @@
+using System;
 using System.Data;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class EnemyMelee : MonoBehaviour
@@ -9,6 +11,7 @@ public class EnemyMelee : MonoBehaviour
         Chase,
         Attack,
 
+        Death,
 
     }
     [Header("VARIABLES"), SerializeField]
@@ -44,9 +47,13 @@ public class EnemyMelee : MonoBehaviour
     void Update()
     {
         _Distance = Vector2.Distance(transform.position, playerPosition.position);
-
-        if (_Distance <= attackRadius)
+        if (Healt.Instance.health <= 0)
         {
+            Death();
+        }
+        else if (_Distance <= attackRadius)
+        {
+
             StateUpdate(State.Attack);
         }
         else { _anim.SetBool("Attack", false); }
@@ -95,7 +102,10 @@ public class EnemyMelee : MonoBehaviour
                 Attack();
 
                 break;
+            case State.Death:
 
+                Death();
+                break;
 
 
         }
@@ -147,7 +157,7 @@ public class EnemyMelee : MonoBehaviour
         _anim.SetBool("Attack", true);
     }
 
-    public void EnemyTourn()
+    private void EnemyTourn()
     {
         if (playerPosition.position.x < transform.position.x)
             transform.rotation = Quaternion.Euler(0, 180, 0); // Mira a la izquierda
@@ -155,5 +165,18 @@ public class EnemyMelee : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0); // Mira a la derecha
     }
 
+    private void Death()
+    {
+
+        _anim.SetBool("Death", true);
+
+
+    }
+    #region Animation Event
+    public void DisableObject()
+    {
+        gameObject.SetActive(false);
+    }
+    #endregion
 
 }

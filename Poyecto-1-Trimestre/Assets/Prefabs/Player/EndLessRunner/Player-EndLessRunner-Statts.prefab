@@ -236,14 +236,14 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4515453891670070707}
   dust: {fileID: 2347762914566869386}
   autoMovement: 1
-  speed: 5
+  speed: 3
   maxSpeed: 85
   jumpForce: 7
   maxJump: 0
   isGrounded: 0
   normalGravity: 0
-  powerUpTimer: 0
-  maxTimer: 3
+  powerUpTimer: 3
+  maxTimer: 0
   fairy: {fileID: 7529641496524132542}
   speedUp: {fileID: 4955071382077535675}
   speedUpVelocity: 0.04
