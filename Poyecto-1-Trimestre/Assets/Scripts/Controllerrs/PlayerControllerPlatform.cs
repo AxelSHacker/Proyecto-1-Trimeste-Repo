@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerControllerPlatform : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     ParticleSystem dust;
     [SerializeField]
     Healt _healt;
+    [SerializeField]
+    Slider lifeBar;
 
 
 
@@ -93,6 +96,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         AnimatorController();
         GroundCheck();
         DeathFalling();
+        SliderController();
         if (maxTimer > 0)
         {
             if (!canDie) { GameManager.Instance.Invincibility(collisionObject); }
@@ -127,6 +131,11 @@ public class PlayerControllerPlatform : MonoBehaviour
             speedUp.Play();
             canDie = true;
 
+        }
+
+        if (collision.gameObject.CompareTag("Proyectil"))
+        {
+            Destroy(collision);
         }
     }
     //Collision para manejar la colisiones
@@ -330,6 +339,12 @@ public class PlayerControllerPlatform : MonoBehaviour
         _healt.noDamage = true;
         _rB.linearVelocity = Vector2.zero;
 
+    }
+
+    private void SliderController()
+    {
+        _healt.health = GameManager.Instance.collectableCount;
+        lifeBar.value = _healt.health;
     }
 
     #endregion

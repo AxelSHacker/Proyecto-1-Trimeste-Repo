@@ -82,6 +82,7 @@ public class PlayerControllerEndLess : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(detetablePoint.position, offSet);
     }
+    #region OnTrigger/OnCollision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Invencibility"))
@@ -111,10 +112,13 @@ public class PlayerControllerEndLess : MonoBehaviour
             if (canDie) Death();
         }
     }
-    /// <summary>
-    /// Funciones para asignar mediante el New Impu System
-    /// </summary>
-    /// <param name="context"></param>
+    #endregion
+
+
+
+
+
+    #region New Input System
     public void OnJump(InputAction.CallbackContext context)
     {
 
@@ -135,6 +139,13 @@ public class PlayerControllerEndLess : MonoBehaviour
             _rB.gravityScale = normalGravity;
         }
     }
+    #endregion
+
+
+
+
+
+    #region Funciones 
     //Funcion de movimiento
     private void Movement()
     {
@@ -215,14 +226,15 @@ public class PlayerControllerEndLess : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
-            Death();
+            EndGame();
+            autoMovement = false;
         }
     }
     private void EndGame()
     {
         GameManager.Instance.EndGame();
     }
-
+    #endregion
     /// <summary>
     /// Asigna el colo del flash e inicia la corutina de recuperacion del color
     /// en el tiempo indicado
@@ -268,8 +280,6 @@ public class PlayerControllerEndLess : MonoBehaviour
 
 
 
-   
-   
 
 
 
@@ -283,7 +293,9 @@ public class PlayerControllerEndLess : MonoBehaviour
 
 
 
-    
+
+
+
 
 
 

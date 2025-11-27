@@ -11,9 +11,9 @@ public class Healt : MonoBehaviour
     private void Start()
     {
         health = maxHealt;
-
-
     }
+
+
     public void Damage(int damage)
     {
         if (noDamage) return;

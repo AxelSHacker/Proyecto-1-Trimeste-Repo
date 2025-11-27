@@ -9,6 +9,7 @@ TagManager:
   - Speed Up
   - Power Up
   - Schield
+  - Proyectil
   layers:
   - Default
   - TransparentFX

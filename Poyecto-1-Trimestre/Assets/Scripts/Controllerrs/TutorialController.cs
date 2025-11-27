@@ -9,7 +9,7 @@ public class TutorialController : MonoBehaviour
     CanvasGroup canvasGroup;
    
     [SerializeField]
-    PlayerControllerEndLess playerCEL;
+    
     
 
     void Start()
@@ -23,9 +23,9 @@ public class TutorialController : MonoBehaviour
         if (GameManager.Instance.collectableCount >= 15)
         {
             canvasGroup.SetEnable(true);
-            playerCEL.autoMovement = false;
             
         }
+            
 
     }
 
