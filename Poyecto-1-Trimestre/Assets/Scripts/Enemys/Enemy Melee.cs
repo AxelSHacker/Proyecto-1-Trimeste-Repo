@@ -38,11 +38,12 @@ public class EnemyMelee : MonoBehaviour
     Healt _healt;
     public State currentState;
 
+
     void Update()
     {
         AnimatorController();
         _Distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (_healt.health <= 0)
+        if (_healt.enemyHealth <= 0)
         {
             StateUpdate(State.Death);
         }
@@ -121,7 +122,7 @@ public class EnemyMelee : MonoBehaviour
     private void AnimatorController()
     {
         _anim.SetFloat("Velocity", _Rb.linearVelocityX);
-        _anim.SetBool("Death", true);
+
     }
 
 
@@ -140,9 +141,10 @@ public class EnemyMelee : MonoBehaviour
     private void Death()
     {
         _Rb.linearVelocity = Vector2.zero;
+        _anim.SetBool("Death", true);
     }
 
-        
+
 
 
     #region Animation Event

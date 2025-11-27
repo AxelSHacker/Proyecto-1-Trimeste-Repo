@@ -83,10 +83,12 @@ public class PlayerControllerPlatform : MonoBehaviour
     bool canDie = true;
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
+    
     void Start()
     {
         normalGravity = _rB.gravityScale;
-
+        _healt.health = GameManager.Instance.collectableCount;
+        
 
     }
     void Update()
@@ -135,12 +137,18 @@ public class PlayerControllerPlatform : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Proyectil"))
         {
-            Destroy(collision);
+            Destroy(collision.gameObject);
         }
     }
     //Collision para manejar la colisiones
-    
+
     #endregion
+
+
+
+
+
+
     #region New Impu System
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -205,6 +213,12 @@ public class PlayerControllerPlatform : MonoBehaviour
         }
     }
     #endregion
+
+
+
+
+
+
     #region Funciones 
     private void PlatformMovement()
     {
@@ -288,7 +302,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         if (transform.position.y < -5.8f)
         {
             EndGame();
-           _healt.health = 0;
+            _healt.health = 0;
         }
     }
     private void EndGame()
@@ -343,11 +357,16 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     private void SliderController()
     {
-        _healt.health = GameManager.Instance.collectableCount;
+
         lifeBar.value = _healt.health;
     }
-
     #endregion
+
+
+
+
+
+
     #region Courrotine
     public void StartColorFlash(Color color, float time)
     {

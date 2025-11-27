@@ -7,9 +7,8 @@ TagManager:
   - Enemy
   - Invencibility
   - Speed Up
-  - Power Up
-  - Schield
   - Proyectil
+  - Sword
   layers:
   - Default
   - TransparentFX

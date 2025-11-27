@@ -57,7 +57,7 @@ public class FlyingEnemy : MonoBehaviour
     {
         AnimatorController();
         _Distance = Vector2.Distance(transform.position, playerPosition.position);
-        if (_healt.health <= 0)
+        if (_healt.enemyHealth <= 0)
         {
             StateUpdate(State.Death);
         }
@@ -132,12 +132,13 @@ public class FlyingEnemy : MonoBehaviour
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
         gameObject.Chase(_Rb, _Distance, attackRadius, playerPosition, chaseVelocity);
+        transform.EnemyRotattion(playerPosition);
 
     }
     private void AnimatorController()
     {
         _anim.SetFloat("Velocity", _Rb.linearVelocityX);
-        
+
     }
 
 
@@ -146,7 +147,10 @@ public class FlyingEnemy : MonoBehaviour
 
     public void Attack()
     {
-        _Rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+
+
+        transform.EnemyTourn(playerPosition);
+
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
@@ -181,11 +185,11 @@ public class FlyingEnemy : MonoBehaviour
 
     public void LaunchProyectil()
     {
-        Vector2 direction = (playerPosition.position - shootingPoint.position).normalized;
-
+        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) - (Vector2)shootingPoint.position).normalized;
+        transform.EnemyRotattion(playerPosition);
         GameObject instantiateProyectil = Instantiate(proyectil, shootingPoint.position, proyectil.transform.rotation);
         instantiateProyectil.transform.EnemyRotattion(playerPosition);
-        instantiateProyectil.GetComponentInChildren<Rigidbody2D>().linearVelocity = direction * attackVelocity;
+        instantiateProyectil.GetComponent<Rigidbody2D>().linearVelocity = direction * attackVelocity;
     }
     #endregion
 }

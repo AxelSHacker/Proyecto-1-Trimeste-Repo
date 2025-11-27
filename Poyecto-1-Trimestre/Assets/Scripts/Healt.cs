@@ -1,24 +1,35 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Healt : MonoBehaviour
 {
-  
+    public int enemyHealth;
     public int health;
     public int maxHealt;
     public bool noDamage = false;
 
-    
+
     private void Start()
     {
-        health = maxHealt;
+        enemyHealth = maxHealt;
     }
 
 
     public void Damage(int damage)
     {
         if (noDamage) return;
+        
+        if (health >= 0)
+        {
+            health -= damage;
 
-        health -= damage;
+        }
+
+        if (enemyHealth >= 0)
+        {
+            enemyHealth -= damage;
+
+        }
         //Sonido de espada
     }
 
