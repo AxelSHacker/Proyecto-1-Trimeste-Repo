@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2873778393714452524}
   - component: {fileID: 3342787550311754149}
   - component: {fileID: 5013661008605495561}
-  m_Layer: 1
+  m_Layer: 6
   m_Name: Pickup Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4854,7 +4854,7 @@ GameObject:
   - component: {fileID: 8672499346929540670}
   - component: {fileID: 4325077574327873953}
   - component: {fileID: 6117688942008678946}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FX_Pickup_Beams_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,7 +9755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138967826309274814}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9793,7 +9793,7 @@ GameObject:
   - component: {fileID: 1572981089513075525}
   - component: {fileID: 8181816705405520194}
   - component: {fileID: 8079857635324813743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FX_Pickup_Sparkles_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14701,7 +14701,7 @@ GameObject:
   - component: {fileID: 1928865232125689786}
   - component: {fileID: 3867056205436739118}
   - component: {fileID: 4493789916468623830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player-Platform-Sariant (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -14900,7 +14900,7 @@ MonoBehaviour:
   maxJump: 0
   isGrounded: 0
   dashForce: 50
-  dashRepeat: 0
+  dashRepeat: 2
   normalGravity: 0
   attackCount: 0
   timer: 0
@@ -15105,7 +15105,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_ActionId: 798d1274-5233-4348-81d7-8625f39991a4
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
@@ -15141,7 +15141,7 @@ GameObject:
   - component: {fileID: 851556234640713571}
   - component: {fileID: 403055568010041059}
   - component: {fileID: 6828705863523107846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sword
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -15233,7 +15233,7 @@ GameObject:
   - component: {fileID: 873709793619522428}
   - component: {fileID: 4894655318933904220}
   - component: {fileID: 6014277691590360051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fairy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19906,7 +19906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3336013161461798166}
   - component: {fileID: 8759854255554374479}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19996,7 +19996,7 @@ GameObject:
   - component: {fileID: 1443648447258969600}
   - component: {fileID: 2570050908879493288}
   - component: {fileID: 306342420631999488}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20070,7 +20070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327647938730333662}
   - component: {fileID: 6019754308469400026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20158,7 +20158,7 @@ GameObject:
   - component: {fileID: 6084905838276588802}
   - component: {fileID: 8423947888698452777}
   - component: {fileID: 5981882715275346149}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20233,7 +20233,7 @@ GameObject:
   - component: {fileID: 4235852856585303475}
   - component: {fileID: 5803327790901699039}
   - component: {fileID: 2288045225824113124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Footstep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25146,7 +25146,7 @@ GameObject:
   - component: {fileID: 4635990528323208924}
   - component: {fileID: 4294041224484772240}
   - component: {fileID: 6822394899914020908}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25247,7 +25247,7 @@ GameObject:
   - component: {fileID: 2393834764008214425}
   - component: {fileID: 669891336968004079}
   - component: {fileID: 5704900166218560002}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FX_Pickup_Glow_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30149,7 +30149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017365677505534253}
   - component: {fileID: 5761567803416694386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Schield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30226,7 +30226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8490303223806736214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}

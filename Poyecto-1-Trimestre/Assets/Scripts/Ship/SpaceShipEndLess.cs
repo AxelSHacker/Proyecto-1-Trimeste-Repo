@@ -1,6 +1,7 @@
 using System;
 using TreeEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpaceShipEndLess : MonoBehaviour
 {
@@ -58,22 +59,24 @@ public class SpaceShipEndLess : MonoBehaviour
 
     private void Update()
     {
-        
+        ScaleControl();
 
     }
 
     void FixedUpdate()
     {
-        ScaleControl();
+
         FollowPayer();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (SceneManager.GetActiveScene().name == "Tutorial EndLess") return;
         if (other.gameObject.CompareTag("Player"))
         {
-            playerRB.gravityScale = 0.5f;
-
+            GameManager.Instance.ContinueGame();
+            playerRB.linearVelocity = Vector2.zero;
+            playerRB.gravityScale = 0f;
         }
     }
 
@@ -91,40 +94,27 @@ public class SpaceShipEndLess : MonoBehaviour
         //Pasado determinado tiempo la nabe persegauira al player
         //flotante que almacena la distancia entre 2 posiciones en x
         float separacion = Mathf.Abs(playerPosition.position.x - transform.position.x);
+
         //Redondeamos la separacion para que pille la entrada si no , no se por que , pero no  
         if (Math.Round(separacion) == 0f)
         {
             //La nabe se queda en la posicion x del player y se ejecuta la absorcion y la pantalla
             //De carga a la siguiene fase
-            _rb.AddForce(Vector2.zero);
+
+            _rb.linearVelocity = Vector2.zero;
             _payerController.autoMovement = false;
             movementX = false;
             playerRB.gravityScale = -0.5f;
+            DataManager.Instance.actualGameScore = GameManager.Instance.collectableCount;
+            DataManager.Instance.Save();
+
         }
 
-
-
-
-
-        //Cuando termine la cuenta atras la nave avanzara a su propia velocidad
-        if (currentTime <= 0f && movementX)
+        _rb.AddForce(transform.right * velocity, ForceMode2D.Force);
+        if (_rb.linearVelocityX >= maxShipVelocity)
         {
-            _rb.AddForce(transform.right * velocity, ForceMode2D.Force);
-            if (_rb.linearVelocityX >= maxShipVelocity)
-            {
-                _rb.linearVelocityX = maxShipVelocity;
-            }
+            _rb.linearVelocityX = maxShipVelocity;
         }
-        //Si aun no ha terminado la cuenta ,la nabe persigue al player en uns distancia fija
-        else if (movementX)
-        {
-            shipVector.x = playerPosition.position.x + offSetX;
-            transform.position = shipVector;
-        }
-
-
-
-
     }
     //Con esta funcion lo que quiero es controlar la escala de la nabe con 
     //respecto a la distancia que esta del player
@@ -138,40 +128,53 @@ public class SpaceShipEndLess : MonoBehaviour
         //Ajustatmos la escala con respecto al faktor
         transforObject.localScale = Vector2.Lerp(maxScale, minScale, faktor);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

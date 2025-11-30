@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     #region variables
-    public int collectableCount;
+    public int collectableCount = 1;
 
 
 
@@ -12,13 +13,23 @@ public class GameManager : MonoBehaviour
     [Header("HUD")]
     public CanvasGroup canvasGroup;
 
+    [Header("Continue Panel")]
+    public CanvasGroup continueCanvasGroup;
+    public Slider healtSlider;
+    public TextMeshProUGUI continueScoreTMP;
+
+    public TextMeshProUGUI maxScoerTMPcontinueplanel;
+
+
+    public ParticleSystem nuke;
     [Header("End Game Panel")]
     public CanvasGroup endGameCanvasGroup;
 
     public TextMeshProUGUI finalScoreTMP;
 
     public TextMeshProUGUI maxScoerTMP;
-    public ParticleSystem nuke;
+
+
 
     [Header("Pause Menu")]
     public CanvasGroup pauseCanvasGroup;
@@ -32,18 +43,21 @@ public class GameManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(this);
         }
 
+
     }
 
     void Start()
     {
+
         pointTMP.text = collectableCount.ToString();
+        continueCanvasGroup.SetEnable(false);
         endGameCanvasGroup.SetEnable(false);
         pauseCanvasGroup.SetEnable(false);
         maxScoerTMP.text = DataManager.Instance.maxScore.ToString();
@@ -67,7 +81,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Gestiona las acciones del GameOver
     /// </summary>
-    public void EndGame()
+    public void ContinueGame()
     {
 
         bool newRecord = DataManager.Instance.maxScore < collectableCount;
@@ -81,16 +95,52 @@ public class GameManager : MonoBehaviour
             //Guadamos 
             DataManager.Instance.Save();
             //Actuaiamos e texto que muestrta el rercord
-            maxScoerTMP.text = collectableCount.ToString();
+            maxScoerTMPcontinueplanel.text = DataManager.Instance.maxScore.ToString();
+            healtSlider.value = collectableCount;
+            canvasGroup.SetEnable(false);
+            continueCanvasGroup.SetEnable(true);
+            continueScoreTMP.text = collectableCount.ToString();
+        }
+        else
+        {
+            //Actuaiamos e texto que muestrta el rercord
+            canvasGroup.SetEnable(false);
+            continueCanvasGroup.SetEnable(true);
+            continueScoreTMP.text = collectableCount.ToString();
+            healtSlider.value = collectableCount;
+            maxScoerTMPcontinueplanel.text = DataManager.Instance.maxScore.ToString();
+        }
+    }
+
+    public void EndGame()
+    {
+        bool newRecord = DataManager.Instance.maxScore < collectableCount;
+        //Si la puntuacion obttenida suora la maxima
+        if (newRecord)
+        {
+            //Efecto
+            nuke.Play();
+            //Actualizamos el nuevo ecord
+            DataManager.Instance.maxScore = collectableCount;
+            //Guadamos 
+            DataManager.Instance.Save();
+            //Actuaiamos e texto que muestrta el rercord
+            maxScoerTMP.text = DataManager.Instance.maxScore.ToString();
+
+            canvasGroup.SetEnable(false);
+            endGameCanvasGroup.SetEnable(true);
+            finalScoreTMP.text = collectableCount.ToString();
+        }
+        else
+        {
+            //Actuaiamos e texto que muestrta el rercord
+            maxScoerTMP.text = DataManager.Instance.maxScore.ToString();
 
             canvasGroup.SetEnable(false);
             endGameCanvasGroup.SetEnable(true);
             finalScoreTMP.text = collectableCount.ToString();
         }
     }
-
-
-
 
     // Reinicia la partida
     public void Restart()
@@ -111,6 +161,16 @@ public class GameManager : MonoBehaviour
         pauseCanvasGroup.SetEnable(value);
     }
 
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+
+    }
+
+    public void ContinueButton(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
     public void Invincibility(GameObject gameObject)
     {
         Destroy(gameObject);
@@ -119,11 +179,6 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void ExitToMenu()
-    {
-        SceneManager.LoadScene("Main Menu");
-
-    }
 
 
 

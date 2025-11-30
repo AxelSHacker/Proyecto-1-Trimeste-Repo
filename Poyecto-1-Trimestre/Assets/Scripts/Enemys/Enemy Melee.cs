@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMelee : MonoBehaviour
 {
@@ -36,11 +37,14 @@ public class EnemyMelee : MonoBehaviour
     Transform playerPosition;
     [SerializeField]
     Healt _healt;
+    [SerializeField]
+    Slider healtBar;
     public State currentState;
 
 
     void Update()
     {
+        healtBar.value = _healt.enemyHealth;
         AnimatorController();
         _Distance = Vector2.Distance(transform.position, playerPosition.position);
         if (_healt.enemyHealth <= 0)
@@ -121,7 +125,7 @@ public class EnemyMelee : MonoBehaviour
     }
     private void AnimatorController()
     {
-        _anim.SetFloat("Velocity", _Rb.linearVelocityX);
+        _anim.SetFloat("Velocity", patrolVelocity);
 
     }
 

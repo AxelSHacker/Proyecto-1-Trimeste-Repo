@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Healt : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class Healt : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Tutorial Platform")
+        {
+            
+            health = DataManager.Instance.tutorialScore;
+        }
+        else
+        {
+            health = DataManager.Instance.actualGameScore;
+        }
         enemyHealth = maxHealt;
     }
 

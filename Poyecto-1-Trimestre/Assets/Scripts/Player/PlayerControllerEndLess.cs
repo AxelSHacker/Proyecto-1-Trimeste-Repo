@@ -226,12 +226,18 @@ public class PlayerControllerEndLess : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
-            EndGame();
+            
+            GameManager.Instance.EndGame();
             autoMovement = false;
         }
     }
+    private void ContinueGame()
+    {
+        GameManager.Instance.ContinueGame();
+    }
     private void EndGame()
     {
+        
         GameManager.Instance.EndGame();
     }
     #endregion

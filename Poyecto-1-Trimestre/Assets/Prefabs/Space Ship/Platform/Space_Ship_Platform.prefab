@@ -133,10 +133,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060d5f1bf2771b845a6560cd9af60ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipRB: {fileID: 0}
-  velocity: 0
-  maxVelocity: 0
+  shipRB: {fileID: 2797679567384548247}
+  linePosition: {fileID: 9036406382112991665}
+  from: {fileID: 0}
+  to: {fileID: 0}
+  contactLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  velocity: 1
+  maxVelocity: 1.2
   playerCheck: 0
+  lineLenght: 10
+  timer: 0
+  maxTimer: 0
 --- !u!1 &2805210079928027989
 GameObject:
   m_ObjectHideFlags: 0

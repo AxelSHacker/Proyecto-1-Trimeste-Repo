@@ -5,12 +5,16 @@ using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class PlayerControllerPlatform : MonoBehaviour
+public class PayerControlle : MonoBehaviour
 {
 
+    public enum State
+    {
+        EndLessRunner,
 
+        Platform,
+    }
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _rB;
@@ -21,24 +25,23 @@ public class PlayerControllerPlatform : MonoBehaviour
     [SerializeField]
     LayerMask Detectable;
     [SerializeField]
+    LayerMask noDetectables;
+    [SerializeField]
     Transform detetablePoint;
+
+    [SerializeField]
+    Transform panza;
     [SerializeField]
     SpriteRenderer _spriteRenderer;
     [SerializeField]
     ParticleSystem dust;
-    [SerializeField]
-    Healt _healt;
-    [SerializeField]
-    Slider lifeBar;
 
 
 
     [Header("MOVEMENT")]
-
+    public bool autoMovement = true;
     [SerializeField]
     float speed;
-    [SerializeField]
-    float speedMultiplier;
     [SerializeField]
     float maxSpeed;
     [SerializeField]
@@ -50,6 +53,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     int maxJump;
     [SerializeField]
     bool isGrounded;
+    [SerializeField]
+    float wallContact;
 
     [Header("DASCH"), SerializeField]
     float dashForce;
@@ -65,9 +70,6 @@ public class PlayerControllerPlatform : MonoBehaviour
     float timer;
     [SerializeField]
     bool attacking = false;
-
-    [Header("SCHIELD"), SerializeField]
-    bool schieldOn;
     [Header("POWER UP"), SerializeField]
     float powerUpTimer;
     [SerializeField]
@@ -81,16 +83,21 @@ public class PlayerControllerPlatform : MonoBehaviour
     float speedUpVelocity;
     [SerializeField]
     bool canDie = true;
+
+
+
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
-    
+
+
     void Start()
     {
         normalGravity = _rB.gravityScale;
-        _healt.health = GameManager.Instance.collectableCount;
-        
+
 
     }
+
+
     void Update()
     {
 
@@ -98,23 +105,70 @@ public class PlayerControllerPlatform : MonoBehaviour
         AnimatorController();
         GroundCheck();
         DeathFalling();
-        SliderController();
         if (maxTimer > 0)
         {
             if (!canDie) { GameManager.Instance.Invincibility(collisionObject); }
-            else { _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity; }
+            else { _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity;}
         }
     }
+            
+
+
+
+
+
+
+
+
+
+
     void FixedUpdate()
     {
-        PlatformMovement();
+
+        if (SceneManager.GetActiveScene().name == "EndLessRuner" || SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            UpdateState(State.EndLessRunner);
+
+        }
+        else if (SceneManager.GetActiveScene().name == "Platform 2D")
+        {
+
+            UpdateState(State.Platform);
+        }
+
+
+
+
     }
+    private void UpdateState(State actualState)
+    {
+        switch (actualState)
+        {
+            case State.EndLessRunner:
+
+                Movement();
+
+                break;
+            case State.Platform:
+
+                
+                PlatformMovement();
+                
+
+                break;
+        }
+    }
+
+
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(detetablePoint.position, offSet);
+
+
     }
-    #region Trigger/Collider
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Invencibility"))
@@ -134,22 +188,21 @@ public class PlayerControllerPlatform : MonoBehaviour
             canDie = true;
 
         }
-
-        if (collision.gameObject.CompareTag("Proyectil"))
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+
+            collisionObject = collision.gameObject;
+            if (canDie) Death();
         }
     }
-    //Collision para manejar la colisiones
 
-    #endregion
-
-
-
-
-
-
-    #region New Impu System
+    /// <summary>
+    /// Funciones para asignar mediante el New Impu System
+    /// </summary>
+    /// <param name="context"></param>
     public void OnJump(InputAction.CallbackContext context)
     {
 
@@ -159,6 +212,7 @@ public class PlayerControllerPlatform : MonoBehaviour
             Jump();
         }
     }
+
     public void OnFalling(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -189,7 +243,6 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     }
     public void OnMovement(InputAction.CallbackContext context)
-
     {
         if (context.performed)
         {
@@ -201,41 +254,19 @@ public class PlayerControllerPlatform : MonoBehaviour
             xMotion = 0f;
         }
     }
-    public void OnSchield(InputAction.CallbackContext context)
+
+
+    //Funcion de movimiento
+    private void Movement()
     {
-        if (context.performed)
-        {
-            SchieldOn();
-        }
-        if (context.canceled)
-        {
-            _healt.noDamage = false;
-        }
-    }
-    #endregion
-
-
-
-
-
-
-    #region Funciones 
-    private void PlatformMovement()
-    {
-        if (attacking) return;
-        //Aqui le indicamos que se mueva al rigidbody
-        _rB.linearVelocityX = xMotion * speed * speedMultiplier * Time.deltaTime;
-        //Velocidad maxima del desplazamiento del player
+        if (!autoMovement) return;
+        _rB.AddForce(transform.right * speed, ForceMode2D.Force);
+     
         if (_rB.linearVelocityX >= maxSpeed)
         {
             _rB.linearVelocityX = maxSpeed;
         }
 
-        //Codigo para que el personaje mire hacia un lugar u otro segundo a donde se dirija
-        if (xMotion < 0)
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        else if (xMotion > 0)
-            transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     //Funcion que controla la fuerza de salto , el numero de saltos
     private void Jump()
@@ -247,6 +278,8 @@ public class PlayerControllerPlatform : MonoBehaviour
             _rB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
     }
+
+
     //Funcion que comprueba si estamos tocando el suelo
     private void GroundCheck()
     {
@@ -279,8 +312,9 @@ public class PlayerControllerPlatform : MonoBehaviour
             _anim.SetBool("OnAir", false);
         }
 
-        _anim.SetBool("SchieldOn", _healt.noDamage);
+
     }
+
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
     {
@@ -292,6 +326,9 @@ public class PlayerControllerPlatform : MonoBehaviour
     //Funcion para controlar la muerte de el player
     private void Death()
     {
+        //Paramos el movimiento automaico del player
+
+        autoMovement = false;
         //Activamos la animacion de muerte
         _anim.SetBool("Death", true);
         //se instancia el panel de derrota
@@ -301,13 +338,82 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
-            EndGame();
-            _healt.health = 0;
+            Death();
         }
     }
     private void EndGame()
     {
-        GameManager.Instance.EndGame();
+        GameManager.Instance.ContinueGame();
+    }
+
+    /// <summary>
+    /// Asigna el colo del flash e inicia la corutina de recuperacion del color
+    /// en el tiempo indicado
+    /// </summary>
+    /// <param name="color"></param>
+    /// <param name="time"></param>
+    public void StartColorFlash(Color color, float time)
+    {
+        //Si ya hay una corutina funcionando , la paro
+        if (colorFlaschCoroutine != null)
+        {
+            StopCoroutine(colorFlaschCoroutine);
+        }
+        //Primero asignamos el color entrante al sprite renderer
+        _spriteRenderer.color = color;
+        //Iniciamos de nuevo la corrutina
+        colorFlaschCoroutine = StartCoroutine(ColorRecover(time));
+    }
+    private IEnumerator ColorRecover(float time)
+
+
+
+
+
+
+
+
+    {
+        //Inicialiamos el contado de tiempo
+        float timeCounter = 0f;
+        //Almacenamos el color inicial
+        Color initialColor = _spriteRenderer.color;
+        //Mediante un bbucle while hacemos el cambio de colo a la vey que contamos el tiempo que pasa
+        while (timeCounter < time)
+        {
+            _spriteRenderer.color = Color.Lerp(initialColor, Color.green, timeCounter / time);
+            timeCounter += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        _spriteRenderer.color = Color.white;
+
+    }
+
+    /// <summary> Platafomas 2D
+    /// Funciones exclusivas de las fase de plataformas 2d
+    /// </summary>
+    private void PlatformMovement()
+    {
+        if (!autoMovement)
+        {
+
+
+            //Aqui le indicamos que se mueva al rigidbody
+            _rB.AddForceX(xMotion * maxSpeed, ForceMode2D.Force);
+            //Velocidad maxima del desplazamiento del player
+            if (_rB.linearVelocityX >= maxSpeed)
+            {
+                _rB.linearVelocityX = maxSpeed;
+            }
+
+            //Codigo para que el personaje mire hacia un lugar u otro segundo a donde se dirija
+            if (xMotion < 0)
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            else if (xMotion > 0)
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
+        }
     }
     private void Dash()
     {
@@ -326,7 +432,6 @@ public class PlayerControllerPlatform : MonoBehaviour
 
         }
     }
-    //Funcion de control de Ataques
     private void Attack()
     {
         if (attackCount == 0)
@@ -348,63 +453,9 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     }
 
-    private void SchieldOn()
-    {
-        _healt.noDamage = true;
-        _rB.linearVelocity = Vector2.zero;
-
-    }
-
-    private void SliderController()
-    {
-
-        lifeBar.value = _healt.health;
-    }
-    #endregion
-
-
-
-
-
-
-    #region Courrotine
-    public void StartColorFlash(Color color, float time)
-    {
-        //Si ya hay una corutina funcionando , la paro
-        if (colorFlaschCoroutine != null)
-        {
-            StopCoroutine(colorFlaschCoroutine);
-        }
-        //Primero asignamos el color entrante al sprite renderer
-        _spriteRenderer.color = color;
-        //Iniciamos de nuevo la corrutina
-        colorFlaschCoroutine = StartCoroutine(ColorRecover(time));
-    }
-    private IEnumerator ColorRecover(float time)
-    {
-        //Inicialiamos el contado de tiempo
-        float timeCounter = 0f;
-        //Almacenamos el color inicial
-        Color initialColor = _spriteRenderer.color;
-        //Mediante un bbucle while hacemos el cambio de colo a la vey que contamos el tiempo que pasa
-        while (timeCounter < time)
-        {
-            _spriteRenderer.color = Color.Lerp(initialColor, Color.green, timeCounter / time);
-            timeCounter += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        _spriteRenderer.color = Color.white;
-
-    }
-    #endregion
-
-
-
-
-
-
-
-    #region Animation Event
+    /// <summary> Animation Events
+    /// Animation Events
+    /// </summary>
     public void EnableCombo()
     {
         attacking = true;
@@ -420,63 +471,8 @@ public class PlayerControllerPlatform : MonoBehaviour
         dust.Play();
 
     }
-    #endregion
-
-
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

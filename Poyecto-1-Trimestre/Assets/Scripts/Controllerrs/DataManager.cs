@@ -5,6 +5,9 @@ public class DataManager : MonoBehaviour
     //Puntuacion maxima registrada
     public int maxScore = 0;
 
+    public int tutorialScore = 0;
+
+    public int actualGameScore = 0;
     private static DataManager _instance;
 
     public static DataManager Instance => _instance;
@@ -26,8 +29,10 @@ public class DataManager : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetInt("maxScore", maxScore);
-
+        PlayerPrefs.SetInt("tutorialMaxScore", tutorialScore);
+        PlayerPrefs.SetInt("GameScore", actualGameScore);
     }
+    
     /// <summary>
     /// Carga de datos desde los playerprefs.
     /// </summary>
@@ -35,6 +40,8 @@ public class DataManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("maxScore")) return;
         maxScore = PlayerPrefs.GetInt("maxScore");
+        tutorialScore = PlayerPrefs.GetInt("tutorialMaxScore");
+        actualGameScore = PlayerPrefs.GetInt("GameScore");
     }
     /// <summary>
     /// Lmpia toda la informacion guardada en los player

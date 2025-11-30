@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlyingEnemy : MonoBehaviour
 {
@@ -41,20 +42,24 @@ public class FlyingEnemy : MonoBehaviour
     Healt _healt;
     [SerializeField]
     GameObject proyectil;
-
     [SerializeField]
     Transform shootingPoint;
+    [SerializeField]
+    Slider healtBar;
+
 
 
     public State currentState;
 
     void Start()
     {
+
         attackTimer = maxAttackTimer;
     }
 
     void Update()
     {
+        healtBar.value = _healt.enemyHealth;
         AnimatorController();
         _Distance = Vector2.Distance(transform.position, playerPosition.position);
         if (_healt.enemyHealth <= 0)
@@ -132,7 +137,7 @@ public class FlyingEnemy : MonoBehaviour
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
         gameObject.Chase(_Rb, _Distance, attackRadius, playerPosition, chaseVelocity);
-        transform.EnemyRotattion(playerPosition);
+        
 
     }
     private void AnimatorController()

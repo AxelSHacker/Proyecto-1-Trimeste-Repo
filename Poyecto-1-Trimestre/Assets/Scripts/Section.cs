@@ -25,7 +25,7 @@ public class Section : MonoBehaviour
     void Update()
     {
         //Calculamos el lado izquierdo de la pantalla en el mundo
-        //a propiedad ortographic size es el lalto de la camara
+        //a propiedad ortographic size es el alto de la camara
         //screen.width es el ancho de la pantalla en pixels
         //screen.height es el ato de la pantalla en pixels
         //con estos datos realitamos una relga de tres:
