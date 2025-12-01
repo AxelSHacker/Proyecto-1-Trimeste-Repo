@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     #region variables
     public int collectableCount = 1;
 
-
-
     public TextMeshProUGUI pointTMP;
     [Header("HUD")]
     public CanvasGroup canvasGroup;

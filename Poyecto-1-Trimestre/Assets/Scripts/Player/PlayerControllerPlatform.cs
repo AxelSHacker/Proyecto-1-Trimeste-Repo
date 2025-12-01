@@ -14,8 +14,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _rB;
-    [SerializeField]
-    Animator _anim;
+
+    public Animator _anim;
     [SerializeField]
     Vector2 offSet;
     [SerializeField]
@@ -95,7 +95,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     }
     void Update()
     {
-        if (_healt.health <= 0)
+        if (_healt.health < 0)
         {
             Death();
         }
@@ -141,9 +141,14 @@ public class PlayerControllerPlatform : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("Proyectil"))
+
+        if (collision.gameObject.CompareTag("Proyectil") || collision.gameObject.CompareTag("Sword"))
         {
-            Destroy(collision.gameObject);
+            if (collision.gameObject.CompareTag("Proyectil"))
+            {
+                Destroy(collision.gameObject);
+            }
+            _anim.SetTrigger("Impact");
         }
     }
     //Collision para manejar la colisiones
@@ -363,7 +368,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         _healt.noDamage = true;
         _rB.linearVelocity = Vector2.zero;
-        
+
 
     }
 

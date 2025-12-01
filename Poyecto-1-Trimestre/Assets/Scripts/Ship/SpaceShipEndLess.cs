@@ -76,7 +76,7 @@ public class SpaceShipEndLess : MonoBehaviour
         {
             GameManager.Instance.ContinueGame();
             playerRB.linearVelocity = Vector2.zero;
-            playerRB.gravityScale = 0f;
+            playerRB.gravityScale = 1f;
         }
     }
 

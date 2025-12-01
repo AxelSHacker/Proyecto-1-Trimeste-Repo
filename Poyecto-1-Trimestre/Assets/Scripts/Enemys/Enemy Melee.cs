@@ -27,6 +27,8 @@ public class EnemyMelee : MonoBehaviour
     float _Distance;
     [SerializeField]
     float attackRadius;
+    [SerializeField]
+    int points;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField]
@@ -144,6 +146,7 @@ public class EnemyMelee : MonoBehaviour
 
     private void Death()
     {
+        GameManager.Instance.PicupCollectable(points); 
         _Rb.linearVelocity = Vector2.zero;
         _anim.SetBool("Death", true);
     }

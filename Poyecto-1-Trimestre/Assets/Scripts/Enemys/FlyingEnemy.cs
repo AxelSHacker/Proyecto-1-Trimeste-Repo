@@ -30,6 +30,8 @@ public class FlyingEnemy : MonoBehaviour
     float maxAttackTimer;
     [SerializeField]
     float attackVelocity;
+    [SerializeField]
+    int points;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField]
@@ -175,6 +177,7 @@ public class FlyingEnemy : MonoBehaviour
 
     private void Death()
     {
+        GameManager.Instance.PicupCollectable(points);
         _Rb.linearVelocity = Vector2.zero;
         _anim.SetBool("Death", true);
     }

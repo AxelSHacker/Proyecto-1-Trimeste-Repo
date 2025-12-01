@@ -30149,6 +30149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017365677505534253}
   - component: {fileID: 5761567803416694386}
+  - component: {fileID: 904586550183734307}
   m_Layer: 6
   m_Name: Schield
   m_TagString: Untagged
@@ -30217,6 +30218,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &904586550183734307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647972144338226161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831d2287cb0e29f4caefc7d5327af8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 7910906844504136072}
 --- !u!1 &8714199589691560240
 GameObject:
   m_ObjectHideFlags: 0
