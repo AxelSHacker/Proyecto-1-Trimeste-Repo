@@ -8,8 +8,8 @@ public class Parallax : MonoBehaviour
     [SerializeField]
     float distance;
     //Offset aplicado a la textura
-    [SerializeField]
-    Vector2 offSett = Vector2.zero;
+
+    public Vector2 offSett = Vector2.zero;
     //Referencia a la camra de juego
     [SerializeField]
     Camera _cam;
@@ -18,22 +18,16 @@ public class Parallax : MonoBehaviour
     Vector2 _camaraLastPosition;
 
     //Refencia al renderer del fondo
+
+    public Renderer _renderer;
     [SerializeField]
-    Renderer _renderer;
+    GameObject transitionRendererObject;
     [SerializeField]
-    Renderer transitionRenderer;
+    public Material newBioma;
     [SerializeField]
     float activateTransition;
-    [SerializeField]
-    TransitionParallax transitionParallax;
-
-
-
-
-
-
-
-    float uvTrans1;
+    
+    public bool canTransition; 
 
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,7 +40,7 @@ public class Parallax : MonoBehaviour
         if (_renderer == null) _renderer = GetComponent<Renderer>();
 
 
-        transitionRenderer.enabled = false;
+        transitionRendererObject.SetActive(false);
 
         Vector2 backGroundHHalfSize = new Vector2((_cam.orthographicSize * Screen.width) / Screen.height, _cam.orthographicSize);
         //Ajustamos la escala segun la pantalla
@@ -73,6 +67,7 @@ public class Parallax : MonoBehaviour
         _camaraLastPosition = _cam.transform.position;
 
         ParallaxTransition();
+        
 
     }
 
@@ -81,16 +76,27 @@ public class Parallax : MonoBehaviour
 
     void ParallaxTransition()
     {
-        Debug.Log(_renderer.material.mainTextureOffset);
+        //Debug.Log(_renderer.material.mainTextureOffset);
 
-        if (offSett.x >= distance)
+        if (offSett.x >= distance && canTransition)
         {
-            if (_renderer.material.mainTextureOffset.x >= activateTransition)
+            if (offSett.x >= activateTransition)
             {
 
                 _renderer.enabled = false;
-                transitionRenderer.enabled = true;
-                transitionParallax.inTransition = true;
+
+                transitionRendererObject.SetActive(true);
+                
+                canTransition = false;
+
+            }
+            else
+            {
+                
+                _renderer.enabled = true;
+                transitionRendererObject.SetActive(false);
+                canTransition = true;
+
             }
 
 

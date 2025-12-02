@@ -18,8 +18,10 @@ public class TransitionParallax : MonoBehaviour
     Vector2 _camaraLastPosition;
     [SerializeField]
     Renderer transitionParalaxRenderer;
-
-    public bool inTransition = false;
+    [SerializeField]
+    float materialOffset;
+    [SerializeField]
+    Parallax parallax;
 
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,7 +49,7 @@ public class TransitionParallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!inTransition) return;
+
 
         Vector2 cameraVariation = new Vector2(_cam.transform.position.x - _camaraLastPosition.x, 0);
 
@@ -58,6 +60,16 @@ public class TransitionParallax : MonoBehaviour
 
         _camaraLastPosition = _cam.transform.position;
 
+        Debug.Log(transitionParalaxRenderer.material.mainTextureOffset);
+
+        if (transitionParalaxRenderer.material.mainTextureOffset.x >= materialOffset)
+        {
+            parallax._renderer.material = parallax.newBioma;
+            parallax.offSett = Vector2.zero;
+            parallax._renderer.enabled = true;
+            gameObject.SetActive(false);
+            
+        }
 
 
     }
