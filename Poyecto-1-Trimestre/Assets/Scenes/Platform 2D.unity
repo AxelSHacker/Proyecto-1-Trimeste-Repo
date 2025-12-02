@@ -427,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672110218767919743, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.09
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6672110218767919743, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3806,7 +3806,7 @@ Transform:
   m_GameObject: {fileID: 3048483248117277849}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.07, y: -0.2, z: -10}
+  m_LocalPosition: {x: -40.07, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3829,7 +3829,7 @@ GameObject:
   - component: {fileID: 6269304969829132060}
   - component: {fileID: 8924764777929866963}
   m_Layer: 0
-  m_Name: SkyWhite
+  m_Name: MidLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3960,28 +3960,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c34189989ae004041905062555e855c0, type: 3}
---- !u!114 &825684890218033517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031571794233248144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0637cf97f071f634d90b2b01ac578b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedFaktor: 0.025
-  distance: 1
-  offSett: {x: 0, y: 0}
-  _cam: {fileID: 9156121981600398668}
-  _camaraLastPosition: {x: 0, y: 0}
-  _renderer: {fileID: 8785005112413048541}
-  parallayTransition:
-  - {fileID: 2100000, guid: 3ff0f4a05aab00c4684b3161f75049d7, type: 2}
-  - {fileID: 2100000, guid: 2ffe7d5b3231e624280a78ea01673818, type: 2}
-  - {fileID: 2100000, guid: 7475ba1432a0089408e583e6038a9891, type: 2}
 --- !u!23 &870820149114456849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4101,10 +4079,10 @@ MonoBehaviour:
   speedFaktor: 0.04
   distance: 0
   offSett: {x: 0, y: 0}
-  _cam: {fileID: 9156121981600398668}
+  _cam: {fileID: 0}
   _camaraLastPosition: {x: 0, y: 0}
-  _renderer: {fileID: 7504567694623110776}
-  parallayTransition: []
+  _renderer: {fileID: 0}
+  transitionObject: {fileID: 0}
 --- !u!1 &2142951675263511176
 GameObject:
   m_ObjectHideFlags: 0
@@ -4118,12 +4096,12 @@ GameObject:
   - component: {fileID: 4645719646607450317}
   - component: {fileID: 3060119624076446738}
   m_Layer: 0
-  m_Name: MountainBig
+  m_Name: FrontLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &2562385080438351062
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4187,14 +4165,14 @@ GameObject:
   - component: {fileID: 4704668628578377433}
   - component: {fileID: 104435701805147061}
   - component: {fileID: 8785005112413048541}
-  - component: {fileID: 825684890218033517}
+  - component: {fileID: 8785005112413048542}
   m_Layer: 0
-  m_Name: SkyWhiteDown
+  m_Name: TransitionFrontParallax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3048483248117277849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4228,12 +4206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedFaktor: 0.015
-  distance: 0
+  distance: 0.1
   offSett: {x: 0, y: 0}
   _cam: {fileID: 9156121981600398668}
   _camaraLastPosition: {x: 0, y: 0}
   _renderer: {fileID: 4645719646607450317}
-  parallayTransition: []
+  transitionObject: {fileID: 3031571794233248144}
 --- !u!114 &3908249476474708189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4249,10 +4227,10 @@ MonoBehaviour:
   speedFaktor: 0.07
   distance: 0
   offSett: {x: 0, y: 0}
-  _cam: {fileID: 9156121981600398668}
+  _cam: {fileID: 0}
   _camaraLastPosition: {x: 0, y: 0}
-  _renderer: {fileID: 870820149114456849}
-  parallayTransition: []
+  _renderer: {fileID: 0}
+  transitionObject: {fileID: 0}
 --- !u!4 &4512826764576048197
 Transform:
   m_ObjectHideFlags: 0
@@ -4277,7 +4255,7 @@ Transform:
   m_GameObject: {fileID: 2142951675263511176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.41, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 20, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4306,7 +4284,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8a75fff725af3440b22fcf64992b7a1, type: 2}
+  - {fileID: 2100000, guid: fc2a2e19056695d44b20858e0ba3166d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4337,8 +4315,8 @@ Transform:
   m_GameObject: {fileID: 3031571794233248144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 20, y: 10, z: 1}
+  m_LocalPosition: {x: 10.94, y: 0, z: -2}
+  m_LocalScale: {x: 40, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7720977069645645899}
@@ -4356,12 +4334,12 @@ GameObject:
   - component: {fileID: 6960690976395104457}
   - component: {fileID: 6249537653617937602}
   m_Layer: 0
-  m_Name: SkyBlue
+  m_Name: BackLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5021630300083607488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4407,15 +4385,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedFaktor: 0.01
-  distance: 1
+  distance: 0.1
   offSett: {x: 0, y: 0}
   _cam: {fileID: 9156121981600398668}
   _camaraLastPosition: {x: 0, y: 0}
   _renderer: {fileID: 6960690976395104457}
-  parallayTransition:
-  - {fileID: 2100000, guid: da2f4be7080660d4c9154d61a54b46f0, type: 2}
-  - {fileID: 2100000, guid: e4ce10d418723af4eabfcb41ac75b727, type: 2}
-  - {fileID: 2100000, guid: a0223f8628e32524ab714743e59bcd22, type: 2}
+  transitionObject: {fileID: 0}
 --- !u!23 &6269304969829132060
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4597,8 +4572,8 @@ Transform:
   m_Children:
   - {fileID: 6700683538412094236}
   - {fileID: 995406291822817390}
-  - {fileID: 4704668628578377433}
   - {fileID: 4585088591550116530}
+  - {fileID: 4704668628578377433}
   - {fileID: 8843353416895283064}
   - {fileID: 4512826764576048197}
   m_Father: {fileID: 225680344653797115}
@@ -4626,7 +4601,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc2a2e19056695d44b20858e0ba3166d, type: 2}
+  - {fileID: 2100000, guid: 2ffe7d5b3231e624280a78ea01673818, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4648,6 +4623,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8785005112413048542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031571794233248144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71288e3c20c9e04c9b3a0abcb48c898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedFaktor: 0.015
+  offSett: {x: 0, y: 0}
+  _cam: {fileID: 9156121981600398668}
+  _camaraLastPosition: {x: 0, y: 0}
+  transitionParalaxRenderer: {fileID: 8785005112413048541}
+  inTransition: 0
 --- !u!4 &8843353416895283064
 Transform:
   m_ObjectHideFlags: 0
@@ -4676,12 +4669,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedFaktor: 0.02
-  distance: 1
+  distance: 0.1
   offSett: {x: 0, y: 0}
   _cam: {fileID: 9156121981600398668}
   _camaraLastPosition: {x: 0, y: 0}
   _renderer: {fileID: 6269304969829132060}
-  parallayTransition: []
+  transitionObject: {fileID: 0}
 --- !u!1 &9011685786913938091
 GameObject:
   m_ObjectHideFlags: 0

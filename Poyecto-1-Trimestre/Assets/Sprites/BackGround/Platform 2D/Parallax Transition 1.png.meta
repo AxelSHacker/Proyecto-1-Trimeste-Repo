@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7ad9273e1f905c2489ad3a5791f3ae32
+guid: b374ddfc3fc8da943b315b804c154964
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2417848078937279928
-    second: E1_E3_FrontLayer_RigthJoint_0
+      213: 550718992976555637
+    second: Parallax Transition 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: E1_E3_FrontLayer_RigthJoint_0
+      name: Parallax Transition 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 480
+        width: 320
         height: 370
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84235168bf3127ed0800000000000000
-      internalID: -2417848078937279928
+      spriteID: 57ead6b910c84a700800000000000000
+      internalID: 550718992976555637
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      E1_E3_FrontLayer_RigthJoint_0: -2417848078937279928
+      Parallax Transition 1_0: 550718992976555637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

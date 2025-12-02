@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7ad9273e1f905c2489ad3a5791f3ae32
+guid: fe3ed12b928261640b1a246b35f5bca4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2417848078937279928
-    second: E1_E3_FrontLayer_RigthJoint_0
+      213: 104924733529621720
+    second: E3_E1_MidLayer_LeftJoint 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: E1_E3_FrontLayer_RigthJoint_0
+      name: E3_E1_MidLayer_LeftJoint 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 480
+        width: 240
         height: 370
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84235168bf3127ed0800000000000000
-      internalID: -2417848078937279928
+      spriteID: 8d48f2e3d74c47100800000000000000
+      internalID: 104924733529621720
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      E1_E3_FrontLayer_RigthJoint_0: -2417848078937279928
+      E3_E1_MidLayer_LeftJoint 1_0: 104924733529621720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
