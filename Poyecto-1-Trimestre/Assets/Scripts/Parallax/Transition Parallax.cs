@@ -5,29 +5,21 @@ public class TransitionParallax : MonoBehaviour
     #region Variables
     [Range(0f, 1f), SerializeField]
     float speedFaktor = 0.5f;
-    
+
     //Offset aplicado a la textura
     [SerializeField]
     Vector2 offSett = Vector2.zero;
     //Referencia a la camra de juego
+    //Para almacenar la posicion de la camara en el frame anterior
     [SerializeField]
     Camera _cam;
     [SerializeField]
-    //Para almacenar la posicion de la camara en el frame anterior
+    //Refencia al renderer del fondo
     Vector2 _camaraLastPosition;
     [SerializeField]
     Renderer transitionParalaxRenderer;
-    //Refencia al renderer del fondo
 
-    
-    [SerializeField]
-    
-
-    bool inTransition = false;
-
-
-
-    float uvTrans1;
+    public bool inTransition = false;
 
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,7 +31,7 @@ public class TransitionParallax : MonoBehaviour
         //Recuperamos la referencia del renderer
         if (transitionParalaxRenderer == null) transitionParalaxRenderer = GetComponent<Renderer>();
 
-        
+
 
         Vector2 backGroundHHalfSize = new Vector2((_cam.orthographicSize * Screen.width) / Screen.height, _cam.orthographicSize);
         //Ajustamos la escala segun la pantalla
@@ -55,6 +47,7 @@ public class TransitionParallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!inTransition) return;
 
         Vector2 cameraVariation = new Vector2(_cam.transform.position.x - _camaraLastPosition.x, 0);
 
@@ -65,12 +58,12 @@ public class TransitionParallax : MonoBehaviour
 
         _camaraLastPosition = _cam.transform.position;
 
-       
+
 
     }
 
 
 
 
-    
+
 }

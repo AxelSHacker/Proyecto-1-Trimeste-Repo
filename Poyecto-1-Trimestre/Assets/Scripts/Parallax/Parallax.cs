@@ -21,8 +21,12 @@ public class Parallax : MonoBehaviour
     [SerializeField]
     Renderer _renderer;
     [SerializeField]
-    GameObject transitionObject;
-    Material parallaxActualMaterial;
+    Renderer transitionRenderer;
+    [SerializeField]
+    float activateTransition;
+    [SerializeField]
+    TransitionParallax transitionParallax;
+
 
 
 
@@ -41,7 +45,8 @@ public class Parallax : MonoBehaviour
         //Recuperamos la referencia del renderer
         if (_renderer == null) _renderer = GetComponent<Renderer>();
 
-        parallaxActualMaterial = _renderer.material;
+
+        transitionRenderer.enabled = false;
 
         Vector2 backGroundHHalfSize = new Vector2((_cam.orthographicSize * Screen.width) / Screen.height, _cam.orthographicSize);
         //Ajustamos la escala segun la pantalla
@@ -80,11 +85,12 @@ public class Parallax : MonoBehaviour
 
         if (offSett.x >= distance)
         {
-            if (_renderer.material.mainTextureOffset.x >= 0.95f)
+            if (_renderer.material.mainTextureOffset.x >= activateTransition)
             {
-                Debug.Log("Ya si entro");
+
                 _renderer.enabled = false;
-                transitionObject.SetActive(true);
+                transitionRenderer.enabled = true;
+                transitionParallax.inTransition = true;
             }
 
 
