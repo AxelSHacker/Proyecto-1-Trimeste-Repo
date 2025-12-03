@@ -1,16 +1,18 @@
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SectionSpawnerController : MonoBehaviour
 {
 
     //Coleccion de secciones del nivel
-    
+
     public Section[] sectionPrefabs;
     //Transform en el que spawnean las secciones
-    
+
     public Transform sectionParent;
     //Ultima seccion creada
-    
+
     public Section currentSection;
     //SEcciones que se vana generar a inicio
 
@@ -34,21 +36,31 @@ public class SectionSpawnerController : MonoBehaviour
         {
             _instance = this;
         }
-        else{ Destroy(this); }
+        else { Destroy(this); }
     }
     void Start()
     {
         if (sectionParent == null) sectionParent = transform;
-
-        for (int i = 0; i < sectionInitialload; i++)
+        if (SceneManager.GetActiveScene().name == "EndLessRuner")
         {
-            SpawnSection();
+            for (int i = 0; i < sectionInitialload; i++)
+            {
+                SpawnRandomSection();
+            }
         }
+        else if (SceneManager.GetActiveScene().name == "Platform 2D")
+        {
+            for (int i = 0; i < sectionInitialload; i++)
+            {
+                SpawnSection();
+            }
+        }
+
     }
     /// <summary>
     ///Crea una seccion nueva a continuacuion de la ultima 
     /// </summary>
-    public void SpawnSection()
+    public void SpawnRandomSection()
     {
         //Obtener una seccion aleatorio
         int randomIndex = Random.Range(0, sectionPrefabs.Length);
@@ -60,8 +72,31 @@ public class SectionSpawnerController : MonoBehaviour
         currentSection = Instantiate(nextSection,
                                      currentSection.transform.position + nextPositionOffset,
                                      Quaternion.identity, sectionParent);
-        
-        currentSection.gameCamera = gameCamera;                 
+
+        currentSection.gameCamera = gameCamera;
+
+    }
+
+    public void SpawnSection()
+    {
+        int ordererIndex = 0;
+
+        Section sectionNext = sectionPrefabs[ordererIndex];
+
+        Vector3 nextPositionOffset = Vector3.zero;
+
+        nextPositionOffset.x = currentSection.HalfWidth + sectionNext.HalfWidth;
+
+
+        currentSection = Instantiate(sectionNext,
+                                     currentSection.transform.position + nextPositionOffset,
+                                     Quaternion.identity, sectionParent);
+
+        currentSection.gameCamera = gameCamera;
+
+        ordererIndex++;
+
+
 
     }
 

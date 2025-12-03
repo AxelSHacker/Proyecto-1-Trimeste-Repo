@@ -62,7 +62,7 @@ public class Section : MonoBehaviour
 /// </summary>
     private void DestroySection()
     {
-        SectionSpawnerController.Instance.SpawnSection();
+        SectionSpawnerController.Instance.SpawnRandomSection();
         Destroy(gameObject);
     }
 

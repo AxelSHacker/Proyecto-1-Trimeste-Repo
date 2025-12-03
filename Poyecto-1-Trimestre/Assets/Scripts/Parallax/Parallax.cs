@@ -4,7 +4,7 @@ public class Parallax : MonoBehaviour
 {
     #region Variables
     [Range(0f, 1f), SerializeField]
-    float speedFaktor = 0.5f;
+    public float speedFaktor = 0.5f;
     [SerializeField]
     float distance;
     //Offset aplicado a la textura
@@ -16,6 +16,8 @@ public class Parallax : MonoBehaviour
     [SerializeField]
     //Para almacenar la posicion de la camara en el frame anterior
     Vector2 _camaraLastPosition;
+    [SerializeField]
+    int materialLoops;
 
     //Refencia al renderer del fondo
 
@@ -26,8 +28,13 @@ public class Parallax : MonoBehaviour
     public Material newBioma;
     [SerializeField]
     float activateTransition;
-    
-    public bool canTransition; 
+    [SerializeField]
+    TransitionParallax transitionParallax;
+    Vector2 cameraVariation;
+
+    float scaleFaktor;
+    public bool paralaxStarted = false;
+
 
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,7 +47,7 @@ public class Parallax : MonoBehaviour
         if (_renderer == null) _renderer = GetComponent<Renderer>();
 
 
-        transitionRendererObject.SetActive(false);
+        scaleFaktor = transform.localScale.x;
 
         Vector2 backGroundHHalfSize = new Vector2((_cam.orthographicSize * Screen.width) / Screen.height, _cam.orthographicSize);
         //Ajustamos la escala segun la pantalla
@@ -57,18 +64,44 @@ public class Parallax : MonoBehaviour
     void Update()
     {
 
-        Vector2 cameraVariation = new Vector2(_cam.transform.position.x - _camaraLastPosition.x, 0);
+        if (_renderer.material.mainTextureOffset.x >= materialLoops)
+        {
+            materialLoops++;
+            _renderer.material.mainTextureOffset = new Vector2(
+                _renderer.material.mainTextureOffset.x % 1f,
+                _renderer.material.mainTextureOffset.y);
 
-        offSett.x = offSett.x + (cameraVariation.x * speedFaktor);
+
+        }
+        if (paralaxStarted)
+        {
+            _renderer.enabled = true;
+            _renderer.material.mainTextureOffset = Vector2.zero;
+            _renderer.material = newBioma;
+            offSett = Vector2.zero;
+            paralaxStarted = false;
+            Debug.Log("Colegon");
+
+        }
+        
+        cameraVariation = new Vector2(_cam.transform.position.x - _camaraLastPosition.x, 0);
+
+        float widhtWorldParalax1 = _renderer.bounds.size.x;
+
+        offSett.x = offSett.x + (cameraVariation.x * speedFaktor) / widhtWorldParalax1;
 
         //_renderer.material.SetTextureOffset("_MainTex", offSett);
         _renderer.material.mainTextureOffset = offSett;
 
         _camaraLastPosition = _cam.transform.position;
 
-        ParallaxTransition();
-        
 
+        ParallaxTransition();
+
+
+    }
+    void FixedUpdate()
+    {
     }
 
 
@@ -78,35 +111,36 @@ public class Parallax : MonoBehaviour
     {
         //Debug.Log(_renderer.material.mainTextureOffset);
 
-        if (offSett.x >= distance && canTransition)
+
+        if (materialLoops >= distance)
         {
-            if (offSett.x >= activateTransition)
-            {
-
-                _renderer.enabled = false;
-
-                transitionRendererObject.SetActive(true);
-                
-                canTransition = false;
-
-            }
-            else
-            {
-                
-                _renderer.enabled = true;
-                transitionRendererObject.SetActive(false);
-                canTransition = true;
-
-            }
-
-
-
-
+            _renderer.enabled = false;
+            transitionParallax.transitionParalaxRenderer.material.mainTextureOffset = Vector2.zero;
+            transitionParallax.transitionParalaxRenderer.enabled = true;
+            transitionParallax.endTransition = true;
+            distance = 500f;
 
         }
+        
+
     }
 
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
