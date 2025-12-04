@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Continue Panel")]
     public CanvasGroup continueCanvasGroup;
-    public Slider healtSlider;
+    public TextMeshProUGUI healtText;
     public TextMeshProUGUI continueScoreTMP;
 
     public TextMeshProUGUI maxScoerTMPcontinueplanel;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             DataManager.Instance.Save();
             //Actuaiamos e texto que muestrta el rercord
             maxScoerTMPcontinueplanel.text = DataManager.Instance.maxScore.ToString();
-            healtSlider.value = collectableCount;
+            healtText.text = collectableCount.ToString();
             canvasGroup.SetEnable(false);
             continueCanvasGroup.SetEnable(true);
             continueScoreTMP.text = collectableCount.ToString();
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
             canvasGroup.SetEnable(false);
             continueCanvasGroup.SetEnable(true);
             continueScoreTMP.text = collectableCount.ToString();
-            healtSlider.value = collectableCount;
+            healtText.text = collectableCount.ToString();
             maxScoerTMPcontinueplanel.text = DataManager.Instance.maxScore.ToString();
         }
     }

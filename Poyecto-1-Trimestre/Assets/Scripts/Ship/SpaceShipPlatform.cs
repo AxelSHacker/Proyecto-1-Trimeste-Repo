@@ -33,7 +33,7 @@ public class SpaceShipPlatform : MonoBehaviour
     [SerializeField]
     float maxVelocity;
     [SerializeField]
-    bool playerCheck;
+    bool playerCheck = false;
     [SerializeField]
     float lineLenght;
     [SerializeField]
@@ -56,7 +56,7 @@ public class SpaceShipPlatform : MonoBehaviour
 
     void Start()
     {
-        transform.position = from.position;
+        
         timer = movementTimer;
 
     }
@@ -78,8 +78,8 @@ public class SpaceShipPlatform : MonoBehaviour
     }
     private void Movement()
     {
-        if (playerCheck) return;
-        if (timer <= 0)
+        
+        if (timer <= 0f)
         {
             shipRB.AddForceX(velocity, ForceMode2D.Force);
 
@@ -90,8 +90,9 @@ public class SpaceShipPlatform : MonoBehaviour
                 timer = movementTimer;
             }
 
-        }
-
+        } 
+        //PlayerFinder();
+       
     }
 
     private void PlayerFinder()
@@ -102,25 +103,16 @@ public class SpaceShipPlatform : MonoBehaviour
                                                                  contactLayer);
 
 
-        if (chaseTimer >= 0 || playerCheck)
-        {
-
-            playerCheck = false;
-
-            shipRB.MovePosition(Vector2.MoveTowards(transform.position, new Vector2(playerTransform.position.x, transform.position.y),
-                                chaseVelocity * Time.deltaTime));
-
-
-        }
 
         if (contact.collider.gameObject.CompareTag("Player"))
         {
 
             chaseTimer = 5f;
-            float playerYPosition = playerTransform.position.y;
-
             playerCheck = true;
             playerRB.gravityScale = -0.5f;
+            velocity = 0;
+            
+
 
         }
         else
@@ -128,8 +120,19 @@ public class SpaceShipPlatform : MonoBehaviour
             chaseTimer -= Time.deltaTime;
             playerCheck = false;
             playerRB.gravityScale = 1f;
+            velocity = 0.5f;
 
         }
+        if (chaseTimer >= 0f)
+        {
+            shipRB.MovePosition(Vector2.MoveTowards(transform.position, new Vector2(playerTransform.position.x, transform.position.y),
+                                chaseVelocity * Time.deltaTime));
+        }
+
+            
+
+
+
     }
 
     #endregion

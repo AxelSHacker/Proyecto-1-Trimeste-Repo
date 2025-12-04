@@ -684,7 +684,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 180876378356047900, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
       propertyPath: speedFaktor
-      value: 0.1
+      value: 0.87
       objectReference: {fileID: 0}
     - target: {fileID: 729220451014018180, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
       propertyPath: m_LocalScale.y
@@ -698,9 +698,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 2218520616234716371, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
+      propertyPath: speedFaktor
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2229314209819665496, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434999382730670623, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
+      propertyPath: speedFaktor
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4008125849276175930, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
       propertyPath: m_LocalPosition.x
@@ -746,6 +754,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4596787785172529580, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
+      propertyPath: speedFaktor
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721080524976897554, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
+      propertyPath: speedFaktor
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 6673185263447684793, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -754,6 +770,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 050db6aa7fe1b004fbb03cbc8db761fe, type: 2}
+    - target: {fileID: 7062962843097304067, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
+      propertyPath: speedFaktor
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4110276585845964674, guid: c9a764bb59e1abb42a3f44d0d8cc4d60, type: 3}
     m_RemovedGameObjects: []
@@ -812,11 +832,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0637cf97f071f634d90b2b01ac578b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedFaktor: 0.02
+  speedFaktor: 0.375
+  distance: 0
   offSett: {x: 0, y: 0}
   _cam: {fileID: 1968040626}
   _camaraLastPosition: {x: 0, y: 0}
+  materialLoops: 0
   _renderer: {fileID: 1188066895}
+  transitionRendererObject: {fileID: 0}
+  newBioma: {fileID: 0}
+  activateTransition: 0
+  transitionParallax: {fileID: 0}
+  paralaxStarted: 0
 --- !u!23 &1188066895
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Parallax : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Parallax : MonoBehaviour
 
     float scaleFaktor;
     public bool paralaxStarted = false;
+    bool platform;
 
 
     #endregion
@@ -46,6 +48,14 @@ public class Parallax : MonoBehaviour
         //Recuperamos la referencia del renderer
         if (_renderer == null) _renderer = GetComponent<Renderer>();
 
+        if (SceneManager.GetActiveScene().name == "Platform 2D")
+        {
+            platform = true;
+        }
+        else
+        {
+            platform = false;
+        }
 
         scaleFaktor = transform.localScale.x;
 
@@ -63,27 +73,40 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (_renderer.material.mainTextureOffset.x >= materialLoops)
+        if (platform)
         {
-            materialLoops++;
-            _renderer.material.mainTextureOffset = new Vector2(
-                _renderer.material.mainTextureOffset.x % 1f,
-                _renderer.material.mainTextureOffset.y);
+            if (_renderer.material.mainTextureOffset.x >= materialLoops)
+            {
+                materialLoops++;
+                _renderer.material.mainTextureOffset = new Vector2(
+                    _renderer.material.mainTextureOffset.x % 1f,
+                    _renderer.material.mainTextureOffset.y);
 
+
+            }
+            if (paralaxStarted)
+            {
+                _renderer.enabled = true;
+                _renderer.material.mainTextureOffset = Vector2.zero;
+                _renderer.material = newBioma;
+                offSett = Vector2.zero;
+                paralaxStarted = false;
+                Debug.Log("Colegon");
+
+            }
+
+            ParallaxTransition();
 
         }
-        if (paralaxStarted)
+        else
         {
-            _renderer.enabled = true;
-            _renderer.material.mainTextureOffset = Vector2.zero;
-            _renderer.material = newBioma;
-            offSett = Vector2.zero;
-            paralaxStarted = false;
-            Debug.Log("Colegon");
-
+            transitionRendererObject = null;
+            newBioma = null;
+            transitionParallax = null;
         }
-        
+
+
+
         cameraVariation = new Vector2(_cam.transform.position.x - _camaraLastPosition.x, 0);
 
         float widhtWorldParalax1 = _renderer.bounds.size.x;
@@ -96,16 +119,9 @@ public class Parallax : MonoBehaviour
         _camaraLastPosition = _cam.transform.position;
 
 
-        ParallaxTransition();
 
 
     }
-    void FixedUpdate()
-    {
-    }
-
-
-
 
     void ParallaxTransition()
     {
@@ -121,7 +137,7 @@ public class Parallax : MonoBehaviour
             distance = 500f;
 
         }
-        
+
 
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Data.Common;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.InputSystem;
@@ -29,7 +30,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     [SerializeField]
     Healt _healt;
     [SerializeField]
-    Slider lifeBar;
+    TextMeshProUGUI lifePoint;
 
 
 
@@ -340,7 +341,7 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     private void EndGame()
     {
-        GameManager.Instance.ContinueGame();
+        GameManager.Instance.EndGame();
     }
     //Funcion de control de Ataques
     private void Attack()
@@ -375,7 +376,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     private void SliderController()
     {
 
-        lifeBar.value = _healt.health;
+        lifePoint.text = _healt.health.ToString();
     }
     #endregion
 

@@ -41,7 +41,7 @@ public class SectionSpawnerController : MonoBehaviour
     void Start()
     {
         if (sectionParent == null) sectionParent = transform;
-        if (SceneManager.GetActiveScene().name == "EndLessRuner")
+        if (SceneManager.GetActiveScene().name == "EndLessRuner" || SceneManager.GetActiveScene().name == "Tutorial EndLess")
         {
             for (int i = 0; i < sectionInitialload; i++)
             {
