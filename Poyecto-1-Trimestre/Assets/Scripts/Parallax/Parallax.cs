@@ -81,7 +81,7 @@ public class Parallax : MonoBehaviour
                 _renderer.material.mainTextureOffset = new Vector2(
                     _renderer.material.mainTextureOffset.x % 1f,
                     _renderer.material.mainTextureOffset.y);
-
+                Debug.Log(materialLoops);
 
             }
             if (paralaxStarted)

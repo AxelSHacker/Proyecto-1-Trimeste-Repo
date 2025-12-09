@@ -236,7 +236,9 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (_healt.noDamage) return;
         //Aqui le indicamos que se mueva al rigidbody
+
         _rB.linearVelocityX = xMotion * speed * speedMultiplier * Time.deltaTime;
+
         //Velocidad maxima del desplazamiento del player
         if (_rB.linearVelocityX >= maxSpeed)
         {
@@ -309,12 +311,12 @@ public class PlayerControllerPlatform : MonoBehaviour
             dashRepeat--;
             if (transform.rotation.y == 0)
             {
-                Debug.Log("si entra");
+                
                 _rB.AddForceX(dashForce, ForceMode2D.Impulse);
             }
             else
             {
-                Debug.Log("si entra");
+                
                 _rB.AddForceX(-dashForce, ForceMode2D.Impulse);
             }
 

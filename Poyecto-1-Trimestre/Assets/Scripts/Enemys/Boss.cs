@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,9 @@ public class Boss : MonoBehaviour
 
     public enum State
     {
-       
+
         RangeAttack,
+
         Attack,
 
         Death,
@@ -17,18 +19,15 @@ public class Boss : MonoBehaviour
 
 
     float rangeAttackRadius;
-    [SerializeField]
-    float _Distance;
-    [SerializeField]
-    float rollingAttackRadius;
-    [SerializeField]
-    float attackTimer;
-    [SerializeField]
-    float maxAttackTimer;
-    [SerializeField]
-    float attackImpulseForce;
-    [SerializeField]
-    int points;
+    [SerializeField] float _Distance;
+    [SerializeField] float rollingAttackRadius;
+    [SerializeField] float attackTimer;
+    [SerializeField] float maxAttackTimer;
+    [SerializeField] float attackImpulseForce;
+    [SerializeField] int points;
+    [SerializeField] float heightAttack;
+    [SerializeField] float AttackProyectilForce;
+
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
@@ -63,22 +62,29 @@ public class Boss : MonoBehaviour
         {
             StateUpdate(State.Death);
         }
-        else if (_Distance <= rollingAttackRadius)
-        {
 
-            StateUpdate(State.Attack);
-        }
-        else { _anim.SetBool("Attack", false); }
+
     }
 
     void FixedUpdate()
     {
 
 
-        if (_Distance < rangeAttackRadius)
+        if (_Distance <= rollingAttackRadius)
+        {
+            StateUpdate(State.Attack);
+            _anim.SetBool("Roar", false);
+        }
+        else if (_Distance <= rangeAttackRadius && _Distance >= rollingAttackRadius)
         {
             StateUpdate(State.RangeAttack);
         }
+        
+
+
+
+
+
 
     }
 
@@ -130,7 +136,13 @@ public class Boss : MonoBehaviour
     private void RangeAttack()
     {
 
+        _anim.SetBool("Roar", true);
 
+        if (playerPosition.position.y >= heightAttack)
+        {
+
+            _anim.SetTrigger("RangeAttack");
+        }
 
     }
 
@@ -158,9 +170,9 @@ public class Boss : MonoBehaviour
             _Rb.AddForceX(direction.x * attackImpulseForce, ForceMode2D.Impulse);
 
             //attackTimer = maxAttackTimer;
-            
+
         }
-        
+
 
     }
 
@@ -179,34 +191,37 @@ public class Boss : MonoBehaviour
 
     public void LaunchProyectil(GameObject proyectil, Transform shootingPoint)
     {
-        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) -
-                             (Vector2)shootingPoint.position).normalized;
-        transform.EnemyRotattion(playerPosition);
-
         GameObject instantiateProyectil = Instantiate(proyectil, shootingPoint.position,
-                                                      proyectil.transform.rotation);
+                                                      shootingPoint.transform.rotation);
 
-        instantiateProyectil.transform.EnemyRotattion(playerPosition);
 
-        instantiateProyectil.GetComponent<Rigidbody2D>().linearVelocity = direction * attackImpulseForce;
+
+        instantiateProyectil.GetComponent<Rigidbody2D>().AddForce(proyectil.transform.forward * AttackProyectilForce, ForceMode2D.Impulse);
     }
+        
+
+
 
     public void StartRolling()
     {
         attackTimer = maxAttackTimer;
-        
+
         _anim.SetBool("isAttacking", true);
-        
+
 
     }
 
-    public void TwoProyectil()
+    public void ThreeProyectil()
     {
+        Debug.Log("Hola");
+
         LaunchProyectil(bossProyectil, bossProyectilPosition);
         LaunchProyectil(bossProyectil, bossProyectilPosition1);
         LaunchProyectil(bossProyectil, bossProyectilPosition2);
 
     }
+
+
 
     #endregion
 }

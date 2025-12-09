@@ -16,7 +16,7 @@ public class SectionSpawnerController : MonoBehaviour
     public Section currentSection;
     //SEcciones que se vana generar a inicio
 
-    public int sectionInitialload = 4;
+    public int sectionInitialload;
 
     //Referencia a la camara del juego
     public Camera gameCamera;
@@ -41,20 +41,13 @@ public class SectionSpawnerController : MonoBehaviour
     void Start()
     {
         if (sectionParent == null) sectionParent = transform;
-        if (SceneManager.GetActiveScene().name == "EndLessRuner" || SceneManager.GetActiveScene().name == "Tutorial EndLess")
+
+        for (int i = 0; i < sectionInitialload; i++)
         {
-            for (int i = 0; i < sectionInitialload; i++)
-            {
-                SpawnRandomSection();
-            }
+            SpawnRandomSection();
         }
-        else if (SceneManager.GetActiveScene().name == "Platform 2D")
-        {
-            for (int i = 0; i < sectionInitialload; i++)
-            {
-                SpawnSection();
-            }
-        }
+
+
 
     }
     /// <summary>
@@ -77,27 +70,6 @@ public class SectionSpawnerController : MonoBehaviour
 
     }
 
-    public void SpawnSection()
-    {
-        int ordererIndex = 0;
 
-        Section sectionNext = sectionPrefabs[ordererIndex];
-
-        Vector3 nextPositionOffset = Vector3.zero;
-
-        nextPositionOffset.x = currentSection.HalfWidth + sectionNext.HalfWidth;
-
-
-        currentSection = Instantiate(sectionNext,
-                                     currentSection.transform.position + nextPositionOffset,
-                                     Quaternion.identity, sectionParent);
-
-        currentSection.gameCamera = gameCamera;
-
-        ordererIndex++;
-
-
-
-    }
 
 }

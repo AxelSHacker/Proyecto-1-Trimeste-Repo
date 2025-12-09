@@ -188,7 +188,7 @@ public class FlyingEnemy : MonoBehaviour
 
     public void LaunchProyectil(GameObject proyectil, Transform shootingPoint)
     {
-        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) - 
+        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 1f) - 
                              (Vector2)shootingPoint.position).normalized;
         transform.EnemyRotattion(playerPosition);
 

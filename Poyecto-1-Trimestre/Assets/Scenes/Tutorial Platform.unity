@@ -10877,6 +10877,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2112919103}
     m_Modifications:
+    - target: {fileID: 1928865232125689786, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
+      propertyPath: dashForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2447070645286787690, guid: 8e22b44f98dc0ae4e8318c50c8a27e23, type: 3}
       propertyPath: m_Name
       value: Player-Platform-Variant
