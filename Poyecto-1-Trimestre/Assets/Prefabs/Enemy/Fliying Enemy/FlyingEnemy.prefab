@@ -323,6 +323,7 @@ MonoBehaviour:
   attackTimer: 2
   maxAttackTimer: 0
   attackVelocity: 5
+  points: 0
   _Rb: {fileID: 3321589934287423735}
   _anim: {fileID: 6864580419270914338}
   patrol:
@@ -330,8 +331,10 @@ MonoBehaviour:
   - {fileID: 0}
   playerPosition: {fileID: 0}
   _healt: {fileID: 4217128380185361976}
-  proyectil: {fileID: 8785984332078258933, guid: 0f9619ce4540ff64193b6539cde0ff5a, type: 3}
-  shootingPoint: {fileID: 5707584772011144125}
+  lance: {fileID: 2736171915523369646, guid: d59c58d94a705fd4ea6509259b89e5f3, type: 3}
+  fireProyectil: {fileID: 8785984332078258933, guid: 0f9619ce4540ff64193b6539cde0ff5a, type: 3}
+  positionFireProyectil: {fileID: 5707584772011144125}
+  positionLance: {fileID: 5707584772011144125}
   healtBar: {fileID: 270819022400677948}
   currentState: 0
 --- !u!114 &4217128380185361976

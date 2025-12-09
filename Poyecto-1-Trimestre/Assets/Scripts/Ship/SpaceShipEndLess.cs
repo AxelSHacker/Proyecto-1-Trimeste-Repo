@@ -75,7 +75,7 @@ public class SpaceShipEndLess : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.ContinueGame();
-            playerRB.linearVelocity = Vector2.zero;
+            playerRB.constraints = RigidbodyConstraints2D.FreezePositionY;
             playerRB.gravityScale = 1f;
         }
     }

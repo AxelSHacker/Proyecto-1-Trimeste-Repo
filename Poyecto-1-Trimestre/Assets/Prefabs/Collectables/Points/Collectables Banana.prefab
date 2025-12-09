@@ -205,6 +205,7 @@ MonoBehaviour:
   point: 2
   thisCollider: {fileID: 6781158349072944128}
   spriteRenderer: {fileID: 7098092557889844372}
+  pickUpCoin: {fileID: 8300000, guid: 5c373e9662d0aae46b885daa0301da2a, type: 3}
   flashColor: {r: 0.29691935, g: 0.7169812, b: 0.13866144, a: 1}
   flashTTime: 0.4
 --- !u!95 &7322746872200758532

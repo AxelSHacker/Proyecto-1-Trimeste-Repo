@@ -8,6 +8,8 @@ public class Collectable : MonoBehaviour
     Collider2D thisCollider;
     [SerializeField]
     SpriteRenderer spriteRenderer;
+    [Header("SOUNDS")]
+    [SerializeField] AudioClip pickUpCoin;
 
     [Header("FEEDBBACK")]
 
@@ -21,12 +23,14 @@ public class Collectable : MonoBehaviour
             FeedBBackEndLEss(playerEndLess);
             GameManager.Instance.PicupCollectable(point);
             Desactivate();
+            MusicManager.Instance.SFXPlayer(pickUpCoin);
         }
         if (collision.TryGetComponent(out PlayerControllerPlatform playerPlatform))
         {
             FeedBBackPlatform(playerPlatform);
             GameManager.Instance.PicupCollectable(point);
             Desactivate();
+            MusicManager.Instance.SFXPlayer(pickUpCoin);
         }
     }
 

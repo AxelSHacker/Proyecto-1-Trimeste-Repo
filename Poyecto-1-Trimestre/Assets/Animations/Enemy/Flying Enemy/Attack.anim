@@ -116,9 +116,9 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.6666667
-    functionName: LaunchProyectil
+    functionName: OneProyectil
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 8785984332078258933, guid: 0f9619ce4540ff64193b6539cde0ff5a, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

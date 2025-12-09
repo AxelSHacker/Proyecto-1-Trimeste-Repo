@@ -1,7 +1,8 @@
-using System;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
+using System;
+
 
 
 
@@ -54,6 +55,11 @@ public class PlayerControllerEndLess : MonoBehaviour
     float speedUpVelocity;
     [SerializeField]
     bool canDie = true;
+    [Header("SOUNDS"), SerializeField]
+    AudioClip jump;
+    [SerializeField] AudioClip[] death;
+    [SerializeField] AudioClip landing;
+
 
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
@@ -166,6 +172,7 @@ public class PlayerControllerEndLess : MonoBehaviour
             _rB.linearVelocityY = 0f;
             maxJump++;
             _rB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            MusicManager.Instance.SFXPlayer(jump);
         }
     }
     //Funcion que comprueba si estamos tocando el suelo
@@ -187,7 +194,7 @@ public class PlayerControllerEndLess : MonoBehaviour
     //Controlador de las animaciones
     private void AnimatorController()
     {
-        float velocity = Math.Abs(_rB.linearVelocityX);
+        float velocity = MathF.Abs(_rB.linearVelocityX);
         _anim.SetFloat("Velocity", velocity);
 
         if (!isGrounded)
@@ -215,10 +222,11 @@ public class PlayerControllerEndLess : MonoBehaviour
     private void Death()
     {
         //Paramos el movimiento automaico del player
-
+        int randomIndex = UnityEngine.Random.Range(0, death.Length);
         autoMovement = false;
         //Activamos la animacion de muerte
         _anim.SetBool("Death", true);
+        MusicManager.Instance.SFXPlayer(death[randomIndex]);
         //se instancia el panel de derrota
         Invoke("EndGame", 1.5f);
     }
@@ -226,7 +234,8 @@ public class PlayerControllerEndLess : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
-            
+            int randomIndex = UnityEngine.Random.Range(0, death.Length);
+            MusicManager.Instance.SFXPlayer(death[randomIndex]);
             GameManager.Instance.EndGame();
             autoMovement = false;
         }
@@ -237,7 +246,7 @@ public class PlayerControllerEndLess : MonoBehaviour
     }
     private void EndGame()
     {
-        
+
         GameManager.Instance.EndGame();
     }
     #endregion

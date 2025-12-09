@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Pause Menu")]
     public CanvasGroup pauseCanvasGroup;
+    [SerializeField] GameObject optionMenu;
+
+
     private static GameManager _instance;
 
     public static GameManager Instance => _instance;
@@ -53,7 +56,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        MusicManager.Instance.PlayGameMusic();
 
+        optionMenu.SetActive(false);
         pointTMP.text = collectableCount.ToString();
         continueCanvasGroup.SetEnable(false);
         endGameCanvasGroup.SetEnable(false);
@@ -112,6 +117,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+
         bool newRecord = DataManager.Instance.maxScore < collectableCount;
         //Si la puntuacion obttenida suora la maxima
         if (newRecord)
@@ -138,6 +144,7 @@ public class GameManager : MonoBehaviour
             endGameCanvasGroup.SetEnable(true);
             finalScoreTMP.text = collectableCount.ToString();
         }
+        MusicManager.Instance.PitchSlow();
     }
 
     // Reinicia la partida
@@ -175,7 +182,11 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void OptionMenu()
+    {
+        optionMenu.SetActive(!optionMenu.activeSelf);
 
+    }
 
 
 

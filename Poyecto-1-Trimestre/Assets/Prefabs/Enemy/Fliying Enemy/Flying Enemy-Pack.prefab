@@ -122,11 +122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707584772011144125, guid: 9dc2677ac16c39a48833636030fdd8a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.174
+      value: 0.148
       objectReference: {fileID: 0}
     - target: {fileID: 5707584772011144125, guid: 9dc2677ac16c39a48833636030fdd8a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.165
+      value: -0.096
       objectReference: {fileID: 0}
     - target: {fileID: 5741978177779643638, guid: 9dc2677ac16c39a48833636030fdd8a1, type: 3}
       propertyPath: chaseRadius

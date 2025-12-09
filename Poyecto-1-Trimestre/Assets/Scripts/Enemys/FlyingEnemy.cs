@@ -34,20 +34,15 @@ public class FlyingEnemy : MonoBehaviour
     int points;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
-    [SerializeField]
-    Animator _anim;
-    [SerializeField]
-    Transform[] patrol;
-    [SerializeField]
-    Transform playerPosition;
-    [SerializeField]
-    Healt _healt;
-    [SerializeField]
-    GameObject proyectil;
-    [SerializeField]
-    Transform shootingPoint;
-    [SerializeField]
-    Slider healtBar;
+    [SerializeField] Animator _anim;
+    [SerializeField] Transform[] patrol;
+    [SerializeField] Transform playerPosition;
+    [SerializeField] Healt _healt;
+    [SerializeField] GameObject lance;
+    [SerializeField] GameObject fireProyectil;
+    [SerializeField] Transform positionFireProyectil;
+    [SerializeField] Transform positionLance;
+    [SerializeField] Slider healtBar;
 
 
 
@@ -191,13 +186,32 @@ public class FlyingEnemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void LaunchProyectil()
+    public void LaunchProyectil(GameObject proyectil, Transform shootingPoint)
     {
-        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) - (Vector2)shootingPoint.position).normalized;
+        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) - 
+                             (Vector2)shootingPoint.position).normalized;
         transform.EnemyRotattion(playerPosition);
-        GameObject instantiateProyectil = Instantiate(proyectil, shootingPoint.position, proyectil.transform.rotation);
+
+        GameObject instantiateProyectil = Instantiate(proyectil, shootingPoint.position, 
+                                                      proyectil.transform.rotation);
+
         instantiateProyectil.transform.EnemyRotattion(playerPosition);
+
         instantiateProyectil.GetComponent<Rigidbody2D>().linearVelocity = direction * attackVelocity;
     }
+
+    public void OneProyectil()
+    {
+        LaunchProyectil(fireProyectil, positionFireProyectil);
+    }
+
+    public void TwoProyectil()
+    {
+        LaunchProyectil(fireProyectil, positionFireProyectil);
+
+        
+        LaunchProyectil(lance, positionLance);
+    }
+
     #endregion
 }

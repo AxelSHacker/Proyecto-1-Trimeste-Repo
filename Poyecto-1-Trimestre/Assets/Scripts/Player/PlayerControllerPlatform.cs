@@ -186,10 +186,10 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (context.started)
         {
-
             Dash();
         }
     }
+
     public void OnAttacking(InputAction.CallbackContext context)
     {
         if (context.started)
