@@ -4214,6 +4214,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[151].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 5176518861446626084, guid: a739348572285e546814b155c0cb977f, type: 3}
+      propertyPath: spawnRatio
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5681719891981303726, guid: a739348572285e546814b155c0cb977f, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 3
@@ -5123,6 +5127,7 @@ PrefabInstance:
     - {fileID: 1344725739614556356, guid: a739348572285e546814b155c0cb977f, type: 3}
     - {fileID: 927803808132088096, guid: a739348572285e546814b155c0cb977f, type: 3}
     - {fileID: 5201895795120428092, guid: a739348572285e546814b155c0cb977f, type: 3}
+    - {fileID: 8578162685372957925, guid: a739348572285e546814b155c0cb977f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8084475627931319036, guid: a739348572285e546814b155c0cb977f, type: 3}
       insertIndex: -1

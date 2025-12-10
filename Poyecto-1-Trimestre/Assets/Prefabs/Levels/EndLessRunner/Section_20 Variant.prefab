@@ -333,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6887153272550038482, guid: 4709871eeac500e489289da9829b6e32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.53
+      value: -4.65
       objectReference: {fileID: 0}
     - target: {fileID: 6887153272550038482, guid: 4709871eeac500e489289da9829b6e32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1514,6 +1514,10 @@ PrefabInstance:
     - target: {fileID: 3729437524611886081, guid: a739348572285e546814b155c0cb977f, type: 3}
       propertyPath: m_Tiles.Array.data[38].second.m_TileSpriteIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104674494111109051, guid: a739348572285e546814b155c0cb977f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.07
       objectReference: {fileID: 0}
     - target: {fileID: 5681719891981303726, guid: a739348572285e546814b155c0cb977f, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -2714,6 +2718,8 @@ PrefabInstance:
     - {fileID: 648869971377179391, guid: a739348572285e546814b155c0cb977f, type: 3}
     - {fileID: 598253975818482634, guid: a739348572285e546814b155c0cb977f, type: 3}
     - {fileID: 1344725739614556356, guid: a739348572285e546814b155c0cb977f, type: 3}
+    - {fileID: 5201895795120428092, guid: a739348572285e546814b155c0cb977f, type: 3}
+    - {fileID: 8578162685372957925, guid: a739348572285e546814b155c0cb977f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8084475627931319036, guid: a739348572285e546814b155c0cb977f, type: 3}
       insertIndex: -1

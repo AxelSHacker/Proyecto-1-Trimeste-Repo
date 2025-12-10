@@ -8,6 +8,10 @@ public class DataManager : MonoBehaviour
     public int tutorialScore = 0;
 
     public int actualGameScore = 0;
+
+    public float musicVolumen = 0f;
+
+    public float sfxVolumen = 0f;
     private static DataManager _instance;
 
     public static DataManager Instance => _instance;
@@ -17,6 +21,7 @@ public class DataManager : MonoBehaviour
         {
             _instance = this;
             Load();
+            LoadVolumenParameters();
         }
         else
         {
@@ -31,6 +36,12 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("maxScore", maxScore);
         PlayerPrefs.SetInt("tutorialMaxScore", tutorialScore);
         PlayerPrefs.SetInt("GameScore", actualGameScore);
+        
+    }
+    public void SaveVolumenParameters()
+    {
+        PlayerPrefs.SetFloat("MusicVolumen", musicVolumen);
+        PlayerPrefs.SetFloat("SFXVolumen", sfxVolumen);
     }
     
     /// <summary>
@@ -42,6 +53,13 @@ public class DataManager : MonoBehaviour
         maxScore = PlayerPrefs.GetInt("maxScore");
         tutorialScore = PlayerPrefs.GetInt("tutorialMaxScore");
         actualGameScore = PlayerPrefs.GetInt("GameScore");
+        
+    }
+
+    public void LoadVolumenParameters()
+    {
+        musicVolumen = PlayerPrefs.GetFloat("MusicVolumen");
+        sfxVolumen = PlayerPrefs.GetFloat("SFXVolumen");
     }
     /// <summary>
     /// Lmpia toda la informacion guardada en los player

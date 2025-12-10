@@ -1844,6 +1844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dust Big
       objectReference: {fileID: 0}
+    - target: {fileID: 2333320740331496300, guid: 86cdbfd30a99c9243b27bd4adb44560a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5621357542027728193, guid: 86cdbfd30a99c9243b27bd4adb44560a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

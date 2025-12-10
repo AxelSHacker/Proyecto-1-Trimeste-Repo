@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         MusicManager.Instance.PlayGameMusic();
-
+        MusicManager.Instance.audioSource.volume = DataManager.Instance.musicVolumen;
+        MusicManager.Instance.sfxSource.volume = DataManager.Instance.sfxVolumen;
         optionMenu.SetActive(false);
         pointTMP.text = collectableCount.ToString();
         continueCanvasGroup.SetEnable(false);
@@ -68,11 +69,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     #region Methos
 
@@ -188,7 +184,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    public void TransitionPlatformEndless()
+    {
+        
+    }
+    
 
 
 

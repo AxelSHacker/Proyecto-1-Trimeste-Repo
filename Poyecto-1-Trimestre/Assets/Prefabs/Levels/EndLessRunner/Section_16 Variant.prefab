@@ -13,16 +13,12 @@ PrefabInstance:
       value: Rain
       objectReference: {fileID: 0}
     - target: {fileID: 4251964620420097681, guid: dd153c5eb4d3bd0459f57a34a318d528, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251964620420097681, guid: dd153c5eb4d3bd0459f57a34a318d528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.55
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4251964620420097681, guid: dd153c5eb4d3bd0459f57a34a318d528, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.2
+      value: -14.36
       objectReference: {fileID: 0}
     - target: {fileID: 4251964620420097681, guid: dd153c5eb4d3bd0459f57a34a318d528, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5927,6 +5923,7 @@ PrefabInstance:
     - {fileID: 1344725739614556356, guid: a739348572285e546814b155c0cb977f, type: 3}
     - {fileID: 5201895795120428092, guid: a739348572285e546814b155c0cb977f, type: 3}
     - {fileID: 927803808132088096, guid: a739348572285e546814b155c0cb977f, type: 3}
+    - {fileID: 8578162685372957925, guid: a739348572285e546814b155c0cb977f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8084475627931319036, guid: a739348572285e546814b155c0cb977f, type: 3}
       insertIndex: -1

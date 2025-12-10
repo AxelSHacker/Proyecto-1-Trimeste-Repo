@@ -1,8 +1,7 @@
 using System.Collections;
-using NUnit.Framework.Interfaces;
-using Unity.Mathematics;
+
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class MusicManager : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class MusicManager : MonoBehaviour
     //Valor minimo del pitch para cambbiar el sonido al mostrar el menu de fin de partida
     [SerializeField] float pitchSlow = 0.6f;
 
-   
+
     Coroutine fadeCoroutine;
     Coroutine PitchCoroutine;
 
@@ -38,12 +37,18 @@ public class MusicManager : MonoBehaviour
     }
     void Start()
     {
-
+        audioSource.panStereo = 0;
+        audioSource.volume = DataManager.Instance.musicVolumen;
+        sfxSource.volume = DataManager.Instance.sfxVolumen;
+        
     }
 
 
     void Update()
     {
+
+        
+        
         
     }
     public void PlayMainMenuMusic()
@@ -87,6 +92,7 @@ public class MusicManager : MonoBehaviour
         float counter = fadeTZime / 2f;
         while (counter > 0f)
         {
+            audioSource.volume = DataManager.Instance.musicVolumen;
             audioSource.volume = counter / (fadeTZime / 2f);
             counter -= Time.deltaTime;
 
@@ -100,6 +106,7 @@ public class MusicManager : MonoBehaviour
 
         while (counter < (fadeTZime / 2f))
         {
+            audioSource.volume = DataManager.Instance.musicVolumen;
             audioSource.volume = counter / (fadeTZime / 2f);
             counter += Time.deltaTime;
 
