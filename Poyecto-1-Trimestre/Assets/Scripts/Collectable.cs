@@ -29,8 +29,8 @@ public class Collectable : MonoBehaviour
         {
             FeedBBackPlatform(playerPlatform);
             GameManager.Instance.PicupCollectable(point);
-            Desactivate();
             MusicManager.Instance.SFXPlayer(pickUpCoin);
+            Desactivate();
         }
     }
 
