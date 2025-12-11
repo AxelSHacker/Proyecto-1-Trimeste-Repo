@@ -49,7 +49,7 @@ public class TutorialController : MonoBehaviour
     void Update()
     {
         PointController();
-        if (GameManager.Instance.collectableCount >= 15)
+        if (GameManager.Instance.collectableCount >= 10)
         {
             
             continousCanvasGroup.SetEnable(true);

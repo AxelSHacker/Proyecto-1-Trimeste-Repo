@@ -1,8 +1,9 @@
-using System.Collections;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class GameManager : MonoBehaviour
 {
     #region variables
@@ -34,8 +35,9 @@ public class GameManager : MonoBehaviour
     public CanvasGroup pauseCanvasGroup;
     [SerializeField] GameObject optionMenu;
 
-    [Header("Transition")]
-
+    [Header("Audio Options")]
+    [SerializeField] Slider musicVolumen;
+    [SerializeField] Slider sfxVolumen;
     public bool platformEndGame = false;
 
     private static GameManager _instance;
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        MusicManager.Instance.PlayGameMusic();
+        MusicManager.Instance.PlayRandomSong(); ;
         MusicManager.Instance.audioSource.volume = DataManager.Instance.musicVolumen;
         MusicManager.Instance.sfxSource.volume = DataManager.Instance.sfxVolumen;
         optionMenu.SetActive(false);
@@ -71,6 +73,15 @@ public class GameManager : MonoBehaviour
         maxScoerTMP.text = DataManager.Instance.maxScore.ToString();
         Time.timeScale = 1;
 
+    }
+
+    void Update()
+    {
+        MusicManager.Instance.audioSource.volume = musicVolumen.value;
+        MusicManager.Instance.sfxSource.volume = sfxVolumen.value;
+
+        DataManager.Instance.sfxVolumen = sfxVolumen.value;
+        DataManager.Instance.musicVolumen = musicVolumen.value;
     }
 
 
@@ -144,7 +155,7 @@ public class GameManager : MonoBehaviour
             endGameCanvasGroup.SetEnable(true);
             finalScoreTMP.text = collectableCount.ToString();
         }
-        
+
     }
 
     // Reinicia la partida
@@ -168,9 +179,10 @@ public class GameManager : MonoBehaviour
 
     public void ExitToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
-
     }
+
 
     public void ContinueButton(string sceneName)
     {
@@ -190,10 +202,10 @@ public class GameManager : MonoBehaviour
 
     public void TransitionPlatformEndless()
     {
-       
-      
+
+
     }
-       
+
 
 
 

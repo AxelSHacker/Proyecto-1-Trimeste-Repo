@@ -1,5 +1,5 @@
 using System.Collections;
-
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioSource sfxSource;
     [SerializeField] AudioClip menuClip;
-    [SerializeField] AudioClip gameClip;
+    [SerializeField] AudioClip[] gameClip;
 
     [SerializeField, Range(1, 3)] float fadeTZime = 2f;
     [SerializeField, Range(0f, 2f)] float pitchTTiime = 1f;
@@ -30,16 +30,14 @@ public class MusicManager : MonoBehaviour
             //Metodo que indica un gamobject que se debe ser conservado al dscarga la escena
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(this);
-        }
+        
     }
     void Start()
     {
-        audioSource.panStereo = 0;
+
         audioSource.volume = DataManager.Instance.musicVolumen;
         sfxSource.volume = DataManager.Instance.sfxVolumen;
+        
 
     }
 
@@ -56,22 +54,13 @@ public class MusicManager : MonoBehaviour
         if (audioSource.clip == menuClip) return;
         audioSource.clip = menuClip;
         audioSource.Play();
-        //if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         //Iniciamos Coroutine
-        //fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
+        fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
 
     }
 
-    public void PlayGameMusic()
-    {
-        if (audioSource.clip == gameClip) return;
 
-        audioSource.clip = gameClip;
-        audioSource.Play();
-        //if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        //Iniciamos Coroutine
-        //fadeCoroutine = StartCoroutine(FadeAndChangeClip(gameClip));
-    }
 
     public void PitchSlow()
     {
@@ -85,6 +74,18 @@ public class MusicManager : MonoBehaviour
         PitchCoroutine = StartCoroutine(PitchChange(false));
     }
 
+    public void PlayRandomSong()
+    {
+        if (gameClip.Length == 0) return;
+
+        // Elegir canción aleatoria
+        AudioClip clip = gameClip[Random.Range(0, gameClip.Length)];
+        audioSource.clip = clip;
+        audioSource.Play();
+
+        // Iniciar coroutine
+        StartCoroutine(WaitForSongToEnd());
+    }
     public void SFXPlayer(AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);
@@ -129,5 +130,18 @@ public class MusicManager : MonoBehaviour
             count += Time.deltaTime;
             yield return null;
         }
+    }
+
+
+    IEnumerator WaitForSongToEnd()
+    {
+        // Esperar mientras se está reproduciendo
+        while (audioSource.isPlaying)
+        {
+            yield return null;
+        }
+
+        // Cuando termine, reproducir otra aleatoria
+        PlayRandomSong();
     }
 }

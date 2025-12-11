@@ -3344,6 +3344,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8271333594755568858, guid: ba61ddc64d0eab64eab1d248ef56196e, type: 3}
+      propertyPath: menuClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ca88c564390f344b8e4dc951c77633d, type: 3}
+    - target: {fileID: 8271333594755568858, guid: ba61ddc64d0eab64eab1d248ef56196e, type: 3}
       propertyPath: sfxVolumen
       value: 
       objectReference: {fileID: 1456734344}
@@ -3351,6 +3355,18 @@ PrefabInstance:
       propertyPath: musicVolumen
       value: 
       objectReference: {fileID: 1734113860}
+    - target: {fileID: 8271333594755568858, guid: ba61ddc64d0eab64eab1d248ef56196e, type: 3}
+      propertyPath: 'gameClip.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
+    - target: {fileID: 8271333594755568858, guid: ba61ddc64d0eab64eab1d248ef56196e, type: 3}
+      propertyPath: 'gameClip.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
+    - target: {fileID: 8271333594755568858, guid: ba61ddc64d0eab64eab1d248ef56196e, type: 3}
+      propertyPath: 'gameClip.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
     - target: {fileID: 8654976623435116703, guid: ba61ddc64d0eab64eab1d248ef56196e, type: 3}
       propertyPath: m_Name
       value: MusicManager

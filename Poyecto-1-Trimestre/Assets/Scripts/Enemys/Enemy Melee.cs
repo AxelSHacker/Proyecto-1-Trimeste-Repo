@@ -17,18 +17,13 @@ public class EnemyMelee : MonoBehaviour
     }
     [Header("VARIABLES"), SerializeField]
     float patrolVelocity;
-    [SerializeField]
-    float chaseVelocity;
-    [SerializeField]
-    int currentPatrolIndex;
-    [SerializeField]
-    float chaseRadius;
-    [SerializeField]
-    float _Distance;
-    [SerializeField]
-    float attackRadius;
-    [SerializeField]
-    int points;
+    [SerializeField] float chaseVelocity;
+    [SerializeField] int currentPatrolIndex;
+    [SerializeField] float chaseRadius;
+    [SerializeField] float _Distance;
+    [SerializeField] float attackRadius;
+    [SerializeField] int points;
+    [SerializeField] int maxSFXRpeat = 0;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
@@ -59,12 +54,6 @@ public class EnemyMelee : MonoBehaviour
         }
         else { _anim.SetBool("Attack", false); }
 
-
-    }
-    void FixedUpdate()
-    {
-
-
         if (_Distance < chaseRadius)
         {
             StateUpdate(State.Chase);
@@ -73,8 +62,8 @@ public class EnemyMelee : MonoBehaviour
         {
             StateUpdate(State.Patrol);
         }
-    }
 
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -122,7 +111,12 @@ public class EnemyMelee : MonoBehaviour
     private void Chase()
     {
         gameObject.Chase(_Rb, _Distance, attackRadius, playerPosition, chaseVelocity);
-        MusicManager.Instance.SFXPlayer(detected);
+        
+        if (maxSFXRpeat <= 0)
+        {
+            MusicManager.Instance.SFXPlayer(detected);
+            maxSFXRpeat++;
+        }
 
     }
     private void AnimatorController()
@@ -146,7 +140,8 @@ public class EnemyMelee : MonoBehaviour
 
     private void Death()
     {
-        GameManager.Instance.PicupCollectable(points); 
+        
+        GameManager.Instance.PicupCollectable(points);
         MusicManager.Instance.SFXPlayer(death);
         _Rb.linearVelocity = Vector2.zero;
         _anim.SetBool("Death", true);

@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
-using System.Data.Common;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Comparers;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
+
+
+
 
 public class PlayerControllerPlatform : MonoBehaviour
 {
@@ -17,20 +18,17 @@ public class PlayerControllerPlatform : MonoBehaviour
     Rigidbody2D _rB;
 
     public Animator _anim;
-    [SerializeField]
-    Vector2 offSet;
-    [SerializeField]
-    LayerMask Detectable;
-    [SerializeField]
-    Transform detetablePoint;
-    [SerializeField]
-    SpriteRenderer _spriteRenderer;
-    [SerializeField]
-    ParticleSystem dust;
-    [SerializeField]
-    Healt _healt;
-    [SerializeField]
-    TextMeshProUGUI lifePoint;
+    [SerializeField] Vector2 offSet;
+    [SerializeField] LayerMask Detectable;
+    [SerializeField] Transform detetablePoint;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] ParticleSystem dust;
+    [SerializeField] Healt _healt;
+    [SerializeField] TextMeshProUGUI lifePoint;
+    [SerializeField] AudioClip jump;
+    [SerializeField] AudioClip[] attacks;
+    [SerializeField] AudioClip[] death;
+    [SerializeField] AudioClip[] shieldImpact;
 
 
 
@@ -150,12 +148,15 @@ public class PlayerControllerPlatform : MonoBehaviour
                 Destroy(collision.gameObject);
             }
             _anim.SetTrigger("Impact");
+            int randomIndex = UnityEngine.Random.Range(0, shieldImpact.Length);
+            MusicManager.Instance.SFXPlayer(shieldImpact[randomIndex]);
+            
         }
 
         if (collision.gameObject.CompareTag("CheckPoint"))
         {
-            GameManager.Instance. continueCanvasGroup.SetEnable(true);
-            
+            GameManager.Instance.continueCanvasGroup.SetEnable(true);
+
         }
     }
     //Collision para manejar la colisiones
@@ -262,6 +263,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (maxJump <= 0)
         {
+            MusicManager.Instance.SFXPlayer(jump);
             _rB.linearVelocityY = 0f;
             maxJump++;
             _rB.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
@@ -317,12 +319,12 @@ public class PlayerControllerPlatform : MonoBehaviour
             dashRepeat--;
             if (transform.rotation.y == 0)
             {
-                
+
                 _rB.AddForceX(dashForce, ForceMode2D.Impulse);
             }
             else
             {
-                
+
                 _rB.AddForceX(-dashForce, ForceMode2D.Impulse);
             }
 
@@ -340,7 +342,7 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     private void DeathFalling()
     {
-        if (transform.position.y < -5.8f)
+        if (transform.position.y < -5.5f)
         {
             EndGame();
             _healt.health = 0;
@@ -354,24 +356,30 @@ public class PlayerControllerPlatform : MonoBehaviour
     //Funcion de control de Ataques
     private void Attack()
     {
+        int randomIndex = UnityEngine.Random.Range(0, attacks.Length);
         if (attackCount == 0)
         {
             attackCount++;
             _anim.SetTrigger("Attacking");
             _anim.SetInteger("Combo", attackCount);
+            MusicManager.Instance.SFXPlayer(attacks[randomIndex]);
+
+
+            if (attacking)
+            {
+                attackCount++;
+                _anim.SetInteger("Combo", attackCount);
+                _anim.SetTrigger("Attacking");
+                attacking = false;
+                MusicManager.Instance.SFXPlayer(attacks[randomIndex]);
+            }
         }
-
-        if (attacking)
-        {
-            attackCount++;
-            _anim.SetInteger("Combo", attackCount);
-            _anim.SetTrigger("Attacking");
-            attacking = false;
-        }
-
-
-
     }
+
+
+
+
+
 
     private void SchieldOn()
     {

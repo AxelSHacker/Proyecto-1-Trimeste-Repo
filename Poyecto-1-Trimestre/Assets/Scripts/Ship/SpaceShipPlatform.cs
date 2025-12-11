@@ -1,4 +1,4 @@
-using UnityEditor.Rendering;
+
 using UnityEngine;
 
 public class SpaceShipPlatform : MonoBehaviour
@@ -81,7 +81,7 @@ public class SpaceShipPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.ContinueGame();
+            GameManager.Instance.EndGame();
             playerRB.constraints = RigidbodyConstraints2D.FreezePositionY;
             playerRB.gravityScale = 1f;
         }

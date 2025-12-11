@@ -14992,6 +14992,20 @@ MonoBehaviour:
   dust: {fileID: 5803327790901699039}
   _healt: {fileID: 3867056205436739118}
   lifePoint: {fileID: 544552018485735845}
+  jump: {fileID: 8300000, guid: 6ca5de86e582c0647af512dcf763eea5, type: 3}
+  attacks:
+  - {fileID: 8300000, guid: c30051eec2521d541b5caba63046e330, type: 3}
+  - {fileID: 8300000, guid: e4d5bef94e0e7ee4ba156ee232506b1b, type: 3}
+  - {fileID: 8300000, guid: eaf04c46a5ece7c45a2cf94cd5bfe23b, type: 3}
+  death:
+  - {fileID: 8300000, guid: f7256a3fc85266648b6b68e3b4419dcf, type: 3}
+  - {fileID: 8300000, guid: da3c17d38e15a5441be31db7a7ef5d5f, type: 3}
+  - {fileID: 8300000, guid: c83631afcbb59ed47955f2b33a5cb52f, type: 3}
+  - {fileID: 8300000, guid: 272859bee071a834ca6f7a1276bcf31c, type: 3}
+  shieldImpact:
+  - {fileID: 8300000, guid: 4289be3018ff8a54f9f74de2f6ad4a46, type: 3}
+  - {fileID: 8300000, guid: c2c8610f357ee744fa130a1f8561fd94, type: 3}
+  - {fileID: 8300000, guid: 58b76455dbce68d4c81666691ed216e5, type: 3}
   speed: 40
   speedMultiplier: 6
   maxSpeed: 70
@@ -14999,7 +15013,7 @@ MonoBehaviour:
   jumpForce: 7
   maxJump: 0
   isGrounded: 0
-  dashForce: 50
+  dashForce: 10
   dashRepeat: 2
   normalGravity: 0
   attackCount: 0

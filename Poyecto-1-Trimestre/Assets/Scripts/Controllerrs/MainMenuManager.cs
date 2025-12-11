@@ -13,6 +13,8 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         MusicManager.Instance.PlayMainMenuMusic();
+
+        
     }
 
        

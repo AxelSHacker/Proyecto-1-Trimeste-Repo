@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -7666993942531711796, guid: 4aa71b1ee18053b49a8561fe4f2d3100, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.09803922, b: 0.18039216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   - {fileID: 2123999470894007978}
   sparks: {fileID: 8954891626656574388}
   currentPatrolIndex: 0
-  patrolSpeed: 5
+  patrolSpeed: 2
 --- !u!70 &404344473956817273
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
