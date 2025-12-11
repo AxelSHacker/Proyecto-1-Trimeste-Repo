@@ -40,24 +40,25 @@ public class MusicManager : MonoBehaviour
         audioSource.panStereo = 0;
         audioSource.volume = DataManager.Instance.musicVolumen;
         sfxSource.volume = DataManager.Instance.sfxVolumen;
-        
+
     }
 
 
     void Update()
     {
 
-        
-        
-        
+
+
+
     }
     public void PlayMainMenuMusic()
     {
         if (audioSource.clip == menuClip) return;
-
-        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        audioSource.clip = menuClip;
+        audioSource.Play();
+        //if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         //Iniciamos Coroutine
-        fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
+        //fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
 
     }
 
@@ -65,9 +66,11 @@ public class MusicManager : MonoBehaviour
     {
         if (audioSource.clip == gameClip) return;
 
-        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        audioSource.clip = gameClip;
+        audioSource.Play();
+        //if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         //Iniciamos Coroutine
-        fadeCoroutine = StartCoroutine(FadeAndChangeClip(gameClip));
+        //fadeCoroutine = StartCoroutine(FadeAndChangeClip(gameClip));
     }
 
     public void PitchSlow()

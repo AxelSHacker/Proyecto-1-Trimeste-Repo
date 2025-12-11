@@ -12,12 +12,12 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-
         MusicManager.Instance.PlayMainMenuMusic();
-        MusicManager.Instance.PitchRegular();
+    }
+
+       
         
 
-    }
 
     void Update()
     {

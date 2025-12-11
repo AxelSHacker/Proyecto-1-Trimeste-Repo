@@ -151,6 +151,12 @@ public class PlayerControllerPlatform : MonoBehaviour
             }
             _anim.SetTrigger("Impact");
         }
+
+        if (collision.gameObject.CompareTag("CheckPoint"))
+        {
+            GameManager.Instance. continueCanvasGroup.SetEnable(true);
+            
+        }
     }
     //Collision para manejar la colisiones
 

@@ -59,6 +59,7 @@ public class PlayerControllerEndLess : MonoBehaviour
     AudioClip jump;
     [SerializeField] AudioClip[] death;
     [SerializeField] AudioClip landing;
+    [SerializeField] AudioClip powerUp;
 
 
     [Header("CORRUTINA"), SerializeField]
@@ -97,6 +98,7 @@ public class PlayerControllerEndLess : MonoBehaviour
             Destroy(collision.gameObject);
             maxTimer = powerUpTimer;
             fairy.Play();
+            MusicManager.Instance.SFXPlayer(powerUp);
 
         }
 
@@ -106,7 +108,7 @@ public class PlayerControllerEndLess : MonoBehaviour
             Destroy(collision.gameObject);
             maxTimer = powerUpTimer;
             speedUp.Play();
-
+            MusicManager.Instance.SFXPlayer(powerUp);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,9 @@ public class GameManager : MonoBehaviour
     public CanvasGroup pauseCanvasGroup;
     [SerializeField] GameObject optionMenu;
 
+    [Header("Transition")]
+
+    public bool platformEndGame = false;
 
     private static GameManager _instance;
 
@@ -140,7 +144,7 @@ public class GameManager : MonoBehaviour
             endGameCanvasGroup.SetEnable(true);
             finalScoreTMP.text = collectableCount.ToString();
         }
-        MusicManager.Instance.PitchSlow();
+        
     }
 
     // Reinicia la partida
@@ -186,9 +190,12 @@ public class GameManager : MonoBehaviour
 
     public void TransitionPlatformEndless()
     {
-        
+       
+      
     }
-    
+       
+
+
 
 
 

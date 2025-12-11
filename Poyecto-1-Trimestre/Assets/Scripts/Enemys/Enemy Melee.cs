@@ -31,16 +31,15 @@ public class EnemyMelee : MonoBehaviour
     int points;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
-    [SerializeField]
-    Animator _anim;
-    [SerializeField]
-    Transform[] patrol;
-    [SerializeField]
-    Transform playerPosition;
-    [SerializeField]
-    Healt _healt;
-    [SerializeField]
-    Slider healtBar;
+    [SerializeField] Animator _anim;
+    [SerializeField] Transform[] patrol;
+    [SerializeField] Transform playerPosition;
+    [SerializeField] Healt _healt;
+    [SerializeField] Slider healtBar;
+    [SerializeField] AudioClip detected;
+    [SerializeField] AudioClip attack;
+    [SerializeField] AudioClip death;
+
     public State currentState;
 
 
@@ -123,6 +122,7 @@ public class EnemyMelee : MonoBehaviour
     private void Chase()
     {
         gameObject.Chase(_Rb, _Distance, attackRadius, playerPosition, chaseVelocity);
+        MusicManager.Instance.SFXPlayer(detected);
 
     }
     private void AnimatorController()
@@ -147,6 +147,7 @@ public class EnemyMelee : MonoBehaviour
     private void Death()
     {
         GameManager.Instance.PicupCollectable(points); 
+        MusicManager.Instance.SFXPlayer(death);
         _Rb.linearVelocity = Vector2.zero;
         _anim.SetBool("Death", true);
     }
@@ -158,6 +159,11 @@ public class EnemyMelee : MonoBehaviour
     public void DisableObject()
     {
         gameObject.SetActive(false);
+    }
+
+    public void AttackSound()
+    {
+        MusicManager.Instance.SFXPlayer(attack);
     }
     #endregion
 

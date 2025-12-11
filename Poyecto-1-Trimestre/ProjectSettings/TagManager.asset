@@ -9,6 +9,7 @@ TagManager:
   - Speed Up
   - Proyectil
   - Sword
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

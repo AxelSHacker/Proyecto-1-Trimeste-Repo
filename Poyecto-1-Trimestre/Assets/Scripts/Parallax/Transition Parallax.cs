@@ -58,7 +58,7 @@ public class TransitionParallax : MonoBehaviour
             transitionParalaxRenderer.material.mainTextureOffset = Vector2.zero;
             offSett = Vector2.zero;
             endTransition = false;
-            Debug.Log("Illo");
+            
             
         }
 

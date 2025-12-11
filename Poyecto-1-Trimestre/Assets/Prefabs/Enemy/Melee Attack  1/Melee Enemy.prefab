@@ -630,6 +630,9 @@ MonoBehaviour:
   playerPosition: {fileID: 0}
   _healt: {fileID: 989876958976525528}
   healtBar: {fileID: 7836191248340515290}
+  detected: {fileID: 8300000, guid: 22b14c88d2ab3a3489e0668f50005f59, type: 3}
+  attack: {fileID: 8300000, guid: a233d078992e2184da7b1fe239f0a410, type: 3}
+  death: {fileID: 8300000, guid: 9414e2c36138791449d5f3ab2501717c, type: 3}
   currentState: 0
 --- !u!114 &989876958976525528
 MonoBehaviour:

@@ -56,19 +56,35 @@ public class SpaceShipPlatform : MonoBehaviour
 
     void Start()
     {
-        
         timer = movementTimer;
-
     }
+
+
     void Update()
     {
         timer -= Time.deltaTime;
 
+        if (GameManager.Instance.platformEndGame)
+        {
+            EndGameMovement();
+            return;
+        }
     }
+
     private void FixedUpdate()
     {
         Movement();
         PlayerFinder();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.ContinueGame();
+            playerRB.constraints = RigidbodyConstraints2D.FreezePositionY;
+            playerRB.gravityScale = 1f;
+        }
     }
 
     private void OnDrawGizmos()
@@ -78,7 +94,6 @@ public class SpaceShipPlatform : MonoBehaviour
     }
     private void Movement()
     {
-        
         if (timer <= 0f)
         {
             shipRB.AddForceX(velocity, ForceMode2D.Force);
@@ -89,31 +104,19 @@ public class SpaceShipPlatform : MonoBehaviour
                 transform.position = from.position;
                 timer = movementTimer;
             }
-
-        } 
+        }
         //PlayerFinder();
-       
     }
-
     private void PlayerFinder()
     {
-
-
         RaycastHit2D contact = Physics2D.Linecast(linePosition.position, linePosition.position + (-linePosition.up) * lineLenght,
                                                                  contactLayer);
-
-
-
         if (contact.collider.gameObject.CompareTag("Player"))
         {
-
             chaseTimer = 5f;
             playerCheck = true;
             playerRB.gravityScale = -0.5f;
             velocity = 0;
-            
-
-
         }
         else
         {
@@ -121,21 +124,46 @@ public class SpaceShipPlatform : MonoBehaviour
             playerCheck = false;
             playerRB.gravityScale = 1f;
             velocity = 0.5f;
-
         }
         if (chaseTimer >= 0f)
         {
             shipRB.MovePosition(Vector2.MoveTowards(transform.position, new Vector2(playerTransform.position.x, transform.position.y),
                                 chaseVelocity * Time.deltaTime));
         }
+    }
+    private void EndGameMovement()
+    {
+        Vector2 separation = new Vector2(transform.position.x, transform.position.y);
 
-            
+        if (transform.position.x >= playerTransform.position.x) transform.position = from.position;
 
+        separation.x = playerTransform.position.x - 6.8f;
 
-
+        transform.position = Vector2.Lerp(transform.position, separation, 4f * Time.deltaTime);
     }
 
+
     #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
