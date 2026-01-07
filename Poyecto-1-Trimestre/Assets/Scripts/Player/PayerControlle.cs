@@ -105,11 +105,7 @@ public class PayerControlle : MonoBehaviour
         AnimatorController();
         GroundCheck();
         DeathFalling();
-        if (maxTimer > 0)
-        {
-            if (!canDie) { GameManager.Instance.Invincibility(collisionObject); }
-            else { _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity;}
-        }
+      
     }
             
 

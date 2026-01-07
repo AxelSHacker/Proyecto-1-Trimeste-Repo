@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 4804751208836581854}
   m_Layer: 0
   m_Name: FlyinRiderEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,7 +315,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819ff51b326489a4fae654c9730e577a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolVelocity: 1
+  patrolVelocity: 2
   chaseVelocity: 2
   currentPatrolIndex: 0
   chaseRadius: 6
@@ -463,7 +463,10 @@ MonoBehaviour:
   attackTimer: 2
   maxAttackTimer: 0
   attackVelocity: 5
-  points: 0
+  points: 10
+  maxSFXRepeat: 0
+  pointCount: 1
+  soundPlayed: 0
   _Rb: {fileID: 2011555408504245322}
   _anim: {fileID: 7791042912858918097}
   patrol:
@@ -476,6 +479,14 @@ MonoBehaviour:
   positionFireProyectil: {fileID: 9143596384174426930}
   positionLance: {fileID: 5306964843906331679}
   healtBar: {fileID: 2369751292445022353}
+  detected: {fileID: 8300000, guid: 9c33f6010744c554384c2c29b2f78e61, type: 3}
+  attack: {fileID: 8300000, guid: 4499db369baa4a84aaa29621fa216bb6, type: 3}
+  death: {fileID: 8300000, guid: 97e3a7379168ccc40ad3eabef8775828, type: 3}
+  swordImpactSound:
+  - {fileID: 8300000, guid: 1a0d84b87aad20b4d936765674661726, type: 3}
+  - {fileID: 8300000, guid: 55a38de12cb3d73499ae6f2386ba7d86, type: 3}
+  - {fileID: 8300000, guid: 8055ee6d2fa0e014d87d493af5f5b76c, type: 3}
+  - {fileID: 8300000, guid: ecd2f6c4a13645b419171ac8bc4cba15, type: 3}
   currentState: 0
 --- !u!114 &4804751208836581854
 MonoBehaviour:
@@ -518,7 +529,7 @@ Transform:
   m_GameObject: {fileID: 6447993085233845220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.252, y: 0.076, z: 0}
+  m_LocalPosition: {x: 0.46, y: -0.036, z: 0}
   m_LocalScale: {x: 1.25, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +560,7 @@ Transform:
   m_GameObject: {fileID: 6579225749026252084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.392, y: 0.055, z: 0}
+  m_LocalPosition: {x: 0.59999824, y: -0.05699999, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

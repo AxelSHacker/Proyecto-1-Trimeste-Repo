@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3321589934287423735}
   m_Layer: 0
   m_Name: FlyingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +248,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,10 +320,13 @@ MonoBehaviour:
   chaseRadius: 6
   _Distance: 0
   attackRadius: 4
-  attackTimer: 2
-  maxAttackTimer: 0
+  attackTimer: 0
+  maxAttackTimer: 2
   attackVelocity: 5
-  points: 0
+  points: 7
+  maxSFXRepeat: 0
+  pointCount: 1
+  soundPlayed: 0
   _Rb: {fileID: 3321589934287423735}
   _anim: {fileID: 6864580419270914338}
   patrol:
@@ -336,6 +339,14 @@ MonoBehaviour:
   positionFireProyectil: {fileID: 5707584772011144125}
   positionLance: {fileID: 5707584772011144125}
   healtBar: {fileID: 270819022400677948}
+  detected: {fileID: 8300000, guid: 9c33f6010744c554384c2c29b2f78e61, type: 3}
+  attack: {fileID: 8300000, guid: 8627d436edf74844fb69ade5ecb7d972, type: 3}
+  death: {fileID: 8300000, guid: 97e3a7379168ccc40ad3eabef8775828, type: 3}
+  swordImpactSound:
+  - {fileID: 8300000, guid: 1a0d84b87aad20b4d936765674661726, type: 3}
+  - {fileID: 8300000, guid: 55a38de12cb3d73499ae6f2386ba7d86, type: 3}
+  - {fileID: 8300000, guid: 8055ee6d2fa0e014d87d493af5f5b76c, type: 3}
+  - {fileID: 8300000, guid: ecd2f6c4a13645b419171ac8bc4cba15, type: 3}
   currentState: 0
 --- !u!114 &4217128380185361976
 MonoBehaviour:
@@ -442,7 +453,7 @@ Transform:
   m_GameObject: {fileID: 6092620077327519174}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.119, y: -0.126, z: 0}
+  m_LocalPosition: {x: 0.289, y: -0.126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

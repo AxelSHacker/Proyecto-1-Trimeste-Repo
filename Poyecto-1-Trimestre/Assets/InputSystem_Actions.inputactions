@@ -113,6 +113,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CheatsMenu",
+                    "type": "Button",
+                    "id": "1e38add3-57af-463b-bf62-1c3dfd59f0a7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -542,6 +551,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Schield",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6c3d91e-0bf9-4071-abfd-4935884f37ac",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "CheatsMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

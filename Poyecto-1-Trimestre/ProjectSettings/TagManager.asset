@@ -10,6 +10,7 @@ TagManager:
   - Proyectil
   - Sword
   - CheckPoint
+  - Potion
   layers:
   - Default
   - TransparentFX

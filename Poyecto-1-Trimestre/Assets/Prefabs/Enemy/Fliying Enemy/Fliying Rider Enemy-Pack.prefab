@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyinRiderEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4273115043061017914, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 5235671810504849293, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

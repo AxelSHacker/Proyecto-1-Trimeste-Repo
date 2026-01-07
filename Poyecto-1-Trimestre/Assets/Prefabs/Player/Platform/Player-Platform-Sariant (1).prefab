@@ -15003,9 +15003,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c83631afcbb59ed47955f2b33a5cb52f, type: 3}
   - {fileID: 8300000, guid: 272859bee071a834ca6f7a1276bcf31c, type: 3}
   shieldImpact:
-  - {fileID: 8300000, guid: 4289be3018ff8a54f9f74de2f6ad4a46, type: 3}
-  - {fileID: 8300000, guid: c2c8610f357ee744fa130a1f8561fd94, type: 3}
-  - {fileID: 8300000, guid: 58b76455dbce68d4c81666691ed216e5, type: 3}
+  - {fileID: 8300000, guid: 3d0f15503151aeb48a4e5144024ccc1f, type: 3}
+  - {fileID: 8300000, guid: 3a0766bc81470e24c8a5f8904bec9824, type: 3}
+  - {fileID: 8300000, guid: 89876d7dcff085b4eae629fae0a49a6d, type: 3}
+  - {fileID: 8300000, guid: 5f3d77416a90bfb4b8ffe29390c29cff, type: 3}
+  - {fileID: 8300000, guid: 9c93bd7b60d2d6e419a1cde1801fbc9e, type: 3}
+  - {fileID: 8300000, guid: 26b85c1731c749446923249734202ff9, type: 3}
   speed: 40
   speedMultiplier: 6
   maxSpeed: 70
@@ -15020,8 +15023,10 @@ MonoBehaviour:
   timer: 0
   attacking: 0
   schieldOn: 0
-  powerUpTimer: 3
-  maxTimer: 0
+  invencibilityMaxTimer: 0
+  speedUpMaxTimer: 0
+  invencibilityTimer: 0
+  speedUpTimer: 0
   fairy: {fileID: 4894655318933904220}
   speedUp: {fileID: 3342787550311754149}
   speedUpVelocity: 0.04
@@ -15239,6 +15244,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: faff5514-901c-44ae-b4bc-22edc04450f1
     m_ActionName: 'Player/Schield[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1e38add3-57af-463b-bf62-1c3dfd59f0a7
+    m_ActionName: 'Player/CheatsMenu[/Keyboard/f1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -30024,6 +30033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017365677505534253}
   - component: {fileID: 5761567803416694386}
+  - component: {fileID: 322752465174187486}
   m_Layer: 6
   m_Name: Schield
   m_TagString: Untagged
@@ -30092,6 +30102,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &322752465174187486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647972144338226161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311cb2dc42ef352459aee1056ffcd472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 7910906844504136072}
+  shieldImpact:
+  - {fileID: 8300000, guid: 3d0f15503151aeb48a4e5144024ccc1f, type: 3}
+  - {fileID: 8300000, guid: 3a0766bc81470e24c8a5f8904bec9824, type: 3}
+  - {fileID: 8300000, guid: 89876d7dcff085b4eae629fae0a49a6d, type: 3}
+  - {fileID: 8300000, guid: 5f3d77416a90bfb4b8ffe29390c29cff, type: 3}
+  - {fileID: 8300000, guid: 9c93bd7b60d2d6e419a1cde1801fbc9e, type: 3}
+  - {fileID: 8300000, guid: 26b85c1731c749446923249734202ff9, type: 3}
 --- !u!1 &8714199589691560240
 GameObject:
   m_ObjectHideFlags: 0

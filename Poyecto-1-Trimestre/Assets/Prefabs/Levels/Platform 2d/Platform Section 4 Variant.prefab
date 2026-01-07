@@ -5002,6 +5002,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2444807140661757946, guid: c34189989ae004041905062555e855c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.14
+      objectReference: {fileID: 0}
     - target: {fileID: 2748261794807311660, guid: c34189989ae004041905062555e855c0, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -9301,6 +9305,8 @@ PrefabInstance:
     - {fileID: 6329525199722787987, guid: c34189989ae004041905062555e855c0, type: 3}
     - {fileID: 3794109224437862365, guid: c34189989ae004041905062555e855c0, type: 3}
     - {fileID: 1283286156703841659, guid: c34189989ae004041905062555e855c0, type: 3}
+    - {fileID: 270753234907495284, guid: c34189989ae004041905062555e855c0, type: 3}
+    - {fileID: 9041813411876590828, guid: c34189989ae004041905062555e855c0, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 468604491146269472, guid: c34189989ae004041905062555e855c0, type: 3}
       insertIndex: -1

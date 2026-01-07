@@ -242,8 +242,10 @@ MonoBehaviour:
   maxJump: 0
   isGrounded: 0
   normalGravity: 0
-  powerUpTimer: 3
-  maxTimer: 0
+  invencibilityMaxTimer: 0
+  speedUpMaxTimer: 0
+  invencibilityTimer: 0
+  speedUpTimer: 0
   fairy: {fileID: 7529641496524132542}
   speedUp: {fileID: 4955071382077535675}
   speedUpVelocity: 0.003
@@ -405,6 +407,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: faff5514-901c-44ae-b4bc-22edc04450f1
     m_ActionName: 'Player/Schield[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1e38add3-57af-463b-bf62-1c3dfd59f0a7
+    m_ActionName: 'Player/CheatsMenu[/Keyboard/f1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -525,6 +531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fairy
       objectReference: {fileID: 0}
+    - target: {fileID: 4265476955668605299, guid: 2ce4ff9c2305ac84e9af18d378d5d4b0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -551,6 +561,10 @@ PrefabInstance:
     - target: {fileID: 1491058885758688703, guid: d2fc4922b2d52814abb4eb757acb7ff7, type: 3}
       propertyPath: m_Name
       value: Footstep
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491058885758688703, guid: d2fc4922b2d52814abb4eb757acb7ff7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8301555768792225564, guid: d2fc4922b2d52814abb4eb757acb7ff7, type: 3}
       propertyPath: m_LocalPosition.x

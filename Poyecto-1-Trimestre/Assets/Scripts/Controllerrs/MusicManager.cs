@@ -54,9 +54,9 @@ public class MusicManager : MonoBehaviour
         if (audioSource.clip == menuClip) return;
         audioSource.clip = menuClip;
         audioSource.Play();
-        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        //if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         //Iniciamos Coroutine
-        fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
+        //fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
 
     }
 
@@ -88,7 +88,7 @@ public class MusicManager : MonoBehaviour
     }
     public void SFXPlayer(AudioClip audioClip)
     {
-        audioSource.PlayOneShot(audioClip);
+        sfxSource.PlayOneShot(audioClip);
     }
     private IEnumerator FadeAndChangeClip(AudioClip clip)
     {
@@ -126,7 +126,7 @@ public class MusicManager : MonoBehaviour
 
         while (count < pitchTTiime)
         {
-            audioSource.panStereo = Mathf.Lerp(current, target, count / pitchTTiime);
+            audioSource.pitch = Mathf.Lerp(current, target, count / pitchTTiime);
             count += Time.deltaTime;
             yield return null;
         }

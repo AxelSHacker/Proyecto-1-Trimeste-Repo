@@ -8,30 +8,24 @@ public class FlyingEnemy : MonoBehaviour
         Patrol,
         Chase,
         Attack,
-
         Death,
-
     }
+
+
     [Header("VARIABLES"), SerializeField]
     float patrolVelocity;
-    [SerializeField]
-    float chaseVelocity;
-    [SerializeField]
-    int currentPatrolIndex;
-    [SerializeField]
-    float chaseRadius;
-    [SerializeField]
-    float _Distance;
-    [SerializeField]
-    float attackRadius;
-    [SerializeField]
-    float attackTimer;
-    [SerializeField]
-    float maxAttackTimer;
-    [SerializeField]
-    float attackVelocity;
-    [SerializeField]
-    int points;
+    [SerializeField] float chaseVelocity;
+    [SerializeField] int currentPatrolIndex;
+    [SerializeField] float chaseRadius;
+    [SerializeField] float _Distance;
+    [SerializeField] float attackRadius;
+    [SerializeField] float attackTimer;
+    [SerializeField] float maxAttackTimer;
+    [SerializeField] float attackVelocity;
+    [SerializeField] int points;
+    [SerializeField] int maxSFXRepeat = 0;
+    [SerializeField] bool pointCount = true;
+    [SerializeField] bool soundPlayed = false;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
@@ -43,7 +37,10 @@ public class FlyingEnemy : MonoBehaviour
     [SerializeField] Transform positionFireProyectil;
     [SerializeField] Transform positionLance;
     [SerializeField] Slider healtBar;
-
+    [SerializeField] AudioClip detected;
+    [SerializeField] AudioClip attack;
+    [SerializeField] AudioClip death;
+    [SerializeField] AudioClip[] swordImpactSound;
 
 
     public State currentState;
@@ -52,13 +49,16 @@ public class FlyingEnemy : MonoBehaviour
     {
 
         attackTimer = maxAttackTimer;
+        playerPosition = GameObject.Find("Player-Platform-Sariant (1)").transform;
     }
 
     void Update()
     {
         healtBar.value = _healt.enemyHealth;
+
         AnimatorController();
-        _Distance = Vector2.Distance(transform.position, playerPosition.position);
+
+
         if (_healt.enemyHealth <= 0)
         {
             StateUpdate(State.Death);
@@ -69,11 +69,13 @@ public class FlyingEnemy : MonoBehaviour
             StateUpdate(State.Attack);
         }
         else { _anim.SetBool("Attack", false); }
+
+
     }
 
     void FixedUpdate()
     {
-
+        _Distance = Vector2.Distance(transform.position, playerPosition.position);
 
         if (_Distance < chaseRadius)
         {
@@ -96,6 +98,8 @@ public class FlyingEnemy : MonoBehaviour
     //Funcion para ir cambiando los estados del enemigo
     private void StateUpdate(State currentState)
     {
+
+
         switch (currentState)
         {
             case State.Patrol:
@@ -114,19 +118,34 @@ public class FlyingEnemy : MonoBehaviour
 
                 break;
             case State.Death:
-
+                healtBar.enabled = false;
                 Death();
                 break;
 
 
         }
     }
-    //Funcion que hace que el Rigidbody vaya patrullando entre 2 puntos
+
+    #region OnTrigger/OnCollider
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, swordImpactSound.Length);
+
+
+        if (collision.gameObject.CompareTag("Sword"))
+        {
+            MusicManager.Instance.SFXPlayer(swordImpactSound[randomIndex]);
+            
+        }
+    }
+    #endregion
+
+    #region Funtions
     private void Patrol()
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
         gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity);
-
+        soundPlayed = false;
     }
 
 
@@ -134,7 +153,12 @@ public class FlyingEnemy : MonoBehaviour
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
         gameObject.Chase(_Rb, _Distance, attackRadius, playerPosition, chaseVelocity);
-        
+        if (!soundPlayed)
+        {
+            soundPlayed = true;
+            MusicManager.Instance.SFXPlayer(detected);
+           
+        }
 
     }
     private void AnimatorController()
@@ -150,7 +174,7 @@ public class FlyingEnemy : MonoBehaviour
     public void Attack()
     {
 
-
+        maxSFXRepeat = 0;
         transform.EnemyTourn(playerPosition);
 
         attackTimer -= Time.deltaTime;
@@ -172,11 +196,17 @@ public class FlyingEnemy : MonoBehaviour
 
     private void Death()
     {
-        GameManager.Instance.PicupCollectable(points);
-        _Rb.linearVelocity = Vector2.zero;
-        _anim.SetBool("Death", true);
-    }
+        if (pointCount)
+        {
+            GameManager.Instance.PicupCollectable(points);
+            MusicManager.Instance.SFXPlayer(death);
+            _anim.SetBool("Death", true);
+            pointCount = false;
+        }
 
+        _Rb.linearVelocity = Vector2.zero;
+    }
+    #endregion
 
 
 
@@ -188,30 +218,33 @@ public class FlyingEnemy : MonoBehaviour
 
     public void LaunchProyectil(GameObject proyectil, Transform shootingPoint)
     {
-        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 1f) - 
+        Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) -
                              (Vector2)shootingPoint.position).normalized;
         transform.EnemyRotattion(playerPosition);
 
-        GameObject instantiateProyectil = Instantiate(proyectil, shootingPoint.position, 
+        GameObject instantiateProyectil = Instantiate(proyectil, shootingPoint.position,
                                                       proyectil.transform.rotation);
 
         instantiateProyectil.transform.EnemyRotattion(playerPosition);
 
         instantiateProyectil.GetComponent<Rigidbody2D>().linearVelocity = direction * attackVelocity;
+
+        Destroy(instantiateProyectil, 3f);
     }
 
     public void OneProyectil()
     {
         LaunchProyectil(fireProyectil, positionFireProyectil);
+         MusicManager.Instance.SFXPlayer(attack);
     }
 
     public void TwoProyectil()
     {
         LaunchProyectil(fireProyectil, positionFireProyectil);
 
-        
+
         LaunchProyectil(lance, positionLance);
     }
-
+    
     #endregion
 }

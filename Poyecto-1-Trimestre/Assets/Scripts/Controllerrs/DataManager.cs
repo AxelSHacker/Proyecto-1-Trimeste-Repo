@@ -69,6 +69,11 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
+    public void ClearMaxScore()
+    {
+        PlayerPrefs.DeleteKey("maxScore");
+    }
+
 
     void Update()
     {

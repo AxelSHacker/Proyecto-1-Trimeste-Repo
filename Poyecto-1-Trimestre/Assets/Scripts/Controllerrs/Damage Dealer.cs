@@ -15,16 +15,16 @@ public class DamageDealer : MonoBehaviour
 
             _healt.Damage(damage);
         }
-
-
     }
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+

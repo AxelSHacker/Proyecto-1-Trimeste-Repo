@@ -1,4 +1,5 @@
 
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 
 public class SpaceShipPlatform : MonoBehaviour
@@ -8,18 +9,13 @@ public class SpaceShipPlatform : MonoBehaviour
 
     [Header("References"), SerializeField]
     Rigidbody2D shipRB;
-    [SerializeField]
-    Transform linePosition;
-    [SerializeField]
-    Transform from;
-    [SerializeField]
-    Transform to;
-    [SerializeField]
-    LayerMask contactLayer;
-    [SerializeField]
-    Transform playerTransform;
-    [SerializeField]
-    Rigidbody2D playerRB;
+    [SerializeField] Transform linePosition;
+    [SerializeField] Transform from;
+    [SerializeField] Transform to;
+    [SerializeField] LayerMask contactLayer;
+    [SerializeField] Transform playerTransform;
+    [SerializeField] Rigidbody2D playerRB;
+    [SerializeField] CanvasGroup shipAlert;
 
     #endregion
 
@@ -57,6 +53,8 @@ public class SpaceShipPlatform : MonoBehaviour
     void Start()
     {
         timer = movementTimer;
+        shipAlert.SetEnable(false);
+        velocity = maxVelocity;
     }
 
 
@@ -94,8 +92,10 @@ public class SpaceShipPlatform : MonoBehaviour
     }
     private void Movement()
     {
+        if (timer <= 2f) shipAlert.SetEnable(true);
         if (timer <= 0f)
         {
+            shipAlert.SetEnable(false);
             shipRB.AddForceX(velocity, ForceMode2D.Force);
 
             if (transform.position.x >= to.position.x)
@@ -105,12 +105,18 @@ public class SpaceShipPlatform : MonoBehaviour
                 timer = movementTimer;
             }
         }
-        //PlayerFinder();
+        else
+        {
+            transform.position = from.position;
+        }
+
     }
     private void PlayerFinder()
     {
         RaycastHit2D contact = Physics2D.Linecast(linePosition.position, linePosition.position + (-linePosition.up) * lineLenght,
                                                                  contactLayer);
+
+        if (contact.collider == null) return;
         if (contact.collider.gameObject.CompareTag("Player"))
         {
             chaseTimer = 5f;
@@ -123,7 +129,8 @@ public class SpaceShipPlatform : MonoBehaviour
             chaseTimer -= Time.deltaTime;
             playerCheck = false;
             playerRB.gravityScale = 1f;
-            velocity = 0.5f;
+            velocity = maxVelocity;
+
         }
         if (chaseTimer >= 0f)
         {

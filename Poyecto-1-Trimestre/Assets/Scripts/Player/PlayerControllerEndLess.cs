@@ -12,49 +12,36 @@ public class PlayerControllerEndLess : MonoBehaviour
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _rB;
-    [SerializeField]
-    Animator _anim;
-    [SerializeField]
-    Vector2 offSet;
-    [SerializeField]
-    LayerMask Detectable;
-    [SerializeField]
-    Transform detetablePoint;
-    [SerializeField]
-    SpriteRenderer _spriteRenderer;
-    [SerializeField]
-    ParticleSystem dust;
+    [SerializeField] Animator _anim;
+    [SerializeField] Vector2 offSet;
+    [SerializeField] LayerMask Detectable;
+    [SerializeField] Transform detetablePoint;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] ParticleSystem dust;
 
     [Header("MOVEMENT")]
     public bool autoMovement = true;
-    [SerializeField]
-    float speed;
-    [SerializeField]
-    float maxSpeed;
+    [SerializeField] float speed;
+    [SerializeField] float maxSpeed;
 
     [Header("JUMP"), SerializeField]
     float jumpForce;
-    [SerializeField]
-    int maxJump;
-    [SerializeField]
-    bool isGrounded;
+    [SerializeField] int maxJump;
+    [SerializeField] bool isGrounded;
 
     [Header("FALLING"), SerializeField]
     float normalGravity;
 
     [Header("POWER UP"), SerializeField]
-    float powerUpTimer;
-    [SerializeField]
-    float maxTimer = 0;
+    float invencibilityMaxTimer;
+    [SerializeField] float speedUpMaxTimer;
+    [SerializeField] float invencibilityTimer = 0;
+    [SerializeField] float speedUpTimer = 0;
     GameObject collisionObject;
-    [SerializeField]
-    ParticleSystem fairy;
-    [SerializeField]
-    ParticleSystem speedUp;
-    [SerializeField]
-    float speedUpVelocity;
-    [SerializeField]
-    bool canDie = true;
+    [SerializeField] ParticleSystem fairy;
+    [SerializeField] ParticleSystem speedUp;
+    [SerializeField] float speedUpVelocity;
+    public bool canDie = true;
     [Header("SOUNDS"), SerializeField]
     AudioClip jump;
     [SerializeField] AudioClip[] death;
@@ -70,18 +57,38 @@ public class PlayerControllerEndLess : MonoBehaviour
     }
     void Update()
     {
-        maxTimer -= Time.deltaTime;
+
+
         AnimatorController();
         GroundCheck();
         DeathFalling();
-        if (maxTimer > 0)
+        if (invencibilityTimer > 0)
         {
-            if (!canDie) { GameManager.Instance.Invincibility(collisionObject); }
-            else { _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity; }
+            invencibilityTimer -= Time.deltaTime;
+            Invincibility(collisionObject);
         }
+        else
+        {
+            canDie = true;
+        }
+        
+
+
+
+
     }
     void FixedUpdate()
     {
+        
+        if (speedUpTimer > 0)
+        {
+            maxSpeed = 100f;
+        }
+        else
+        {
+           maxSpeed = 85f;
+        }
+
         Movement();
     }
     void OnDrawGizmos()
@@ -96,7 +103,7 @@ public class PlayerControllerEndLess : MonoBehaviour
         {
             canDie = false;
             Destroy(collision.gameObject);
-            maxTimer = powerUpTimer;
+            invencibilityTimer = invencibilityMaxTimer;
             fairy.Play();
             MusicManager.Instance.SFXPlayer(powerUp);
 
@@ -104,9 +111,9 @@ public class PlayerControllerEndLess : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Speed Up"))
         {
-            canDie = true;
+
             Destroy(collision.gameObject);
-            maxTimer = powerUpTimer;
+            speedUpTimer = speedUpMaxTimer;
             speedUp.Play();
             MusicManager.Instance.SFXPlayer(powerUp);
         }
@@ -115,10 +122,10 @@ public class PlayerControllerEndLess : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-
             collisionObject = collision.gameObject;
             if (canDie) Death();
         }
+
     }
     #endregion
 
@@ -152,8 +159,8 @@ public class PlayerControllerEndLess : MonoBehaviour
 
 
 
-
     #region Funciones 
+
     //Funcion de movimiento
     private void Movement()
     {
@@ -223,12 +230,18 @@ public class PlayerControllerEndLess : MonoBehaviour
     //Funcion para controlar la muerte de el player
     private void Death()
     {
-        //Paramos el movimiento automaico del player
         int randomIndex = UnityEngine.Random.Range(0, death.Length);
+        //Paramos el movimiento automaico del player
+        int count = 0;
         autoMovement = false;
         //Activamos la animacion de muerte
         _anim.SetBool("Death", true);
-        MusicManager.Instance.SFXPlayer(death[randomIndex]);
+        if (count == 0)
+        {
+            MusicManager.Instance.SFXPlayer(death[randomIndex]);
+            count++;
+        }
+
         //se instancia el panel de derrota
         Invoke("EndGame", 1.5f);
     }
@@ -236,8 +249,13 @@ public class PlayerControllerEndLess : MonoBehaviour
     {
         if (transform.position.y < -5.8f)
         {
+            int count = 0;
             int randomIndex = UnityEngine.Random.Range(0, death.Length);
-            MusicManager.Instance.SFXPlayer(death[randomIndex]);
+            if (count == 0)
+            {
+                MusicManager.Instance.SFXPlayer(death[randomIndex]);
+                count++;
+            }
             GameManager.Instance.EndGame();
             autoMovement = false;
         }
@@ -248,16 +266,23 @@ public class PlayerControllerEndLess : MonoBehaviour
     }
     private void EndGame()
     {
-
         GameManager.Instance.EndGame();
     }
+    public void InvincibleButton()
+    {
+        canDie = !canDie;
+    }
+
+    public void SpeedUpButton()
+    {
+        speedUpTimer = 5;
+    }
     #endregion
-    /// <summary>
-    /// Asigna el colo del flash e inicia la corutina de recuperacion del color
-    /// en el tiempo indicado
-    /// </summary>
-    /// <param name="color"></param>
-    /// <param name="time"></param>
+
+
+
+
+    #region Couroutine
     public void StartColorFlash(Color color, float time)
     {
         //Si ya hay una corutina funcionando , la paro
@@ -286,12 +311,31 @@ public class PlayerControllerEndLess : MonoBehaviour
         _spriteRenderer.color = Color.white;
 
     }
+    #endregion
 
+
+
+
+
+    #region Animation Events
     public void DustEffect()
     {
         dust.Play();
 
     }
+    #endregion
+
+
+
+
+
+    #region Power Up
+    public void Invincibility(GameObject gameObject)
+    {
+        Destroy(gameObject);
+    }
+
+    #endregion
 }
 
 

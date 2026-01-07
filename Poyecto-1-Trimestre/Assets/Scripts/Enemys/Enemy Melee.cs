@@ -1,6 +1,4 @@
-using System;
-using System.Data;
-using JetBrains.Annotations;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +9,10 @@ public class EnemyMelee : MonoBehaviour
         Patrol,
         Chase,
         Attack,
-
         Death,
-
     }
+
+
     [Header("VARIABLES"), SerializeField]
     float patrolVelocity;
     [SerializeField] float chaseVelocity;
@@ -24,6 +22,9 @@ public class EnemyMelee : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] int points;
     [SerializeField] int maxSFXRpeat = 0;
+    [SerializeField] bool pointCount = true;
+    [SerializeField] bool soundPlayed = false;
+
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
@@ -34,15 +35,20 @@ public class EnemyMelee : MonoBehaviour
     [SerializeField] AudioClip detected;
     [SerializeField] AudioClip attack;
     [SerializeField] AudioClip death;
+    [SerializeField] AudioClip[] swordImpactSound;
 
     public State currentState;
+    void Start()
+    {
+        StateUpdate(State.Patrol);
+        playerPosition = GameObject.Find("Player-Platform-Sariant (1)").transform;
+    }
 
 
     void Update()
     {
         healtBar.value = _healt.enemyHealth;
         AnimatorController();
-        _Distance = Vector2.Distance(transform.position, playerPosition.position);
         if (_healt.enemyHealth <= 0)
         {
             StateUpdate(State.Death);
@@ -54,6 +60,14 @@ public class EnemyMelee : MonoBehaviour
         }
         else { _anim.SetBool("Attack", false); }
 
+
+
+    }
+
+    void FixedUpdate()
+    {
+        _Distance = Vector2.Distance(transform.position, playerPosition.position);
+
         if (_Distance < chaseRadius)
         {
             StateUpdate(State.Chase);
@@ -62,7 +76,6 @@ public class EnemyMelee : MonoBehaviour
         {
             StateUpdate(State.Patrol);
         }
-
     }
     void OnDrawGizmos()
     {
@@ -72,6 +85,17 @@ public class EnemyMelee : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, swordImpactSound.Length);
+
+        if (collision.gameObject.CompareTag("Sword"))
+        {
+            MusicManager.Instance.SFXPlayer(swordImpactSound[randomIndex]);
+        }
+    }
+    #region  Funtions
     //Funcion para ir cambiando los estados del enemigo
     private void StateUpdate(State currentState)
     {
@@ -93,7 +117,7 @@ public class EnemyMelee : MonoBehaviour
 
                 break;
             case State.Death:
-
+                healtBar.enabled = false;
                 Death();
                 break;
 
@@ -104,18 +128,18 @@ public class EnemyMelee : MonoBehaviour
     private void Patrol()
     {
         gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity);
-
+        soundPlayed = false;
     }
 
 
     private void Chase()
     {
         gameObject.Chase(_Rb, _Distance, attackRadius, playerPosition, chaseVelocity);
-        
-        if (maxSFXRpeat <= 0)
+
+        if (!soundPlayed)
         {
+            soundPlayed = true;
             MusicManager.Instance.SFXPlayer(detected);
-            maxSFXRpeat++;
         }
 
     }
@@ -135,17 +159,24 @@ public class EnemyMelee : MonoBehaviour
 
         _anim.SetBool("Attack", true);
     }
-
-
-
     private void Death()
+
+
+
     {
-        
-        GameManager.Instance.PicupCollectable(points);
-        MusicManager.Instance.SFXPlayer(death);
+
+        if (pointCount)
+        {
+            GameManager.Instance.PicupCollectable(points);
+            pointCount = false;
+            MusicManager.Instance.SFXPlayer(death);
+            _anim.SetBool("Death", true);
+
+        }
         _Rb.linearVelocity = Vector2.zero;
-        _anim.SetBool("Death", true);
     }
+    #endregion
+
 
 
 

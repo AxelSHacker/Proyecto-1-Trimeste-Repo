@@ -1,8 +1,10 @@
 
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements.Experimental;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Continue Panel")]
     public CanvasGroup continueCanvasGroup;
-    public TextMeshProUGUI healtText;
+
     public TextMeshProUGUI continueScoreTMP;
 
     public TextMeshProUGUI maxScoerTMPcontinueplanel;
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider sfxVolumen;
     public bool platformEndGame = false;
 
+    public GameObject cheatsMenuPanel;
+
     private static GameManager _instance;
 
     public static GameManager Instance => _instance;
@@ -56,9 +60,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-
     }
+
+
 
     void Start()
     {
@@ -110,7 +114,7 @@ public class GameManager : MonoBehaviour
             DataManager.Instance.Save();
             //Actuaiamos e texto que muestrta el rercord
             maxScoerTMPcontinueplanel.text = DataManager.Instance.maxScore.ToString();
-            healtText.text = collectableCount.ToString();
+            
             canvasGroup.SetEnable(false);
             continueCanvasGroup.SetEnable(true);
             continueScoreTMP.text = collectableCount.ToString();
@@ -121,7 +125,7 @@ public class GameManager : MonoBehaviour
             canvasGroup.SetEnable(false);
             continueCanvasGroup.SetEnable(true);
             continueScoreTMP.text = collectableCount.ToString();
-            healtText.text = collectableCount.ToString();
+            
             maxScoerTMPcontinueplanel.text = DataManager.Instance.maxScore.ToString();
         }
     }
@@ -188,10 +192,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-    public void Invincibility(GameObject gameObject)
-    {
-        Destroy(gameObject);
-    }
+
 
 
     public void OptionMenu()
@@ -200,13 +201,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void TransitionPlatformEndless()
+    public void ToggleCheatsMenu()
     {
-
-
+        cheatsMenuPanel.SetActive(!cheatsMenuPanel.activeSelf);
     }
 
 
+    public void ChangeTimeScale(float value)
+    {
+        value = Mathf.Clamp01(value);
+        Time.timeScale = value;
+    }
 
 
 

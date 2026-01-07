@@ -34,81 +34,83 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     [Header("MOVEMENT")]
 
-    [SerializeField]
-    float speed;
-    [SerializeField]
-    float speedMultiplier;
-    [SerializeField]
-    float maxSpeed;
-    [SerializeField]
-    float xMotion;
+    [SerializeField] float speed;
+    [SerializeField] float speedMultiplier;
+    [SerializeField] float maxSpeed;
+    [SerializeField] float xMotion;
 
     [Header("JUMP"), SerializeField]
     float jumpForce;
-    [SerializeField]
-    int maxJump;
-    [SerializeField]
-    bool isGrounded;
+    [SerializeField] int maxJump;
+    [SerializeField] bool isGrounded;
 
     [Header("DASCH"), SerializeField]
     float dashForce;
-    [SerializeField]
-    int dashRepeat;
+    [SerializeField] int dashRepeat;
+    [SerializeField] bool onDasching;
 
     [Header("FALLING"), SerializeField]
     float normalGravity;
 
     [Header("ATTACK"), SerializeField]
     int attackCount;
-    [SerializeField]
-    float timer;
-    [SerializeField]
-    bool attacking = false;
+    [SerializeField] float timer;
+    [SerializeField] bool attacking = false;
 
     [Header("SCHIELD"), SerializeField]
     bool schieldOn;
     [Header("POWER UP"), SerializeField]
-    float powerUpTimer;
-    [SerializeField]
-    float maxTimer = 0;
+    float invencibilityMaxTimer;
+    [SerializeField] float speedUpMaxTimer;
+    [SerializeField] float invencibilityTimer = 0;
+    [SerializeField] float speedUpTimer = 0;
     GameObject collisionObject;
-    [SerializeField]
-    ParticleSystem fairy;
-    [SerializeField]
-    ParticleSystem speedUp;
-    [SerializeField]
-    float speedUpVelocity;
-    [SerializeField]
-    bool canDie = true;
+    [SerializeField] ParticleSystem fairy;
+    [SerializeField] ParticleSystem speedUp;
+    [SerializeField] float speedUpVelocity;
+    [SerializeField] bool canDie = true;
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
+    [Header("Point")]
+    [SerializeField] int endLessPoint;
+    [SerializeField] bool pointCount;
 
 
     void Start()
     {
         normalGravity = _rB.gravityScale;
-
-
-
-
+        endLessPoint = DataManager.Instance.actualGameScore;
+        GameManager.Instance.collectableCount = endLessPoint;
     }
+
+
+
     void Update()
     {
         if (_healt.health < 0)
         {
             Death();
         }
+        if (invencibilityTimer > 0)
+        {
+            invencibilityTimer -= Time.deltaTime;
+            Invincibility(collisionObject);
+        }
+        else
+        {
+            canDie = true;
+        }
+        if (speedUpTimer > 0)
+        {
+            _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity;
+        }
 
-        maxTimer -= Time.deltaTime;
+
         AnimatorController();
         GroundCheck();
         DeathFalling();
         SliderController();
-        if (maxTimer > 0)
-        {
-            if (!canDie) { GameManager.Instance.Invincibility(collisionObject); }
-            else { _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity; }
-        }
+
     }
     void FixedUpdate()
     {
@@ -122,11 +124,17 @@ public class PlayerControllerPlatform : MonoBehaviour
     #region Trigger/Collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+
+        if (collision.gameObject.CompareTag("Potion"))
+        {
+            _healt.health += 5;
+        }
         if (collision.gameObject.CompareTag("Invencibility"))
         {
             canDie = false;
             Destroy(collision.gameObject);
-            maxTimer = powerUpTimer;
+            invencibilityTimer = invencibilityMaxTimer;
             fairy.Play();
 
         }
@@ -134,25 +142,11 @@ public class PlayerControllerPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Speed Up"))
         {
             Destroy(collision.gameObject);
-            maxTimer = powerUpTimer;
+            speedUpTimer = speedUpMaxTimer;
             speedUp.Play();
             canDie = true;
 
         }
-
-
-        if (collision.gameObject.CompareTag("Proyectil") || collision.gameObject.CompareTag("Sword"))
-        {
-            if (collision.gameObject.CompareTag("Proyectil"))
-            {
-                Destroy(collision.gameObject);
-            }
-            _anim.SetTrigger("Impact");
-            int randomIndex = UnityEngine.Random.Range(0, shieldImpact.Length);
-            MusicManager.Instance.SFXPlayer(shieldImpact[randomIndex]);
-            
-        }
-
         if (collision.gameObject.CompareTag("CheckPoint"))
         {
             GameManager.Instance.continueCanvasGroup.SetEnable(true);
@@ -193,7 +187,12 @@ public class PlayerControllerPlatform : MonoBehaviour
     {
         if (context.started)
         {
+            onDasching = true;
             Dash();
+        }
+        else if (context.canceled)
+        {
+            onDasching = false;
         }
     }
 
@@ -242,6 +241,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     private void PlatformMovement()
     {
         if (_healt.noDamage) return;
+        if (onDasching) return;
         //Aqui le indicamos que se mueva al rigidbody
 
         _rB.linearVelocityX = xMotion * speed * speedMultiplier * Time.deltaTime;
@@ -307,11 +307,18 @@ public class PlayerControllerPlatform : MonoBehaviour
     //Funcion para controlar la muerte de el player
     private void Death()
     {
+        if (pointCount)
+        {
+            GameManager.Instance.collectableCount += endLessPoint;
+            pointCount = false;
+        }
         //Activamos la animacion de muerte
         _anim.SetBool("Death", true);
         //se instancia el panel de derrota
         Invoke("EndGame", 1.5f);
     }
+
+
     private void Dash()
     {
         if (dashRepeat >= 0 && !isGrounded)
@@ -319,18 +326,19 @@ public class PlayerControllerPlatform : MonoBehaviour
             dashRepeat--;
             if (transform.rotation.y == 0)
             {
-
                 _rB.AddForceX(dashForce, ForceMode2D.Impulse);
             }
+
             else
             {
-
                 _rB.AddForceX(-dashForce, ForceMode2D.Impulse);
             }
-
-
         }
     }
+
+
+
+
 
     private void Falling()
     {
@@ -348,11 +356,14 @@ public class PlayerControllerPlatform : MonoBehaviour
             _healt.health = 0;
         }
     }
-
+            
     private void EndGame()
+
+
     {
         GameManager.Instance.EndGame();
     }
+        
     //Funcion de control de Ataques
     private void Attack()
     {
@@ -365,38 +376,35 @@ public class PlayerControllerPlatform : MonoBehaviour
             MusicManager.Instance.SFXPlayer(attacks[randomIndex]);
 
 
-            if (attacking)
-            {
-                attackCount++;
-                _anim.SetInteger("Combo", attackCount);
-                _anim.SetTrigger("Attacking");
-                attacking = false;
-                MusicManager.Instance.SFXPlayer(attacks[randomIndex]);
-            }
+        }
+        else if (attacking)
+        {
+
+            attackCount++;
+            _anim.SetInteger("Combo", attackCount);
+            _anim.SetTrigger("Attacking");
+            attacking = false;
+            MusicManager.Instance.SFXPlayer(attacks[randomIndex]);
         }
     }
-
-
-
-
-
-
     private void SchieldOn()
     {
         _healt.noDamage = true;
         _rB.linearVelocity = Vector2.zero;
-
-
     }
+
+
 
     private void SliderController()
     {
-
         lifePoint.text = _healt.health.ToString();
     }
+
+    public void InvincibleButton()
+    {
+        _healt.health = 100;
+    }
     #endregion
-
-
 
 
 
@@ -435,13 +443,11 @@ public class PlayerControllerPlatform : MonoBehaviour
 
 
 
-
-
-
     #region Animation Event
     public void EnableCombo()
     {
         attacking = true;
+
     }
     public void ResetCombo()
     {
@@ -454,8 +460,11 @@ public class PlayerControllerPlatform : MonoBehaviour
         dust.Play();
 
     }
+    public void Invincibility(GameObject gameObject)
+    {
+        Destroy(gameObject);
+    }
     #endregion
-
 
 
 }
