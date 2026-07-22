@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyFloorRange : MonoBehaviour
+public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
 {
     public enum State
     {
@@ -27,6 +27,9 @@ public class EnemyFloorRange : MonoBehaviour
     [SerializeField] int points;
     [SerializeField] bool soundPlayed = false;
     [SerializeField] float _radioBusqueda = 7f;
+    [SerializeField] int _vidaActual;
+    [SerializeField] int _vidaMaxima;
+    bool pointCount = true;
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
@@ -42,29 +45,32 @@ public class EnemyFloorRange : MonoBehaviour
     [SerializeField] AudioClip attack;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip[] swordImpactSound;
-    [SerializeField] Collider[] colliders;
-    [SerializeField] LayerMask layerMask;
 
+    [SerializeField] State currentState;
 
-    public State currentState;
+    int IDamageabe<int>.Maxhealt => _vidaMaxima;
+    int IDamageabe<int>.Currentealt => _vidaActual;
+    bool IDamageabe<int>.IsDead => _vidaActual <= 0;
 
+    void Awake()
+    {
+        healtBar.value = _vidaMaxima;
+        _vidaActual = _vidaMaxima;
+    }
     void Start()
     {
-        playerPosition = GameObject.Find("Player-Platform-Sariant (1)").transform;
         attackTimer = maxAttackTimer;
         lastPosition = _Rb.position;
         _anim.SetBool("Death", false);
-        colliders = new Collider[1];
-        playerPosition = null;
+        if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
         StateUpdate(State.Patrol);
     }
 
     void Update()
     {
-        healtBar.value = _healt.enemyHealth;
-
+        _distance = Vector2.Distance(transform.position, playerPosition.position);
         AnimatorController();
-        if (_healt.enemyHealth <= 0)
+        if (_vidaActual <= 0)
         {
             StateUpdate(State.Death);
         }
@@ -72,19 +78,14 @@ public class EnemyFloorRange : MonoBehaviour
         {
             StateUpdate(State.Attack);
         }
-        else if (colliders.Length > 0)
+        else if (_distance <= _radioBusqueda)
         {
             StateUpdate(State.Chase);
         }
-        else if (colliders.Length <= 0)
+        else if (_distance > _radioBusqueda)
         {
             StateUpdate(State.Patrol);
         }
-    }
-
-    void FixedUpdate()
-    {
-       
     }
 
     void OnDrawGizmos()
@@ -130,12 +131,9 @@ public class EnemyFloorRange : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int randomIndex = UnityEngine.Random.Range(0, swordImpactSound.Length);
-
-
-        if (collision.gameObject.CompareTag("Sword"))
+        if (collision.TryGetComponent(out IDamageabe<int> component))
         {
             MusicManager.Instance.SFXPlayer(swordImpactSound[randomIndex]);
-
         }
     }
     #endregion
@@ -144,7 +142,7 @@ public class EnemyFloorRange : MonoBehaviour
     private void Patrol()
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
-        gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity, _radioBusqueda, layerMask, colliders);
+        gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity);
         soundPlayed = false;
     }
 
@@ -163,7 +161,7 @@ public class EnemyFloorRange : MonoBehaviour
     }
     private void AnimatorController()
     {
-        _anim.SetFloat("Velocity", speed);
+        _anim.SetFloat("Velocity", patrolVelocity);
     }
     public void Attack()
     {
@@ -172,37 +170,22 @@ public class EnemyFloorRange : MonoBehaviour
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-
             _anim.SetTrigger("Attack");
-
             attackTimer = maxAttackTimer;
-
         }
     }
     private void Death()
     {
-        GameManager.Instance.PicupCollectable(points);
-        MusicManager.Instance.SFXPlayer(death);
-        _anim.SetBool("Death", true);
         _Rb.linearVelocity = Vector2.zero;
+        if (pointCount)
+        {
+            GameManager.Instance.PicupCollectable(points);
+            MusicManager.Instance.SFXPlayer(death);
+            _anim.SetBool("Death", true);
+            pointCount = false;
+        }
     }
     #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -236,6 +219,14 @@ public class EnemyFloorRange : MonoBehaviour
     {
         LaunchProyectil(lance, positionLance);
         MusicManager.Instance.SFXPlayer(attack);
+    }
+
+    public void TakeDamag(int damage, Vector3 impactPoint = default)
+    {
+        _vidaActual -= damage;
+        healtBar.value = _vidaActual;
+
+        _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
     }
 
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public static class EnemyExtensionMethod
 {
     public static void Patrol(this GameObject thisEnemy, Transform[] patrol, Rigidbody2D _Rb, ref int currentPatrolIndex,
-                             float patrolVelocity, float radioBusqueda, LayerMask layerMaskPlayer, Collider[] colliders)
+                             float patrolVelocity)
     {
         //si la lista esta vacia, sale directamente
         if (patrol.Length < 2) return;
@@ -22,7 +22,6 @@ public static class EnemyExtensionMethod
             currentPatrolIndex = (currentPatrolIndex + 1) % patrol.Length;
             //enemySprite.flipX = patrol[currentPatrolIndex].position.x < transform.position.x;
         }
-        thisEnemy.BusquedadeObjetivo(radioBusqueda, layerMaskPlayer, colliders);
     }
     public static void Chase(this GameObject thisEnemy, Rigidbody2D _rb, ref float _Distance, float attackRadius, Transform playerPosition,
                             float chaseVelocity)
@@ -49,25 +48,5 @@ public static class EnemyExtensionMethod
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
-    public static Transform BusquedadeObjetivo(this GameObject thisEnemy, float radioBusqueda, LayerMask layerMaskPlayer, Collider[] colliders)
-    {
-        // 1. Creamos un "radar" físico que solo detecta colliders en las capas seleccionadas
-        int contactos = Physics.OverlapSphereNonAlloc(thisEnemy.transform.position, radioBusqueda, colliders, layerMaskPlayer);
-
-        if (contactos <= 0) return null;
-        Transform objetivo = null;
-        // 2. Iteramos sobre los colliders detectados para encontrar el más cercano
-        foreach (Collider col in colliders)
-        {
-            // Opcional: Si el script está en el mismo objeto que el collider, nos ignoramos a nosotros mismos
-            if (col.transform == thisEnemy.transform) continue;
-            // 3. Calculamos la distancia desde este objeto hasta cada objetivo detectado
-
-            // Actualizamos la distancia mínima y el objetivo más cercano
-            objetivo = col.transform;
-        }
-        // 5. Devolvemos el objetivo más cercano encontrado, o null si no se detectó ninguno
-        Debug.Log(objetivo);
-        return objetivo;
-    }
+    
 }

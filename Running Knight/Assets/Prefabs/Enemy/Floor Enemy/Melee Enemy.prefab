@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2562481785816822858}
   - component: {fileID: 7993778920511247126}
   - component: {fileID: 1006218136048043171}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3677408638559381099}
   - component: {fileID: 1470942559355793060}
   - component: {fileID: 3037510013935466450}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849658015985997780}
   - component: {fileID: 7836191248340515290}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 3055090658863856802}
   - component: {fileID: 7179944971203021494}
   - component: {fileID: 1112376891004722432}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 8271305157616967965}
   - component: {fileID: 664569641107580531}
   - component: {fileID: 8426141715662076406}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,8 +437,7 @@ GameObject:
   - component: {fileID: 6400750427091195193}
   - component: {fileID: 4388480371845165561}
   - component: {fileID: 3730449137837404179}
-  - component: {fileID: 989876958976525528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Melee Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -582,7 +581,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -624,13 +623,14 @@ MonoBehaviour:
   points: 5
   pointCount: 1
   soundPlayed: 0
+  _vidaActual: 0
+  _vidaMaxima: 5
   _Rb: {fileID: 6400750427091195193}
   _anim: {fileID: 882854143963117481}
   patrol:
   - {fileID: 0}
   - {fileID: 0}
   playerPosition: {fileID: 0}
-  _healt: {fileID: 989876958976525528}
   healtBar: {fileID: 7836191248340515290}
   detected: {fileID: 8300000, guid: 22b14c88d2ab3a3489e0668f50005f59, type: 3}
   attack: {fileID: 8300000, guid: a233d078992e2184da7b1fe239f0a410, type: 3}
@@ -640,27 +640,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 55a38de12cb3d73499ae6f2386ba7d86, type: 3}
   - {fileID: 8300000, guid: 8055ee6d2fa0e014d87d493af5f5b76c, type: 3}
   - {fileID: 8300000, guid: ecd2f6c4a13645b419171ac8bc4cba15, type: 3}
-  colliders: []
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
   currentState: 0
---- !u!114 &989876958976525528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7539660004611293248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c7cf667bd536934f91db256c683d962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 0
-  health: 0
-  enemysMaxHealt: 5
-  noDamage: 0
 --- !u!1 &7849773383483922141
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6944549033424050105}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

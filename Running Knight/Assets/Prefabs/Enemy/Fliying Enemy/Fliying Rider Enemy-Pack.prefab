@@ -104,9 +104,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3098091701555683683}
     m_Modifications:
+    - target: {fileID: 176013263414700031, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 246542701085239240, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504285497844565489, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114597439206596132, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4193729502714957472, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
       propertyPath: m_Name
       value: FlyinRiderEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193729502714957472, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5235671810504849293, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -147,6 +167,22 @@ PrefabInstance:
     - target: {fileID: 5235671810504849293, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447993085233845220, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579225749026252084, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704681434778956838, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071178172376250029, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7731371052466547602, guid: 8bab315a2a9a8304cb1c20f540c835bd, type: 3}
       propertyPath: m_AnchorMax.x

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
 {
     public enum State
     {
@@ -10,8 +10,6 @@ public class FlyingEnemy : MonoBehaviour
         Attack,
         Death,
     }
-
-
     [Header("VARIABLES"), SerializeField]
     float patrolVelocity;
     [SerializeField] float chaseVelocity;
@@ -26,12 +24,13 @@ public class FlyingEnemy : MonoBehaviour
     [SerializeField] float _radioBusqueda = 7f;
     [SerializeField] bool pointCount = true;
     [SerializeField] bool soundPlayed = false;
+    [SerializeField] int _vidaActual;
+    [SerializeField] int _vidaMaxima;
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
     [SerializeField] Transform[] patrol;
     [SerializeField] Transform playerPosition;
-    [SerializeField] Healt _healt;
     [SerializeField] GameObject lance;
     [SerializeField] GameObject fireProyectil;
     [SerializeField] Transform positionFireProyectil;
@@ -41,29 +40,32 @@ public class FlyingEnemy : MonoBehaviour
     [SerializeField] AudioClip attack;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip[] swordImpactSound;
-    [SerializeField] Collider[] colliders;
-    [SerializeField] LayerMask layerMask;
 
+    [SerializeField] State currentState;
 
-    public State currentState;
+    int IDamageabe<int>.Maxhealt => _vidaMaxima;
+    int IDamageabe<int>.Currentealt => _vidaActual;
+    bool IDamageabe<int>.IsDead => _vidaActual <= 0;
 
+    void Awake()
+    {
+        healtBar.value = _vidaMaxima;
+        _vidaActual = _vidaMaxima;
+    }
     void Start()
     {
         attackTimer = maxAttackTimer;
-        playerPosition = GameObject.Find("Player-Platform-Sariant (1)").transform;
+        if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
         _anim.SetBool("Death", false);
-        colliders = new Collider[1];
-        playerPosition = null;
         StateUpdate(State.Patrol);
     }
 
     void Update()
     {
-        healtBar.value = _healt.enemyHealth;
+        _distance = Vector2.Distance(transform.position, playerPosition.position);
 
         AnimatorController();
-
-        if (_healt.enemyHealth <= 0)
+        if (_vidaActual <= 0)
         {
             StateUpdate(State.Death);
         }
@@ -71,25 +73,19 @@ public class FlyingEnemy : MonoBehaviour
         {
             StateUpdate(State.Attack);
         }
-        else if (colliders.Length > 0)
+        else if (_distance <= _radioBusqueda)
         {
             StateUpdate(State.Chase);
         }
-        else if (colliders.Length <= 0)
+        else if (_distance > _radioBusqueda)
         {
             StateUpdate(State.Patrol);
         }
     }
-
-    void FixedUpdate()
-    {
-        
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        Gizmos.DrawWireSphere(transform.position, _radioBusqueda);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
@@ -126,10 +122,9 @@ public class FlyingEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int randomIndex = UnityEngine.Random.Range(0, swordImpactSound.Length);
-        if (collision.gameObject.CompareTag("Sword"))
+        if (collision.gameObject.TryGetComponent(out IDamageabe<int> component))
         {
             MusicManager.Instance.SFXPlayer(swordImpactSound[randomIndex]);
-
         }
     }
     #endregion
@@ -138,13 +133,13 @@ public class FlyingEnemy : MonoBehaviour
     private void Patrol()
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
-        gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity, _radioBusqueda, layerMask, colliders);
+        gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity);
         soundPlayed = false;
     }
     private void Chase()
     {
         _Rb.constraints = RigidbodyConstraints2D.None;
-        gameObject.Chase(_Rb,ref _distance, attackRadius, playerPosition, chaseVelocity);
+        gameObject.Chase(_Rb, ref _distance, attackRadius, playerPosition, chaseVelocity);
         if (!soundPlayed)
         {
             soundPlayed = true;
@@ -153,7 +148,7 @@ public class FlyingEnemy : MonoBehaviour
     }
     private void AnimatorController()
     {
-        _anim.SetFloat("Velocity", _Rb.linearVelocityX);
+        _anim.SetFloat("Velocity", patrolVelocity);
     }
     public void Attack()
     {
@@ -167,6 +162,7 @@ public class FlyingEnemy : MonoBehaviour
     }
     private void Death()
     {
+        _Rb.linearVelocity = Vector2.zero;
         if (pointCount)
         {
             GameManager.Instance.PicupCollectable(points);
@@ -174,7 +170,6 @@ public class FlyingEnemy : MonoBehaviour
             _anim.SetBool("Death", true);
             pointCount = false;
         }
-        _Rb.linearVelocity = Vector2.zero;
     }
     #endregion
 
@@ -213,6 +208,14 @@ public class FlyingEnemy : MonoBehaviour
         LaunchProyectil(fireProyectil, positionFireProyectil);
         LaunchProyectil(lance, positionLance);
     }
+
+    public void TakeDamag(int damage, Vector3 impactPoint = default)
+    {
+        _vidaActual -= damage;
+        healtBar.value = _vidaActual;
+        _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
+    }
+
 
     #endregion
 }

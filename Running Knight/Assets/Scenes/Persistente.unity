@@ -219,6 +219,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ExitToMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4036020841355370223, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036020841355370223, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6034713463358681773, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1

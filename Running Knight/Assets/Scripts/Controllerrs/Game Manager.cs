@@ -101,6 +101,8 @@ public class GameManager : MonoBehaviour
         //Si la puntuacion obttenida suora la maxima
         if (newRecord)
         {
+           
+            if (nuke == null) nuke = GameObject.FindWithTag("Nuke")?.GetComponent<ParticleSystem>();
             //Efecto
             nuke.Play();
             //Actualizamos el nuevo ecord

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731371052466547602}
   - component: {fileID: 2674074026841326500}
   - component: {fileID: 7587178821877655920}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7172668868818197861}
   - component: {fileID: 6562205412594362896}
   - component: {fileID: 3525749541218552714}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 298102760085350783}
   - component: {fileID: 7348288109660753570}
   - component: {fileID: 5739532236232088114}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,8 +266,7 @@ GameObject:
   - component: {fileID: 176013263414700031}
   - component: {fileID: 2011555408504245322}
   - component: {fileID: 8098441053961616496}
-  - component: {fileID: 4804751208836581854}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlyinRiderEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -385,7 +384,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -458,7 +457,7 @@ MonoBehaviour:
   chaseVelocity: 2
   currentPatrolIndex: 0
   chaseRadius: 6
-  _Distance: 0
+  _distance: 0
   attackRadius: 4
   attackTimer: 2
   maxAttackTimer: 0
@@ -467,13 +466,15 @@ MonoBehaviour:
   _radioBusqueda: 7
   pointCount: 1
   soundPlayed: 0
+  _vidaActual: 0
+  _vidaMaxima: 3
   _Rb: {fileID: 2011555408504245322}
   _anim: {fileID: 7791042912858918097}
   patrol:
   - {fileID: 0}
   - {fileID: 0}
   playerPosition: {fileID: 0}
-  _healt: {fileID: 4804751208836581854}
+  _healt: {fileID: 0}
   lance: {fileID: 2736171915523369646, guid: d59c58d94a705fd4ea6509259b89e5f3, type: 3}
   fireProyectil: {fileID: 8785984332078258933, guid: 0f9619ce4540ff64193b6539cde0ff5a, type: 3}
   positionFireProyectil: {fileID: 9143596384174426930}
@@ -487,27 +488,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 55a38de12cb3d73499ae6f2386ba7d86, type: 3}
   - {fileID: 8300000, guid: 8055ee6d2fa0e014d87d493af5f5b76c, type: 3}
   - {fileID: 8300000, guid: ecd2f6c4a13645b419171ac8bc4cba15, type: 3}
-  colliders: []
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
   currentState: 0
---- !u!114 &4804751208836581854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4193729502714957472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c7cf667bd536934f91db256c683d962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 0
-  health: 0
-  enemysMaxHealt: 3
-  noDamage: 0
 --- !u!1 &6447993085233845220
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9143596384174426930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShotingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5306964843906331679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lance Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3116792100967044958}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4320116770340252630}
   - component: {fileID: 2369751292445022353}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

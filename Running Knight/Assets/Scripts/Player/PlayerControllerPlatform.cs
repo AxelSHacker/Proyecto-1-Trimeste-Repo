@@ -4,16 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
-
-
-
-public class PlayerControllerPlatform : MonoBehaviour
+public class PlayerControllerPlatform : MonoBehaviour, IDamageabe<int>
 {
-
-
-
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _rB;
 
@@ -23,7 +15,6 @@ public class PlayerControllerPlatform : MonoBehaviour
     [SerializeField] Transform detetablePoint;
     [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] ParticleSystem dust;
-    [SerializeField] Healt _healt;
     [SerializeField] TextMeshProUGUI lifePoint;
     [SerializeField] AudioClip jump;
     [SerializeField] AudioClip[] attacks;
@@ -71,24 +62,29 @@ public class PlayerControllerPlatform : MonoBehaviour
     [SerializeField] float speedUpVelocity;
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
+    [SerializeField] int _vidaActual;
+    [SerializeField] int _vidaMaxima;
+    public int Maxhealt => _vidaMaxima;
+    public int Currentealt => _vidaActual;
+    public bool IsDead => _vidaActual <= 0;
+
     void Start()
     {
         GameManager.Instance.AlphaCanvas(GameManager.Instance.canvasGroup, 1, false);
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.endGameCanvasGroup, 0, false);
+
         normalGravity = _rB.gravityScale;
         lifePoint.text = DataManager.Instance.actualGameScore.ToString();
-        _healt.health = DataManager.Instance.actualGameScore;
+        _vidaActual = DataManager.Instance.actualGameScore;
     }
     void Update()
     {
-        if (_healt.health <= 0)
-        {
-            Death();
-        }
-        if (invencibilityTimer > 0)
-        {
-            invencibilityTimer -= Time.deltaTime;
-            Invincibility(collisionObject);
-        }
+
+        // if (invencibilityTimer > 0)
+        // {
+        //     invencibilityTimer -= Time.deltaTime;
+        //     Invincibility(collisionObject);
+        // }
         if (speedUpTimer > 0)
         {
             _rB.linearVelocityX = _rB.linearVelocityX + speedUpVelocity;
@@ -98,7 +94,6 @@ public class PlayerControllerPlatform : MonoBehaviour
         AnimatorController();
         GroundCheck();
         DeathFalling();
-        LifeCounter();
 
     }
     void FixedUpdate()
@@ -113,18 +108,16 @@ public class PlayerControllerPlatform : MonoBehaviour
     #region Trigger/Collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.CompareTag("Potion"))
         {
-            _healt.health += 5;
+            _vidaActual += 5;
         }
-        if (collision.gameObject.CompareTag("Invencibility"))
-        {
-            Destroy(collision.gameObject);
-            invencibilityTimer = invencibilityMaxTimer;
-            fairy.Play();
-        }
+        // if (collision.gameObject.CompareTag("Invencibility"))
+        // {
+        //     Destroy(collision.gameObject);
+        //     invencibilityTimer = invencibilityMaxTimer;
+        //     fairy.Play();
+        // }
         if (collision.gameObject.CompareTag("Speed Up"))
         {
             Destroy(collision.gameObject);
@@ -207,7 +200,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         }
         if (context.canceled)
         {
-            _healt.noDamage = false;
+            schieldOn = false;
         }
     }
     #endregion
@@ -220,8 +213,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     #region Funciones 
     private void PlatformMovement()
     {
-        if (_healt.noDamage) return;
-        if (onDasching) return;
+        if (onDasching || schieldOn) return;
         //Aqui le indicamos que se mueva al rigidbody
 
         _rB.linearVelocityX = xMotion * speed * speedMultiplier * Time.deltaTime;
@@ -281,7 +273,7 @@ public class PlayerControllerPlatform : MonoBehaviour
             _anim.SetBool("OnAir", false);
         }
 
-        _anim.SetBool("SchieldOn", _healt.noDamage);
+        _anim.SetBool("SchieldOn", schieldOn);
     }
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     //Funcion para controlar la muerte de el player
@@ -320,7 +312,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         if (transform.position.y < -5.5f)
         {
             GameManager.Instance.EndGame();
-            _healt.health = 0;
+            _vidaActual = 0;
         }
     }
     //Funcion de control de Ataques
@@ -348,16 +340,12 @@ public class PlayerControllerPlatform : MonoBehaviour
     }
     private void SchieldOn()
     {
-        _healt.noDamage = true;
+        schieldOn = true;
         _rB.linearVelocity = Vector2.zero;
-    }
-    private void LifeCounter()
-    {
-        lifePoint.text = _healt.health.ToString();
     }
     public void InvincibleButton()
     {
-        _healt.health = 100;
+        _vidaActual = 100;
     }
     #endregion
 
@@ -415,9 +403,21 @@ public class PlayerControllerPlatform : MonoBehaviour
         dust.Play();
 
     }
-    public void Invincibility(GameObject gameObject)
+    // public void Invincibility(GameObject gameObject)
+    // {
+    //     Destroy(gameObject);
+    // }
+    public void TakeDamag(int damage, Vector3 impactPoint = default)
     {
-        Destroy(gameObject);
+        if (schieldOn) return;
+        _vidaActual -= damage;
+        lifePoint.text = _vidaActual.ToString();
+        _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
+
+        if (_vidaActual <= 0)
+        {
+            Death();
+        }
     }
     #endregion
 

@@ -208,9 +208,49 @@ PrefabInstance:
       propertyPath: _payerController
       value: 
       objectReference: {fileID: 986974751}
+    - target: {fileID: 2219282953128669219, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Color.b
+      value: 0.072709076
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219282953128669219, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219282953128669219, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219282953128669219, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219282953128669219, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2370076894420318160, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
       propertyPath: m_Name
       value: Space_Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810030570451785041, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810030570451785041, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Color.g
+      value: 0.90487057
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810030570451785041, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810030570451785041, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810030570451785041, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5112050011975010842, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,6 +291,26 @@ PrefabInstance:
     - target: {fileID: 5112050011975010842, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299525697468745141, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299525697468745141, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299525697468745141, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_PointLightInnerAngle
+      value: 43.727417
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299525697468745141, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_PointLightOuterAngle
+      value: 43.727417
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299525697468745141, guid: 87c32df543ecb2e4a818ebcad468b210, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -848,7 +908,6 @@ MonoBehaviour:
   _camaraLastPosition: {x: 0, y: 0}
   materialLoops: 0
   _renderer: {fileID: 1345326435}
-  transitionRendererObject: {fileID: 0}
   newBioma: {fileID: 0}
   activateTransition: 0
   transitionParallax: {fileID: 0}

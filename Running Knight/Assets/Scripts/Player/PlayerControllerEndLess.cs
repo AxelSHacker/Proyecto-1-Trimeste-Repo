@@ -34,14 +34,15 @@ public class PlayerControllerEndLess : MonoBehaviour
 
     [Header("POWER UP"), SerializeField]
     float invencibilityMaxTimer;
-    [SerializeField] float speedUpMaxTimer;
+    [SerializeField] private float speedBoostMultiplier = 1.25f; // Un 25% más de velocidad (se nota pero no descontrola)
+    [SerializeField] private float speedBoostDuration = 3f;      // Duración en segundos de la desaceleración
     [SerializeField] float invencibilityTimer = 0;
-    [SerializeField] float speedUpTimer = 0;
     GameObject collisionObject;
     [SerializeField] ParticleSystem fairy;
     [SerializeField] ParticleSystem speedUp;
     [SerializeField] float speedUpVelocity;
     public bool canDie = true;
+
     [Header("SOUNDS"), SerializeField]
     AudioClip jump;
     [SerializeField] AudioClip[] death;
@@ -51,10 +52,13 @@ public class PlayerControllerEndLess : MonoBehaviour
 
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
+    Coroutine _speedBoostCoroutine;
     void Start()
     {
         normalGravity = _rB.gravityScale;
         GameManager.Instance.AlphaCanvas(GameManager.Instance.canvasGroup, 1, false);
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.endGameCanvasGroup, 0, false);
+        DataManager.Instance.actualGameScore = 0;
     }
     void Update()
     {
@@ -93,7 +97,7 @@ public class PlayerControllerEndLess : MonoBehaviour
         if (collision.gameObject.CompareTag("Speed Up"))
         {
             Destroy(collision.gameObject);
-            speedUpTimer = speedUpMaxTimer;
+            ApplySpeedBoost();
             speedUp.Play();
         }
     }
@@ -228,7 +232,16 @@ public class PlayerControllerEndLess : MonoBehaviour
     }
     public void SpeedUpButton()
     {
-        speedUpTimer = 5;
+        ApplySpeedBoost();
+    }
+    public void ApplySpeedBoost()
+    {
+        // Si ya había un boost activo, lo reiniciamos para no acumular corrutinas
+        if (_speedBoostCoroutine != null)
+        {
+            StopCoroutine(_speedBoostCoroutine);
+        }
+        _speedBoostCoroutine = StartCoroutine(SpeedBoostRoutine());
     }
     #endregion
 
@@ -263,6 +276,32 @@ public class PlayerControllerEndLess : MonoBehaviour
         }
         _spriteRenderer.color = Color.white;
 
+    }
+    private IEnumerator SpeedBoostRoutine()
+    {
+        // 1. Guardamos la velocidad base real actual
+        float originalSpeed = speed;
+        // 2. Calculamos la velocidad aumentada (un 25% extra sobre la actual)
+        float boostedSpeed = originalSpeed * speedBoostMultiplier;
+        // Aumentamos instantáneamente la velocidad
+        speed = boostedSpeed;
+        float elapsedTime = 0f;
+        // 3. Transición suave devolviendo la velocidad a la normalidad poco a poco
+        while (elapsedTime < speedBoostDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            // Calculamos el porcentaje transcurrido (0 a 1)
+            float t = elapsedTime / speedBoostDuration;
+
+            // Mathf.Lerp va reduciendo gradualmente desde boostedSpeed hasta originalSpeed
+            speed = Mathf.Lerp(boostedSpeed, originalSpeed, t);
+
+            yield return null; // Espera al siguiente frame
+        }
+        // Aseguramos que vuelva exactamente al valor original al terminar
+        speed = originalSpeed;
+        _speedBoostCoroutine = null;
     }
     #endregion
 

@@ -14799,7 +14799,6 @@ GameObject:
   - component: {fileID: 6836295349754599634}
   - component: {fileID: 6472921132680151442}
   - component: {fileID: 1928865232125689786}
-  - component: {fileID: 3867056205436739118}
   - component: {fileID: 4493789916468623830}
   m_Layer: 6
   m_Name: Player-Platform-Sariant (1)
@@ -14990,7 +14989,6 @@ MonoBehaviour:
   detetablePoint: {fileID: 327647938730333662}
   _spriteRenderer: {fileID: 5763934890102507041}
   dust: {fileID: 5803327790901699039}
-  _healt: {fileID: 3867056205436739118}
   lifePoint: {fileID: 544552018485735845}
   jump: {fileID: 8300000, guid: 6ca5de86e582c0647af512dcf763eea5, type: 3}
   attacks:
@@ -15018,6 +15016,7 @@ MonoBehaviour:
   isGrounded: 0
   dashForce: 10
   dashRepeat: 2
+  onDasching: 0
   normalGravity: 0
   attackCount: 0
   timer: 0
@@ -15030,23 +15029,8 @@ MonoBehaviour:
   fairy: {fileID: 4894655318933904220}
   speedUp: {fileID: 3342787550311754149}
   speedUpVelocity: 0.04
-  canDie: 1
---- !u!114 &3867056205436739118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447070645286787690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c7cf667bd536934f91db256c683d962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 0
-  health: 0
-  maxHealt: 100
-  noDamage: 0
+  _vidaActual: 0
+  _vidaMaxima: 100
 --- !u!114 &4493789916468623830
 MonoBehaviour:
   m_ObjectHideFlags: 0

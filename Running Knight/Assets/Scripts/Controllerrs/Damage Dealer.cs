@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField]
@@ -9,22 +9,10 @@ public class DamageDealer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Player"))
+        // 2. Buscar si el objeto (o su padre) tiene la interfaz de daño
+        if (other.TryGetComponent(out IDamageabe<int> iDamageable))
         {
-            other.gameObject.TryGetComponent<Healt>(out Healt _healt);
-
-            _healt.Damage(damage);
+            iDamageable.TakeDamag(damage);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-

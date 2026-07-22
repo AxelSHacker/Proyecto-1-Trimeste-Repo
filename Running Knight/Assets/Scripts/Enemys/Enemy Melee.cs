@@ -1,8 +1,9 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using static EnemyMelee;
 
-public class EnemyMelee : MonoBehaviour
+public class EnemyMelee : MonoBehaviour, IDamageabe<int>
 {
     public enum State
     {
@@ -21,43 +22,46 @@ public class EnemyMelee : MonoBehaviour
     [SerializeField] int points;
     [SerializeField] bool pointCount = true;
     [SerializeField] bool soundPlayed = false;
+    [SerializeField] int _vidaActual;
+    [SerializeField] int _vidaMaxima;
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
     [SerializeField] Transform[] patrol;
     [SerializeField] Transform playerPosition;
-    [SerializeField] Healt _healt;
     [SerializeField] Slider healtBar;
     [SerializeField] AudioClip detected;
     [SerializeField] AudioClip attack;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip[] swordImpactSound;
-    [SerializeField] Collider[] colliders;
-    [SerializeField] LayerMask layerMask;
-
     public State currentState;
+
+    int IDamageabe<int>.Maxhealt => _vidaMaxima;
+    int IDamageabe<int>.Currentealt => _vidaActual;
+    bool IDamageabe<int>.IsDead => _vidaActual <= 0;
 
     void Awake()
     {
-        healtBar.value = _healt.enemyHealth;
-        playerPosition = null;
+        healtBar.value = _vidaMaxima;
+        _vidaActual = _vidaMaxima;
     }
     void Start()
     {
         StateUpdate(State.Patrol);
 
+        if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
+
         _anim.SetBool("Death", false);
-        colliders = new Collider[1];
-        StateUpdate(State.Patrol);
     }
 
 
     void Update()
     {
-        playerPosition = gameObject.BusquedadeObjetivo(_radioBusqueda, layerMask, colliders);
         AnimatorController();
-        if (_healt.enemyHealth <= 0)
+        _distance = Vector2.Distance(transform.position, playerPosition.position);
+
+        if (_vidaActual <= 0)
         {
             StateUpdate(State.Death);
         }
@@ -65,11 +69,11 @@ public class EnemyMelee : MonoBehaviour
         {
             StateUpdate(State.Attack);
         }
-        else if (colliders.Length > 0)
+        else if (_distance <= _radioBusqueda)
         {
             StateUpdate(State.Chase);
         }
-        else if (colliders.Length <= 0)
+        else if (_distance > _radioBusqueda)
         {
             StateUpdate(State.Patrol);
         }
@@ -87,7 +91,7 @@ public class EnemyMelee : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, swordImpactSound.Length);
 
-        if (collision.gameObject.CompareTag("Sword"))
+        if (collision.gameObject.TryGetComponent(out IDamageabe<int> component))
         {
             MusicManager.Instance.SFXPlayer(swordImpactSound[randomIndex]);
         }
@@ -118,11 +122,9 @@ public class EnemyMelee : MonoBehaviour
     //Funcion que hace que el Rigidbody vaya patrullando entre 2 puntos
     private void Patrol()
     {
-        gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity, _radioBusqueda, layerMask, colliders);
+        gameObject.Patrol(patrol, _Rb, ref currentPatrolIndex, patrolVelocity);
         soundPlayed = false;
     }
-
-
     private void Chase()
     {
         gameObject.Chase(_Rb, ref _distance, attackRadius, playerPosition, chaseVelocity);
@@ -139,22 +141,20 @@ public class EnemyMelee : MonoBehaviour
     }
     private void Attack()
     {
-        _Rb.MovePosition(Vector2.zero);
+        _Rb.linearVelocityX = 0f;
 
         _anim.SetBool("Attack", true);
     }
     private void Death()
     {
+        _Rb.linearVelocity = Vector2.zero;
         if (pointCount)
         {
-            Debug.Log("Entro");
-            healtBar.enabled = false;
             GameManager.Instance.PicupCollectable(points);
-            pointCount = false;
             MusicManager.Instance.SFXPlayer(death);
             _anim.SetBool("Death", true);
+            pointCount = false;
         }
-        _Rb.linearVelocity = Vector2.zero;
     }
     #endregion
 
@@ -165,13 +165,22 @@ public class EnemyMelee : MonoBehaviour
     #region Animation Event
     public void DisableObject()
     {
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void AttackSound()
     {
         MusicManager.Instance.SFXPlayer(attack);
     }
+
+    public void TakeDamag(int damage, Vector3 impactPoint = default)
+    {
+        _vidaActual -= damage;
+
+        healtBar.value = _vidaActual;
+        _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
+    }
     #endregion
 
 }
+
