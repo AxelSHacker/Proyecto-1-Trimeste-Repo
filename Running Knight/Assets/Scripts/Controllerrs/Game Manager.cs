@@ -1,11 +1,6 @@
 
-using System;
 using TMPro;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements.Experimental;
 
 public class GameManager : MonoBehaviour
 {
