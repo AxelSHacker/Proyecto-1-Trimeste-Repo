@@ -26,6 +26,9 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     [SerializeField] bool soundPlayed = false;
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
+    bool _vivo = true;
+
+
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
     [SerializeField] Animator _anim;
@@ -62,14 +65,11 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
 
     void Update()
     {
+        AnimatorController();
+        if (!_vivo) return;
         _distance = Vector2.Distance(transform.position, playerPosition.position);
 
-        AnimatorController();
-        if (_vidaActual <= 0)
-        {
-            StateUpdate(State.Death);
-        }
-        else if (_distance <= attackRadius)
+        if (_distance <= attackRadius)
         {
             StateUpdate(State.Attack);
         }
@@ -93,28 +93,18 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     //Funcion para ir cambiando los estados del enemigo
     private void StateUpdate(State currentState)
     {
-
-
         switch (currentState)
         {
             case State.Patrol:
-
                 Patrol();
                 break;
 
             case State.Chase:
-
                 Chase();
                 break;
 
             case State.Attack:
-
                 Attack();
-
-                break;
-            case State.Death:
-                healtBar.enabled = false;
-                Death();
                 break;
         }
     }
@@ -128,6 +118,9 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
         }
     }
     #endregion
+
+
+
 
     #region Funtions
     private void Patrol()
@@ -163,13 +156,12 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     private void Death()
     {
         _Rb.linearVelocity = Vector2.zero;
-        if (pointCount)
-        {
-            GameManager.Instance.PicupCollectable(points);
-            MusicManager.Instance.SFXPlayer(death);
-            _anim.SetBool("Death", true);
-            pointCount = false;
-        }
+        healtBar.enabled = false;
+        GameManager.Instance.PicupCollectable(points);
+        MusicManager.Instance.SFXPlayer(death);
+        _anim.SetBool("Death", true);
+        pointCount = false;
+        _vivo = false;
     }
     #endregion
 
@@ -180,7 +172,6 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     {
         gameObject.SetActive(false);
     }
-
     public void LaunchProyectil(GameObject proyectil, Transform shootingPoint)
     {
         Vector2 direction = (new Vector2(playerPosition.position.x, playerPosition.position.y + 0.5f) -
@@ -196,24 +187,26 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
 
         Destroy(instantiateProyectil, 3f);
     }
-
     public void OneProyectil()
     {
         LaunchProyectil(fireProyectil, positionFireProyectil);
         MusicManager.Instance.SFXPlayer(attack);
     }
-
     public void TwoProyectil()
     {
         LaunchProyectil(fireProyectil, positionFireProyectil);
         LaunchProyectil(lance, positionLance);
     }
-
     public void TakeDamag(int damage, Vector3 impactPoint = default)
     {
         _vidaActual -= damage;
         healtBar.value = _vidaActual;
         _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
+
+        if (_vidaActual <= 0)
+        {
+            Death();
+        }
     }
 
 

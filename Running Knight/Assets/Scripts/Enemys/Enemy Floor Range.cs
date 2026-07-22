@@ -9,7 +9,6 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
         Patrol,
         Chase,
         Attack,
-        Death,
     }
 
 
@@ -30,6 +29,7 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
     bool pointCount = true;
+    bool _vivo = true;
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
@@ -68,13 +68,10 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
 
     void Update()
     {
-        _distance = Vector2.Distance(transform.position, playerPosition.position);
         AnimatorController();
-        if (_vidaActual <= 0)
-        {
-            StateUpdate(State.Death);
-        }
-        else if (_distance <= attackRadius)
+        if (!_vivo) return;
+        _distance = Vector2.Distance(transform.position, playerPosition.position);
+        if (_distance <= attackRadius)
         {
             StateUpdate(State.Attack);
         }
@@ -109,21 +106,12 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
                 break;
 
             case State.Chase:
-
                 Chase();
                 break;
 
             case State.Attack:
-
                 Attack();
-
                 break;
-            case State.Death:
-                healtBar.enabled = false;
-                Death();
-                break;
-
-
         }
     }
 
@@ -131,7 +119,7 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int randomIndex = UnityEngine.Random.Range(0, swordImpactSound.Length);
-        if (collision.TryGetComponent(out IDamageabe<int> component))
+        if (collision.TryGetComponent(out DamageDealer component))
         {
             MusicManager.Instance.SFXPlayer(swordImpactSound[randomIndex]);
         }
@@ -177,13 +165,11 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     private void Death()
     {
         _Rb.linearVelocity = Vector2.zero;
-        if (pointCount)
-        {
-            GameManager.Instance.PicupCollectable(points);
-            MusicManager.Instance.SFXPlayer(death);
-            _anim.SetBool("Death", true);
-            pointCount = false;
-        }
+        GameManager.Instance.PicupCollectable(points);
+        MusicManager.Instance.SFXPlayer(death);
+        _anim.SetBool("Death", true);
+        healtBar.enabled = false;
+        _vivo = false;
     }
     #endregion
 
@@ -225,12 +211,12 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     {
         _vidaActual -= damage;
         healtBar.value = _vidaActual;
-
         _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
+        if (_vidaActual <= 0)
+        {
+            Death();
+        }
     }
-
-
-
     #endregion
 
 }

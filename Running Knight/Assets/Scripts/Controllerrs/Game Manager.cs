@@ -2,6 +2,7 @@
 using System;
 using TMPro;
 using Unity.Android.Gradle.Manifest;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ using UnityEngine.UIElements.Experimental;
 public class GameManager : MonoBehaviour
 {
     #region variables
-    public int collectableCount = 1;
+    public int collectableCount;
     public TextMeshProUGUI pointTMP;
     [Header("HUD")]
     public CanvasGroup canvasGroup;
@@ -28,8 +29,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Pause Menu")]
     public CanvasGroup pauseCanvasGroup;
-    [SerializeField] GameObject optionMenu;
-
+    [SerializeField] CanvasGroup optionMenu;
     public GameObject cheatsMenuPanel;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -50,13 +50,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AlphaCanvas(continueCanvasGroup, 0, false);
-        optionMenu.SetActive(false);
+        AlphaCanvas(optionMenu, 0, false);
         AlphaCanvas(endGameCanvasGroup, 0, false);
         AlphaCanvas(pauseCanvasGroup, 0, false);
         maxScoerTMP.text = DataManager.Instance.maxScore.ToString();
         collectableCount = DataManager.Instance.actualGameScore;
         pointTMP.text = collectableCount.ToString();
-
         Time.timeScale = 1;
     }
     #region Methos
@@ -101,7 +100,7 @@ public class GameManager : MonoBehaviour
         //Si la puntuacion obttenida suora la maxima
         if (newRecord)
         {
-           
+
             if (nuke == null) nuke = GameObject.FindWithTag("Nuke")?.GetComponent<ParticleSystem>();
             //Efecto
             nuke.Play();
@@ -145,10 +144,13 @@ public class GameManager : MonoBehaviour
     /// <param name="value"></param>
     public void Pause(bool value)
     {
+        int p = 0;
         //Segun el valor e value , asignamos una escala de tiempo diferente
         Time.timeScale = value ? 0f : 1f;
+        p = Mathf.RoundToInt(value ? 0f : 1f);
         //ACtivamos el canvas group del menu pausa
         pauseCanvasGroup.SetEnable(value);
+        AlphaCanvas(pauseCanvasGroup, p, value);
     }
     public void ExitToMenu()
     {
@@ -157,8 +159,20 @@ public class GameManager : MonoBehaviour
     }
     public void OptionMenu()
     {
-        optionMenu.SetActive(!optionMenu.activeSelf);
+        bool isActive = false;
+
+        if (isActive)
+        {
+            AlphaCanvas(optionMenu, 1, isActive);
+            isActive = false;
+        }
+        else
+        {
+            AlphaCanvas(optionMenu, 0, isActive);
+            isActive = true;
+        }
     }
+
     public void ToggleCheatsMenu()
     {
         cheatsMenuPanel.SetActive(!cheatsMenuPanel.activeSelf);

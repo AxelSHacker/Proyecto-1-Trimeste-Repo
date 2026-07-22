@@ -24,6 +24,7 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     [SerializeField] bool soundPlayed = false;
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
+    bool _vivo = true;
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
@@ -49,9 +50,7 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     void Start()
     {
         StateUpdate(State.Patrol);
-
         if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
-
         _anim.SetBool("Death", false);
     }
 
@@ -59,13 +58,9 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     void Update()
     {
         AnimatorController();
+        if (!_vivo) return;
         _distance = Vector2.Distance(transform.position, playerPosition.position);
-
-        if (_vidaActual <= 0)
-        {
-            StateUpdate(State.Death);
-        }
-        else if (_distance <= attackRadius)
+        if (_distance <= attackRadius)
         {
             StateUpdate(State.Attack);
         }
@@ -113,10 +108,6 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
             case State.Attack:
                 Attack();
                 break;
-
-            case State.Death:
-                Death();
-                break;
         }
     }
     //Funcion que hace que el Rigidbody vaya patrullando entre 2 puntos
@@ -143,18 +134,16 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     {
         _Rb.linearVelocityX = 0f;
 
-        _anim.SetBool("Attack", true);
+        _anim.SetTrigger("Attack");
     }
     private void Death()
     {
         _Rb.linearVelocity = Vector2.zero;
-        if (pointCount)
-        {
-            GameManager.Instance.PicupCollectable(points);
-            MusicManager.Instance.SFXPlayer(death);
-            _anim.SetBool("Death", true);
-            pointCount = false;
-        }
+        GameManager.Instance.PicupCollectable(points);
+        MusicManager.Instance.SFXPlayer(death);
+        _anim.SetBool("Death", true);
+        healtBar.enabled = false;
+        _vivo = false;
     }
     #endregion
 
@@ -167,18 +156,20 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     {
         gameObject.SetActive(false);
     }
-
     public void AttackSound()
     {
         MusicManager.Instance.SFXPlayer(attack);
     }
-
     public void TakeDamag(int damage, Vector3 impactPoint = default)
     {
         _vidaActual -= damage;
-
         healtBar.value = _vidaActual;
         _vidaActual = Mathf.Clamp(_vidaActual, 0, _vidaMaxima);
+
+        if (_vidaActual <= 0)
+        {
+            Death();
+        }
     }
     #endregion
 
