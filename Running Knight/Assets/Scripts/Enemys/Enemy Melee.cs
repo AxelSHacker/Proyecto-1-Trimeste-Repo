@@ -20,7 +20,6 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     [SerializeField] float attackRadius;
     [SerializeField] float _radioBusqueda = 7f;
     [SerializeField] int points;
-    [SerializeField] bool pointCount = true;
     [SerializeField] bool soundPlayed = false;
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;

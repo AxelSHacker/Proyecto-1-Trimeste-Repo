@@ -22,7 +22,6 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     [SerializeField] float attackVelocity;
     [SerializeField] int points;
     [SerializeField] float _radioBusqueda = 7f;
-    [SerializeField] bool pointCount = true;
     [SerializeField] bool soundPlayed = false;
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
@@ -160,7 +159,6 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
         GameManager.Instance.PicupCollectable(points);
         MusicManager.Instance.SFXPlayer(death);
         _anim.SetBool("Death", true);
-        pointCount = false;
         _vivo = false;
     }
     #endregion

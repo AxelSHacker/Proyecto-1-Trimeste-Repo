@@ -28,7 +28,6 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     [SerializeField] float _radioBusqueda = 7f;
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
-    bool pointCount = true;
     bool _vivo = true;
 
     [Header("REFERENCES"), SerializeField]

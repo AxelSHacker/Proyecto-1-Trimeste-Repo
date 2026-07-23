@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [Header("Pause Menu")]
     public CanvasGroup pauseCanvasGroup;
     [SerializeField] CanvasGroup optionMenu;
+    bool isActive = false;
     public GameObject cheatsMenuPanel;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -159,18 +160,9 @@ public class GameManager : MonoBehaviour
     }
     public void OptionMenu()
     {
-        bool isActive = false;
-
-        if (isActive)
-        {
-            AlphaCanvas(optionMenu, 1, isActive);
-            isActive = false;
-        }
-        else
-        {
-            AlphaCanvas(optionMenu, 0, isActive);
-            isActive = true;
-        }
+        isActive = !isActive;
+        // Si isOptionMenuOpen es true -> alpha vale 1. Si es false -> alpha vale 0.
+        AlphaCanvas(optionMenu, isActive ? 1 : 0, isActive);
     }
 
     public void ToggleCheatsMenu()
