@@ -58,7 +58,9 @@ public class PlayerControllerEndLess : MonoBehaviour
         normalGravity = _rB.gravityScale;
         GameManager.Instance.AlphaCanvas(GameManager.Instance.canvasGroup, 1, false);
         GameManager.Instance.AlphaCanvas(GameManager.Instance.endGameCanvasGroup, 0, false);
-        DataManager.Instance.actualGameScore = 0;
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.continueCanvasGroup, 0, false);
+        GameManager.Instance.collectableCount = 0;
+        MusicManager.Instance.PlayRandomSong();
     }
     void Update()
     {

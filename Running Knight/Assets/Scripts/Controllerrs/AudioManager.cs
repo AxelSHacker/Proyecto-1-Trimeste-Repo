@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
-
+//Acuerda de copiar los nombres de los datos expuestos para evitar errores
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer _audioMixer;
@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
+        GetMasterVolume();
+        GetMusicVolume();
+        GetEffectsVolume();
     }
 
     //:  CONTROL DE VOLUMEN MASTER 
@@ -32,15 +35,15 @@ public class AudioManager : MonoBehaviour
     public float GetMasterVolume()
     {
         bool result = _audioMixer.GetFloat("MasterVolume", out float volume);
-        
+
         // Conversion matematica: Convierte los decibelios (dB) del mixer a escala lineal (0-1)
         volume = Mathf.Pow(10, volume / 20);
-        
+
         if (!result)
         {
             Debug.LogWarning("Could not get MasterVolume from AudioMixer");
         }
-            
+
         return volume;
     }
 
@@ -50,8 +53,7 @@ public class AudioManager : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         // 🛡️ Filtro de seguridad: Evita que un valor de 0 rompa el logaritmo generando un NaN
-        if (volume <= 0) volume = 0.0001f; 
-        
+        if (volume <= 0) volume = 0.0001f;
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
     }
 
@@ -64,12 +66,12 @@ public class AudioManager : MonoBehaviour
     {
         bool result = _audioMixer.GetFloat("MusicVolume", out float volume);
         volume = Mathf.Pow(10, volume / 20);
-        
+
         if (!result)
         {
             Debug.LogWarning("Could not get MusicVolume from AudioMixer");
         }
-            
+
         return volume;
     }
 
@@ -79,7 +81,7 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         if (volume <= 0) volume = 0.0001f;
-        
+        Debug.Log("Cambio el volumen");
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
     }
 
@@ -92,12 +94,12 @@ public class AudioManager : MonoBehaviour
     {
         bool result = _audioMixer.GetFloat("EffectsVolume", out float volume);
         volume = Mathf.Pow(10, volume / 20);
-        
+
         if (!result)
         {
             Debug.LogWarning("Could not get EffectsVolume from AudioMixer");
         }
-            
+
         return volume;
     }
 
@@ -107,7 +109,7 @@ public class AudioManager : MonoBehaviour
     public void SetEffectsVolume(float volume)
     {
         if (volume <= 0) volume = 0.0001f;
-        
+
         _audioMixer.SetFloat("EffectsVolume", Mathf.Log10(volume) * 20);
     }
     public void ReproducirSFX(AudioClip audioClip)

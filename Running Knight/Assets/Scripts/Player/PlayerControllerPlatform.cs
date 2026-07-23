@@ -72,13 +72,15 @@ public class PlayerControllerPlatform : MonoBehaviour, IDamageabe<int>
     {
         GameManager.Instance.AlphaCanvas(GameManager.Instance.canvasGroup, 1, false);
         GameManager.Instance.AlphaCanvas(GameManager.Instance.endGameCanvasGroup, 0, false);
-
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.continueCanvasGroup, 0, false);
         normalGravity = _rB.gravityScale;
         lifePoint.text = DataManager.Instance.actualGameScore.ToString();
         _vidaActual = DataManager.Instance.actualGameScore;
+        MusicManager.Instance.PlayRandomSong();
     }
     void Update()
     {
+        
 
         // if (invencibilityTimer > 0)
         // {

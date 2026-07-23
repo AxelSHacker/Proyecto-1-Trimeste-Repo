@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject optionMenu;
-    [SerializeField] bool _transicionando;
-
+    void Start()
+    {
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.endGameCanvasGroup, 0, false);
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.continueCanvasGroup, 0, false);
+        MusicManager.Instance.PlayMainMenuMusic();
+    }
     public void ExitGGame()
     {
         Application.Quit();
@@ -14,10 +17,9 @@ public class MainMenuManager : MonoBehaviour
 
     public void OptionMenu()
     {
-        optionMenu.SetActive(!optionMenu.activeSelf);
-
+        GameManager.Instance.OptionMenu();
     }
-    public void StartGame(string _sceneName )
+    public void StartGame(string _sceneName)
     {
         SceneManager.Instance.LoadScene(_sceneName, true);
     }

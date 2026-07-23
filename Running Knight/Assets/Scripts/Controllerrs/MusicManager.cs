@@ -37,10 +37,8 @@ public class MusicManager : MonoBehaviour
         if (audioSource.clip == menuClip) return;
         audioSource.clip = menuClip;
         audioSource.Play();
-        //if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        //Iniciamos Coroutine
-        //fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
-
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeAndChangeClip(menuClip));
     }
     public void PitchSlow()
     {
