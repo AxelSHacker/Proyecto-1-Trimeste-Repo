@@ -12,6 +12,7 @@ TagManager:
   - CheckPoint
   - Potion
   - Nuke
+  - TerminarTutorial
   layers:
   - Default
   - TransparentFX

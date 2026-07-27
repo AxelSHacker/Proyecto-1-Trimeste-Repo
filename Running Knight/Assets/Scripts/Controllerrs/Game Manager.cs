@@ -1,8 +1,7 @@
 
 using TMPro;
-using Unity.Android.Gradle.Manifest;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,24 +9,31 @@ public class GameManager : MonoBehaviour
     public int collectableCount;
     public TextMeshProUGUI pointTMP;
     [Header("HUD")]
+    
     public CanvasGroup canvasGroup;
+    [SerializeField] CanvasGroup[] canvasGroups;
 
     [Header("Continue Panel")]
     public CanvasGroup continueCanvasGroup;
     public TextMeshProUGUI continueScoreTMP;
     public TextMeshProUGUI maxScoerTMPcontinueplanel;
+    public Button continueButton;
 
     public ParticleSystem nuke;
     [Header("End Game Panel")]
     public CanvasGroup endGameCanvasGroup;
     public TextMeshProUGUI finalScoreTMP;
     public TextMeshProUGUI maxScoerTMP;
+    public Button restartButton;
 
     [Header("Pause Menu")]
     public CanvasGroup pauseCanvasGroup;
     [SerializeField] CanvasGroup optionMenu;
     bool isActive = false;
     public GameObject cheatsMenuPanel;
+
+    [Header(""), SerializeField]
+    AudioClip _pickUpColectable;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
     #endregion
@@ -58,6 +64,7 @@ public class GameManager : MonoBehaviour
     #region Methos
     public void PicupCollectable(int value)
     {
+        MusicManager.Instance.SFXPlayer(_pickUpColectable);
         collectableCount += value;
         pointTMP.text = collectableCount.ToString();
         DataManager.Instance.actualGameScore = collectableCount;
@@ -122,32 +129,32 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void ContinueButton()
+    public void ContinueButton(string sceneName)
     {
         AlphaCanvas(continueCanvasGroup, 0, false);
-        SceneManager.Instance.LoadScene("Platform 2D", true);
+        SceneManager.Instance.LoadScene(sceneName, true);
     }
     // Reinicia la partida
-    public void Restart()
+    public void Restart(string sceneName)
     {
         //Recargamos la scena actual
         AlphaCanvas(endGameCanvasGroup, 0, false);
         DataManager.Instance.actualGameScore = 0;
-        SceneManager.Instance.LoadScene("EndLessRuner", true);
+        SceneManager.Instance.LoadScene(sceneName, true);
     }
     /// <summary>
     /// Inicia o termina el estado de pausa
     /// </summary>
-    /// <param name="value"></param>
+    /// /// <param name="value"></param>
     public void Pause(bool value)
     {
-        int p = 0;
-        //Segun el valor e value , asignamos una escala de tiempo diferente
-        Time.timeScale = value ? 0f : 1f;
-        p = Mathf.RoundToInt(value ? 0f : 1f);
-        //ACtivamos el canvas group del menu pausa
-        pauseCanvasGroup.SetEnable(value);
-        AlphaCanvas(pauseCanvasGroup, p, value);
+        // Si value es true (Pausa) -> timeScale = 0. Si es false -> timeScale = 1
+        Time.timeScale = value ? 0.01f : 1f;
+
+        // Si value es true -> alpha = 1 (Visible). Si es false -> alpha = 0 (Invisible)
+        float targetAlpha = value ? 1f : 0f;
+
+        AlphaCanvas(pauseCanvasGroup, targetAlpha, value);
     }
     public void ExitToMenu()
     {
@@ -158,9 +165,16 @@ public class GameManager : MonoBehaviour
     {
         isActive = !isActive;
         // Si isOptionMenuOpen es true -> alpha vale 1. Si es false -> alpha vale 0.
-        AlphaCanvas(optionMenu, isActive ? 1 : 0, isActive);
+        AlphaCanvas(optionMenu, isActive ? 1f : 0.01f, isActive);
     }
-
+    public void AsignarListenerButton(string sceneName, Button button)
+    {
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() =>
+        {
+            SceneManager.Instance.LoadScene(sceneName, true);
+        });
+    }
     public void ToggleCheatsMenu()
     {
         cheatsMenuPanel.SetActive(!cheatsMenuPanel.activeSelf);
@@ -170,11 +184,18 @@ public class GameManager : MonoBehaviour
         value = Mathf.Clamp01(value);
         Time.timeScale = value;
     }
-    public void AlphaCanvas(CanvasGroup canvasGroup, int alpha, bool activate)
+    public void AlphaCanvas(CanvasGroup canvasGroup, float alpha, bool activate)
     {
         canvasGroup.alpha = alpha;
         canvasGroup.blocksRaycasts = activate;
         canvasGroup.interactable = activate;
+    }
+    public void DisableCanvasGroup()
+    {
+        foreach (CanvasGroup canvasGroup in canvasGroups)
+        {
+            AlphaCanvas(canvasGroup, 0, false);
+        }
     }
     #endregion
 

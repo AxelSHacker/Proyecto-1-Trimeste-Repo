@@ -6,19 +6,16 @@ using UnityEngine.UIElements;
 
 public class TutorialController : MonoBehaviour
 {
-    [SerializeField]
-    CanvasGroup continousCanvasGroup;
-    [SerializeField]
-    CanvasGroup exitToMenuCanvasGroup;
 
     [SerializeField]
     PlayerControllerEndLess playerControllerEndLess;
-
-    public int points;
-
+    [SerializeField] string nombreScena;
+    [SerializeField] string estaScena;
+    [SerializeField] bool _endLess = true;
+    [SerializeField] TextMeshProUGUI pointsText;
     private static TutorialController _tutorialController;
 
-    public static TutorialController  Instance => _tutorialController;
+    public static TutorialController Instance => _tutorialController;
 
     void Awake()
     {
@@ -36,70 +33,36 @@ public class TutorialController : MonoBehaviour
     void Start()
     {
 
-        continousCanvasGroup.SetEnable(false);
-        exitToMenuCanvasGroup.SetEnable(false);
-
+        GameManager.Instance.AsignarListenerButton(nombreScena, GameManager.Instance.continueButton);
+        GameManager.Instance.AsignarListenerButton(estaScena, GameManager.Instance.restartButton);
         if (FindAnyObjectByType<PlayerControllerEndLess>() != null)
         {
             playerControllerEndLess = FindAnyObjectByType<PlayerControllerEndLess>();
         }
-        else { playerControllerEndLess = null; }
+        else
+        {
+            playerControllerEndLess = null;
+        }
     }
 
     void Update()
     {
-        //PointController();
-        if (GameManager.Instance.collectableCount >= 10)
+        if (pointsText != null)
         {
-            // if (SceneManager.GetActiveScene().name == "Tutorial EndLess")
-            // {
-            //     continousCanvasGroup.SetEnable(true);
-            // }
-            
-            
-
-            if (GameManager.Instance.collectableCount >= 30)
-            {
-                continousCanvasGroup.SetEnable(true);
-                DataManager.Instance.CleaData();
-            }
-
-
+            pointsText.text = DataManager.Instance.actualGameScore.ToString();
+        }
+        if (GameManager.Instance.collectableCount >= 10 && _endLess)
+        {
+            _endLess = false;
+            GameManager.Instance.ContinueGame();
             if (playerControllerEndLess != null)
             {
                 playerControllerEndLess.autoMovement = false;
             }
-
         }
-
-
     }
-
-    // public void ContinueTutorial()
-    // {
-    //     SceneManager.LoadScene("Tutorial Platform");
-    // }
-
-    // private void PointController()
-    // {
-    //     if (SceneManager.GetActiveScene().name == "Tutorial EndLess")
-    //     {
-    //         DataManager.Instance.tutorialScore = GameManager.Instance.collectableCount;
-    //         DataManager.Instance.Save();
-    //     }
-        
-    // }
-
-    // private void OnDisable()
-    // {
-    //     if ( SceneManager.GetActiveScene().name == "Tutorial Platform")
-    //     {
-    //         PlayerPrefs.DeleteKey("tutorialMaxScore");
-
-    //     }
-    // }
 }
-        
+
 
 
 

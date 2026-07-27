@@ -56,9 +56,6 @@ public class Parallax : MonoBehaviour
 
         //_renderer.material.mainTextureScale = backGroundHHalfSize / 5;
     }
-
-
-
     // Update is called once per frame
     void Update()
     {
@@ -68,10 +65,8 @@ public class Parallax : MonoBehaviour
             {
                 materialLoops++;
                 _renderer.material.mainTextureOffset = new Vector2(
-                    _renderer.material.mainTextureOffset.x % 1f,
-                    _renderer.material.mainTextureOffset.y);
-                
-
+                _renderer.material.mainTextureOffset.x % 1f,
+                _renderer.material.mainTextureOffset.y);
             }
             if (paralaxStarted)
             {
@@ -80,12 +75,8 @@ public class Parallax : MonoBehaviour
                 _renderer.material = newBioma;
                 offSett = Vector2.zero;
                 paralaxStarted = false;
-                
-
             }
-
             ParallaxTransition();
-
         }
         else
         {
@@ -93,29 +84,19 @@ public class Parallax : MonoBehaviour
             transitionParallax = null;
         }
 
-
-
         cameraVariation = new Vector2(_cam.transform.position.x - _camaraLastPosition.x, 0);
 
         float widhtWorldParalax1 = _renderer.bounds.size.x;
 
         offSett.x = offSett.x + (cameraVariation.x * speedFaktor) / widhtWorldParalax1;
-
         //_renderer.material.SetTextureOffset("_MainTex", offSett);
         _renderer.material.mainTextureOffset = offSett;
-
         _camaraLastPosition = _cam.transform.position;
-
-
-
-
     }
 
     void ParallaxTransition()
     {
         //Debug.Log(_renderer.material.mainTextureOffset);
-
-
         if (materialLoops >= distance)
         {
             _renderer.enabled = false;
@@ -123,10 +104,7 @@ public class Parallax : MonoBehaviour
             transitionParallax.transitionParalaxRenderer.enabled = true;
             transitionParallax.endTransition = true;
             distance = 500f;
-
         }
-
-
     }
 
 

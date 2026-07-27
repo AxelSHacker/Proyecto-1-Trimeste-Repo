@@ -27,7 +27,6 @@ public class Collectable : MonoBehaviour
         if (collision.TryGetComponent(out PlayerControllerPlatform playerPlatform))
         {
             FeedBBackPlatform(playerPlatform);
-            GameManager.Instance.PicupCollectable(point);
             Desactivate();
         }
     }

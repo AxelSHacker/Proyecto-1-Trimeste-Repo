@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a04a688ccaa87f43acbee11b291cd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 0
+  point: 5
   thisCollider: {fileID: 991649696132401845}
   spriteRenderer: {fileID: 743664431829240865}
   pickUpCoin: {fileID: 8300000, guid: 5c373e9662d0aae46b885daa0301da2a, type: 3}

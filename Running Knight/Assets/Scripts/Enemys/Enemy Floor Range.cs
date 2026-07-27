@@ -29,10 +29,11 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
     bool _vivo = true;
+    float _velocidadAnimacion;
+    Vector2 _ultimaPosicion;
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
-    Vector2 lastPosition;
     [SerializeField] Animator _anim;
     [SerializeField] Transform[] patrol;
     [SerializeField] Transform playerPosition;
@@ -59,7 +60,7 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     void Start()
     {
         attackTimer = maxAttackTimer;
-        lastPosition = _Rb.position;
+        _ultimaPosicion = _Rb.position;
         _anim.SetBool("Death", false);
         if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
         StateUpdate(State.Patrol);
@@ -148,7 +149,8 @@ public class EnemyFloorRange : MonoBehaviour, IDamageabe<int>
     }
     private void AnimatorController()
     {
-        _anim.SetFloat("Velocity", patrolVelocity);
+        _velocidadAnimacion = Mathf.Abs((transform.position.x - _ultimaPosicion.x) / Time.deltaTime);
+        _anim.SetFloat("Velocidad", _velocidadAnimacion);
     }
     public void Attack()
     {

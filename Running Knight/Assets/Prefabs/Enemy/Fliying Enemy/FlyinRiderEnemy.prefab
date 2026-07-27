@@ -334,7 +334,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2328465788018344967, guid: a02f278e0eda64549bae93261b4a47ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -459,12 +459,11 @@ MonoBehaviour:
   chaseRadius: 6
   _distance: 0
   attackRadius: 4
-  attackTimer: 2
-  maxAttackTimer: 0
+  attackTimer: 0
+  maxAttackTimer: 2
   attackVelocity: 5
   points: 10
   _radioBusqueda: 7
-  pointCount: 1
   soundPlayed: 0
   _vidaActual: 0
   _vidaMaxima: 3
@@ -474,7 +473,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerPosition: {fileID: 0}
-  _healt: {fileID: 0}
   lance: {fileID: 2736171915523369646, guid: d59c58d94a705fd4ea6509259b89e5f3, type: 3}
   fireProyectil: {fileID: 8785984332078258933, guid: 0f9619ce4540ff64193b6539cde0ff5a, type: 3}
   positionFireProyectil: {fileID: 9143596384174426930}

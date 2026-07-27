@@ -1,4 +1,5 @@
 
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using static EnemyMelee;
@@ -24,6 +25,7 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
     bool _vivo = true;
+    float _velocidadAnimacion;
 
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _Rb;
@@ -35,6 +37,7 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     [SerializeField] AudioClip attack;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip[] swordImpactSound;
+    Vector2 _ultimaPosicion;
     public State currentState;
 
     int IDamageabe<int>.Maxhealt => _vidaMaxima;
@@ -51,6 +54,7 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
         StateUpdate(State.Patrol);
         if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
         _anim.SetBool("Death", false);
+        _ultimaPosicion = _Rb.position;
     }
 
 
@@ -127,7 +131,8 @@ public class EnemyMelee : MonoBehaviour, IDamageabe<int>
     }
     private void AnimatorController()
     {
-        _anim.SetFloat("Velocity", patrolVelocity);
+        _velocidadAnimacion = Mathf.Abs((transform.position.x - _ultimaPosicion.x) / Time.deltaTime);
+        _anim.SetFloat("Velocidad", _velocidadAnimacion);
     }
     private void Attack()
     {

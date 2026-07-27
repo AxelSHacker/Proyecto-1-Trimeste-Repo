@@ -474,7 +474,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!61 &5847364104718033616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ MonoBehaviour:
   soundPlayed: 0
   _radioBusqueda: 7
   _vidaActual: 0
-  _vidaMaxima: 3
+  _vidaMaxima: 2
   _Rb: {fileID: 6454239287123714687}
   _anim: {fileID: 7174951334420397877}
   patrol:

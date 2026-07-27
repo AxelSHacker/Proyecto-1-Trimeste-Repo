@@ -320,11 +320,10 @@ MonoBehaviour:
   _distance: 0
   attackRadius: 6
   attackTimer: 0
-  maxAttackTimer: 2
+  maxAttackTimer: 1
   attackVelocity: 10
   points: 7
   _radioBusqueda: 7
-  pointCount: 1
   soundPlayed: 0
   _vidaActual: 0
   _vidaMaxima: 2
@@ -334,7 +333,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerPosition: {fileID: 0}
-  _healt: {fileID: 0}
   lance: {fileID: 2736171915523369646, guid: d59c58d94a705fd4ea6509259b89e5f3, type: 3}
   fireProyectil: {fileID: 8785984332078258933, guid: 0f9619ce4540ff64193b6539cde0ff5a, type: 3}
   positionFireProyectil: {fileID: 5707584772011144125}

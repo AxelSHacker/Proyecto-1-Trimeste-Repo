@@ -45,10 +45,4 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("maxScore");
     }
-    public void RestartGame()
-    {
-        actualGameScore = 0;
-        Debug.Log("Entro aqui");
-    }
- 
 }

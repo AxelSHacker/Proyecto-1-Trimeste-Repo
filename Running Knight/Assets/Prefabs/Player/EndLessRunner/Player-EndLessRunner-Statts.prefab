@@ -211,7 +211,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2966568159993020101
@@ -238,17 +238,17 @@ MonoBehaviour:
   autoMovement: 1
   speed: 5
   maxSpeed: 85
-  jumpForce: 7
+  jumpForce: 6
   maxJump: 0
   isGrounded: 0
   normalGravity: 0
-  invencibilityMaxTimer: 0
-  speedUpMaxTimer: 0
+  invencibilityMaxTimer: 5
+  speedBoostMultiplier: 1.25
+  speedBoostDuration: 3
   invencibilityTimer: 0
-  speedUpTimer: 0
   fairy: {fileID: 7529641496524132542}
   speedUp: {fileID: 4955071382077535675}
-  speedUpVelocity: 0.003
+  speedUpVelocity: 1
   canDie: 1
   jump: {fileID: 8300000, guid: 6ca5de86e582c0647af512dcf763eea5, type: 3}
   death:
@@ -258,6 +258,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f7256a3fc85266648b6b68e3b4419dcf, type: 3}
   landing: {fileID: 8300000, guid: 55f871dd3443f6840b5557a9aaec499c, type: 3}
   powerUp: {fileID: 8300000, guid: e79a56eb79fc3e849a84d68da9b8dccc, type: 3}
+  siguienteScena: Platform 2D
+  estaScena: EndLessRuner
 --- !u!114 &7281957861879465619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,10 +391,10 @@ MonoBehaviour:
     m_ActionName: 'Player/Falling[/Keyboard/f]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 6
+      - m_Target: {fileID: 2966568159993020101}
+        m_TargetAssemblyTypeName: PlayerControllerEndLess, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -408,12 +410,24 @@ MonoBehaviour:
     m_ActionId: faff5514-901c-44ae-b4bc-22edc04450f1
     m_ActionName: 'Player/Schield[/Mouse/rightButton]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleCheatsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_ActionId: 1e38add3-57af-463b-bf62-1c3dfd59f0a7
     m_ActionName: 'Player/CheatsMenu[/Keyboard/f1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &6887783368270642483

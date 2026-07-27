@@ -29,6 +29,7 @@ public class PlayerControllerPlatform : MonoBehaviour, IDamageabe<int>
     [SerializeField] float speedMultiplier;
     [SerializeField] float maxSpeed;
     [SerializeField] float xMotion;
+    bool isActive = false;
 
     [Header("JUMP"), SerializeField]
     float jumpForce;
@@ -80,7 +81,7 @@ public class PlayerControllerPlatform : MonoBehaviour, IDamageabe<int>
     }
     void Update()
     {
-        
+
 
         // if (invencibilityTimer > 0)
         // {
@@ -114,21 +115,13 @@ public class PlayerControllerPlatform : MonoBehaviour, IDamageabe<int>
         {
             _vidaActual += 5;
         }
-        // if (collision.gameObject.CompareTag("Invencibility"))
-        // {
-        //     Destroy(collision.gameObject);
-        //     invencibilityTimer = invencibilityMaxTimer;
-        //     fairy.Play();
-        // }
-        if (collision.gameObject.CompareTag("Speed Up"))
-        {
-            Destroy(collision.gameObject);
-            speedUpTimer = speedUpMaxTimer;
-            speedUp.Play();
-        }
-        if (collision.gameObject.CompareTag("CheckPoint"))
+        else if (collision.gameObject.CompareTag("CheckPoint"))
         {
             GameManager.Instance.continueCanvasGroup.SetEnable(true);
+        }
+        else if (collision.gameObject.CompareTag("TerminarTutorial"))
+        {
+            GameManager.Instance.EndGame();
         }
     }
     #endregion
@@ -203,6 +196,14 @@ public class PlayerControllerPlatform : MonoBehaviour, IDamageabe<int>
         if (context.canceled)
         {
             schieldOn = false;
+        }
+    }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isActive = !isActive;
+            GameManager.Instance.Pause(isActive);
         }
     }
     #endregion

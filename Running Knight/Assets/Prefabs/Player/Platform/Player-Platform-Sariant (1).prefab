@@ -15028,7 +15028,7 @@ MonoBehaviour:
   speedUpTimer: 0
   fairy: {fileID: 4894655318933904220}
   speedUp: {fileID: 3342787550311754149}
-  speedUpVelocity: 0.04
+  speedUpVelocity: 0.1
   _vidaActual: 0
   _vidaMaxima: 100
 --- !u!114 &4493789916468623830
@@ -15198,10 +15198,10 @@ MonoBehaviour:
     m_ActionName: 'Player/Falling[/Keyboard/f]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 6
+      - m_Target: {fileID: 1928865232125689786}
+        m_TargetAssemblyTypeName: PlayerControllerPlatform, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15229,12 +15229,24 @@ MonoBehaviour:
     m_ActionId: faff5514-901c-44ae-b4bc-22edc04450f1
     m_ActionName: 'Player/Schield[/Mouse/rightButton]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleCheatsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1e38add3-57af-463b-bf62-1c3dfd59f0a7
     m_ActionName: 'Player/CheatsMenu[/Keyboard/f1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &4424180287511862571
@@ -24969,7 +24981,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -25014,6 +25026,7 @@ GameObject:
   - component: {fileID: 4635990528323208924}
   - component: {fileID: 4294041224484772240}
   - component: {fileID: 6822394899914020908}
+  - component: {fileID: 3287939717110630123}
   m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
@@ -25104,6 +25117,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3287939717110630123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7801929635565179261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2e2d8d42a0da24ebfc66714381101a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8166126567433386025
 GameObject:
   m_ObjectHideFlags: 0
@@ -30018,6 +30043,7 @@ GameObject:
   - component: {fileID: 7017365677505534253}
   - component: {fileID: 5761567803416694386}
   - component: {fileID: 322752465174187486}
+  - component: {fileID: 3173287583978391996}
   m_Layer: 6
   m_Name: Schield
   m_TagString: Untagged
@@ -30087,6 +30113,26 @@ BoxCollider2D:
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &322752465174187486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647972144338226161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311cb2dc42ef352459aee1056ffcd472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 7910906844504136072}
+  shieldImpact:
+  - {fileID: 8300000, guid: 3d0f15503151aeb48a4e5144024ccc1f, type: 3}
+  - {fileID: 8300000, guid: 3a0766bc81470e24c8a5f8904bec9824, type: 3}
+  - {fileID: 8300000, guid: 89876d7dcff085b4eae629fae0a49a6d, type: 3}
+  - {fileID: 8300000, guid: 5f3d77416a90bfb4b8ffe29390c29cff, type: 3}
+  - {fileID: 8300000, guid: 9c93bd7b60d2d6e419a1cde1801fbc9e, type: 3}
+  - {fileID: 8300000, guid: 26b85c1731c749446923249734202ff9, type: 3}
+--- !u!114 &3173287583978391996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -40,7 +40,7 @@ public class SceneManager : MonoBehaviour
     private IEnumerator Fade(float from, float to)
     {
         _isFading = true;
-        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.blocksRaycasts = false;
 
         float timeCounter = _fadeDuration;
         while (timeCounter > 0)
@@ -111,6 +111,7 @@ public class SceneManager : MonoBehaviour
     // El método que llamará tu menú, zonas de carga o triggers (ej: USceneManager.Instance.LoadScene("Nivel1", true);)
     public void LoadScene(string sceneName, bool transition)
     {
+        GameManager.Instance.DisableCanvasGroup();
         // Evitamos que el jugador intente cargar otra escena si ya hay un proceso de Fade o de Carga en marcha
         if (_isFading || _isLoading)
         {

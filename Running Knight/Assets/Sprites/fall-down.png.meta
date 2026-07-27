@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 139cf9977aa2e6b4eada4c49e0cbf38d
+guid: 4ef18dc6f1db01a4bbe3f205ea03e95b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6717884257390833292
-    second: Shield_0
+      213: -4272638200154889520
+    second: fall-down_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shield_0
+      name: fall-down_0
       rect:
         serializedVersion: 2
-        x: 104
-        y: 12
-        width: 306
-        height: 488
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 471d70c5cd745c2a0800000000000000
-      internalID: -6717884257390833292
+      spriteID: 0d2e002c13a84b4c0800000000000000
+      internalID: -4272638200154889520
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Shield_0: -6717884257390833292
+      fall-down_0: -4272638200154889520
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

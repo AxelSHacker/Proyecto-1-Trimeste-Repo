@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 9de1adc6781aff844b9f175dc6f020b1
+guid: 96d486e12124c8746a4b925c96c8fb38
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3011494807137413604
-    second: Movement_0
-  - first:
-      213: -3011895399059424396
-    second: Movement_1
-  - first:
-      213: 8065461568050007341
-    second: Movement_2
-  - first:
-      213: 489804515281931848
-    second: Movement_3
+      213: -5162721224579058072
+    second: Salto_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Movement_0
+      name: Salto_0
       rect:
         serializedVersion: 2
-        x: 116
-        y: 22
-        width: 245
-        height: 372
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1614a1bd650536d0800000000000000
-      internalID: -3011494807137413604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Movement_1
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 392
-        width: 82
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47bfd6e97199336d0800000000000000
-      internalID: -3011895399059424396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Movement_2
-      rect:
-        serializedVersion: 2
-        x: 293
-        y: 223
-        width: 109
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d2d8f2140964eef60800000000000000
-      internalID: 8065461568050007341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Movement_3
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 22
-        width: 118
-        height: 187
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84e03ce8c922cc600800000000000000
-      internalID: 489804515281931848
+      spriteID: 866789646645a58b0800000000000000
+      internalID: -5162721224579058072
       vertices: []
       indices: 
       edges: []
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Movement_0: -3011494807137413604
-      Movement_1: -3011895399059424396
-      Movement_2: 8065461568050007341
-      Movement_3: 489804515281931848
+      Salto_0: -5162721224579058072
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -240,9 +240,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 5
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -614,17 +614,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6abd7a1205a814d894cd9828f140f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolVelocity: 1
+  patrolVelocity: 3
   chaseVelocity: 2
   currentPatrolIndex: 0
   _distance: 0
   attackRadius: 1.1
   _radioBusqueda: 7
   points: 5
-  pointCount: 1
   soundPlayed: 0
   _vidaActual: 0
-  _vidaMaxima: 5
+  _vidaMaxima: 3
   _Rb: {fileID: 6400750427091195193}
   _anim: {fileID: 882854143963117481}
   patrol:

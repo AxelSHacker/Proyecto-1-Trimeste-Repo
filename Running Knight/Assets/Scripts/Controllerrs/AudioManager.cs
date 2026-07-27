@@ -81,7 +81,6 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         if (volume <= 0) volume = 0.0001f;
-        Debug.Log("Cambio el volumen");
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
     }
 

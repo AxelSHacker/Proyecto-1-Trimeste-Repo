@@ -2,14 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using System;
-
-
-
-
-
 public class PlayerControllerEndLess : MonoBehaviour
 {
-
     [Header("REFERENCES"), SerializeField]
     Rigidbody2D _rB;
     [SerializeField] Animator _anim;
@@ -34,7 +28,7 @@ public class PlayerControllerEndLess : MonoBehaviour
 
     [Header("POWER UP"), SerializeField]
     float invencibilityMaxTimer;
-    [SerializeField] private float speedBoostMultiplier = 1.25f; // Un 25% más de velocidad (se nota pero no descontrola)
+    [SerializeField] private float speedBoostMultiplier = 1.50f; // Un 50% más de velocidad (se nota pero no descontrola)
     [SerializeField] private float speedBoostDuration = 3f;      // Duración en segundos de la desaceleración
     [SerializeField] float invencibilityTimer = 0;
     GameObject collisionObject;
@@ -49,18 +43,17 @@ public class PlayerControllerEndLess : MonoBehaviour
     [SerializeField] AudioClip landing;
     [SerializeField] AudioClip powerUp;
 
-
+    [Header("Menus")]
+    bool isActive = false;
+    [SerializeField] string siguienteScena;
+    [SerializeField] string estaScena;
+ 
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
     Coroutine _speedBoostCoroutine;
     void Start()
     {
-        normalGravity = _rB.gravityScale;
-        GameManager.Instance.AlphaCanvas(GameManager.Instance.canvasGroup, 1, false);
-        GameManager.Instance.AlphaCanvas(GameManager.Instance.endGameCanvasGroup, 0, false);
-        GameManager.Instance.AlphaCanvas(GameManager.Instance.continueCanvasGroup, 0, false);
-        GameManager.Instance.collectableCount = 0;
-        MusicManager.Instance.PlayRandomSong();
+        Cargar();
     }
     void Update()
     {
@@ -138,6 +131,15 @@ public class PlayerControllerEndLess : MonoBehaviour
             _rB.gravityScale = normalGravity;
         }
     }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isActive = !isActive;
+            GameManager.Instance.Pause(isActive);
+        }
+    }
+
     #endregion
 
 
@@ -196,7 +198,6 @@ public class PlayerControllerEndLess : MonoBehaviour
             _anim.SetBool("OnAir", false);
         }
     }
-
     //Funcion que aumenta la gravedad cuiando pulsamos una tecla
     private void Falling()
     {
@@ -214,7 +215,7 @@ public class PlayerControllerEndLess : MonoBehaviour
         //Activamos la animacion de muerte
         _anim.SetBool("Death", true);
         if (!MusicManager.Instance.audioSource.isPlaying) MusicManager.Instance.SFXPlayer(death[randomIndex]);
-        GameManager.Instance.ContinueGame();
+        GameManager.Instance.EndGame();
     }
     private void DeathFalling()
     {
@@ -244,6 +245,16 @@ public class PlayerControllerEndLess : MonoBehaviour
             StopCoroutine(_speedBoostCoroutine);
         }
         _speedBoostCoroutine = StartCoroutine(SpeedBoostRoutine());
+    }
+    private void Cargar()
+    {
+        GameManager.Instance.AsignarListenerButton(siguienteScena, GameManager.Instance.continueButton);
+        GameManager.Instance.AsignarListenerButton(estaScena, GameManager.Instance.restartButton);
+        normalGravity = _rB.gravityScale;
+        GameManager.Instance.AlphaCanvas(GameManager.Instance.canvasGroup, 1, false);
+        GameManager.Instance.DisableCanvasGroup();
+        GameManager.Instance.collectableCount = 0;
+        MusicManager.Instance.PlayRandomSong();
     }
     #endregion
 

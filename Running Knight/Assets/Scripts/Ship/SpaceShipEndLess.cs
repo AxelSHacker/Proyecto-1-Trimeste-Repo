@@ -39,14 +39,17 @@ public class SpaceShipEndLess : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (!_payerController.autoMovement)
+        {
+            _rb.linearVelocity = Vector2.zero;
+        }
         FollowPayer();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.ContinueGame();
-            other.gameObject.SetActive(false);
+            AbsorbPlayer(other.gameObject);
         }
     }
     //Con esta funcion seguimos al player
@@ -63,7 +66,7 @@ public class SpaceShipEndLess : MonoBehaviour
             transform.position = new Vector3(playerPosition.position.x, transform.position.y, transform.position.z);
 
             // 🛸 EFECTO ABDUCCIÓN: Subimos al player hacia la posición de la nave (o al abductionPoint)
-            Vector3 targetPoint = (transform.position != null) ? transform.position : transform.position;
+            Vector3 targetPoint = new Vector3(transform.position.x, transform.position.y, playerPosition.position.z);
 
             // Desactivamos la gravedad del player para que no luche contra el movimiento
             playerRB.gravityScale = 0f;
@@ -76,9 +79,16 @@ public class SpaceShipEndLess : MonoBehaviour
                 abductionSpeed * Time.fixedDeltaTime
             );
 
+            float distanciaANave = Vector3.Distance(playerPosition.position, targetPoint);
+
+            // Si el jugador ya llegó casi al centro de la nave (ej. a menos de 0.3f):
+            if (distanciaANave <= 1f)
+            {
+                AbsorbPlayer(playerPosition.gameObject);
+            }
+
             return;
         }
-
         // 2. Calculamos la separación real
         float separacion = Mathf.Abs(playerPosition.position.x - transform.position.x);
 
@@ -89,10 +99,7 @@ public class SpaceShipEndLess : MonoBehaviour
 
             _rb.linearVelocity = Vector2.zero;
             _payerController.autoMovement = false;
-            if (playerPosition.TryGetComponent(out Collider2D collider2D))
-            {
-                collider2D.isTrigger = true;
-            }
+
             // Fijamos su posición X exacta en este frame
             transform.position = new Vector3(playerPosition.position.x, transform.position.y, transform.position.z);
             return;
@@ -117,6 +124,12 @@ public class SpaceShipEndLess : MonoBehaviour
         float faktor = Mathf.Clamp01(distance / maxDistance);
         //Ajustatmos la escala con respecto al faktor
         transforObject.localScale = Vector2.Lerp(maxScale, minScale, faktor);
+    }
+
+    private void AbsorbPlayer(GameObject player)
+    {
+        GameManager.Instance.ContinueGame();
+        player.SetActive(false);
     }
 }
 

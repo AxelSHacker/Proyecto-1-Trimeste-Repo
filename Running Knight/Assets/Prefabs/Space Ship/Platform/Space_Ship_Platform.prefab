@@ -143,8 +143,8 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   playerRB: {fileID: 0}
   shipAlert: {fileID: 0}
-  velocity: 6
-  maxVelocity: 70
+  velocity: 5
+  maxVelocity: 4
   lineLenght: 10
   timer: 0
   movementTimer: 5

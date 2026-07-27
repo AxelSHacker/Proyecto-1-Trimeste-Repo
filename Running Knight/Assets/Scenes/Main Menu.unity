@@ -647,7 +647,7 @@ RectTransform:
   m_GameObject: {fileID: 969666816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 157053883}
@@ -655,10 +655,10 @@ RectTransform:
   - {fileID: 541203622}
   m_Father: {fileID: 1400372648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.312, y: 0.273}
-  m_AnchorMax: {x: 0.68775403, y: 0.744}
-  m_AnchoredPosition: {x: -1.9718018, y: -9.929993}
-  m_SizeDelta: {x: 328.1096, y: 516.14}
+  m_AnchorMin: {x: 0.21769755, y: 0.033156604}
+  m_AnchorMax: {x: 0.77913326, y: 0.744}
+  m_AnchoredPosition: {x: 1.5281982, y: -9}
+  m_SizeDelta: {x: -64.89041, y: 280.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969666818
 MonoBehaviour:
@@ -1187,7 +1187,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1452686570}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: ChangScene
+        m_MethodName: StartGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1505,15 +1505,15 @@ RectTransform:
   m_GameObject: {fileID: 1901269802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1400372648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3298104, y: 0.744}
-  m_AnchorMax: {x: 0.6701897, y: 0.9795561}
-  m_AnchoredPosition: {x: -0.5, y: 12}
-  m_SizeDelta: {x: 8.236816, y: 10.906998}
+  m_AnchorMin: {x: 0.21028219, y: 0.744}
+  m_AnchorMax: {x: 0.77913326, y: 0.9825549}
+  m_AnchoredPosition: {x: 55.5, y: 9}
+  m_SizeDelta: {x: -476.76318, y: 7.9069977}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1901269804
 MonoBehaviour:
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -6.112915}
+  m_margin: {x: -75.97513, y: 0, z: 0, w: 74.08303}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

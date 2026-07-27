@@ -26,6 +26,8 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     [SerializeField] int _vidaActual;
     [SerializeField] int _vidaMaxima;
     bool _vivo = true;
+    Vector2 _ultimaPosicion;
+    float _velocidadAnimacion;
 
 
     [Header("REFERENCES"), SerializeField]
@@ -60,6 +62,7 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
         if (playerPosition == null) playerPosition = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
         _anim.SetBool("Death", false);
         StateUpdate(State.Patrol);
+        _ultimaPosicion = transform.position;
     }
 
     void Update()
@@ -140,7 +143,9 @@ public class FlyingEnemy : MonoBehaviour, IDamageabe<int>
     }
     private void AnimatorController()
     {
-        _anim.SetFloat("Velocity", patrolVelocity);
+        _velocidadAnimacion = Mathf.Abs((transform.position.x - _ultimaPosicion.x) / Time.deltaTime);
+        _anim.SetFloat("Velocity", _velocidadAnimacion);
+
     }
     public void Attack()
     {

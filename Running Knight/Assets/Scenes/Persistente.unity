@@ -827,15 +827,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6034713463358681773, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6034713463358681773, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1688428433}
+      objectReference: {fileID: 0}
     - target: {fileID: 6034713463358681773, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ContinueButton
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8475182012003241362, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
       propertyPath: m_AnchorMax.x
@@ -970,6 +970,17 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4036020841355370223, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
   m_PrefabInstance: {fileID: 442703002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &442703007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6034713463358681773, guid: c445c2df50adc604fb279cb3a25f3c55, type: 3}
+  m_PrefabInstance: {fileID: 442703002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &543195595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1154,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1051745787}
     - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 1051745789}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: continueButton
+      value: 
+      objectReference: {fileID: 442703007}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
       propertyPath: cheatsMenuPanel
       value: 
       objectReference: {fileID: 987199022}
@@ -1155,6 +1174,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1556023575}
     - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: _pickUpColectable
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c373e9662d0aae46b885daa0301da2a, type: 3}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
       propertyPath: endGameCanvasGroup
       value: 
       objectReference: {fileID: 1051745788}
@@ -1163,9 +1186,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 442703006}
     - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: canvasGroups.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
       propertyPath: maxScoerTMPcontinueplanel
       value: 
       objectReference: {fileID: 442703004}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: 'canvasGroups.Array.data[0]'
+      value: 
+      objectReference: {fileID: 442703006}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: 'canvasGroups.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1051745788}
+    - target: {fileID: 3875717711645250161, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
+      propertyPath: 'canvasGroups.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1556023575}
     - target: {fileID: 7015985272882089808, guid: 508a5a11e33ef7647b6c0dc08bc22dfc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2123,6 +2162,17 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 914835558644666327, guid: 52721171aed3a2948be7cb74d80044d3, type: 3}
   m_PrefabInstance: {fileID: 1051745784}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1051745789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4763216721359050957, guid: 52721171aed3a2948be7cb74d80044d3, type: 3}
+  m_PrefabInstance: {fileID: 1051745784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1141714772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,7 +3483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 1499498282}
   _LoadingVideo: {fileID: 0}
-  _fadeDuration: 1
+  _fadeDuration: 0.5
   _initialSceneName: Main Menu
 --- !u!1 &1740581522
 GameObject:

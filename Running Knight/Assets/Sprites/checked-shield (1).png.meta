@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 0b4bb1b1ce9d46b44ae5f3a9ce96e9cc
+guid: bb7aaff11cd3bcd48896f5d9fb392254
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7008412969330441016
-    second: Attack_0
-  - first:
-      213: -7763475090823894447
-    second: Attack_1
-  - first:
-      213: 302641331129538988
-    second: Attack_2
+      213: -297249978237755654
+    second: checked-shield (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: checked-shield (1)_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 253
-        width: 242
-        height: 243
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c481db598d1dbe90800000000000000
-      internalID: -7008412969330441016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_1
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 15
-        width: 295
-        height: 303
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15a29dc9988924490800000000000000
-      internalID: -7763475090823894447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_2
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 21
-        width: 308
-        height: 349
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca9d35cefa2333400800000000000000
-      internalID: 302641331129538988
+      spriteID: afe55ad38b4ffdbf0800000000000000
+      internalID: -297249978237755654
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Attack_0: -7008412969330441016
-      Attack_1: -7763475090823894447
-      Attack_2: 302641331129538988
+      checked-shield (1)_0: -297249978237755654
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
