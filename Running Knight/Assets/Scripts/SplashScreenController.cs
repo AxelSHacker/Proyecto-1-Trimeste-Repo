@@ -40,6 +40,11 @@ public class SplashScreenController : MonoBehaviour
         Color imageColor = fadeImage.color;
         imageColor.a = alpha;
         fadeImage.color = imageColor;
+        if (alpha == 1f)
+        {
+            
+            SceneManager.Instance.LoadScene(sceneAftrSplash, true);
+        }
 
     }
 }

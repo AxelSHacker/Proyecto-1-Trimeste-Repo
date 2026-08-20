@@ -8,7 +8,7 @@ using USceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class SceneManager : MonoBehaviour
 {
-   [Header("UI Transition References")]
+    [Header("UI Transition References")]
     // Controla la opacidad y la interacción de todo el Canvas de carga (Fondo negro, RawImage, textos, etc.)
     [SerializeField] CanvasGroup _canvasGroup;
     [SerializeField] VideoPlayer _LoadingVideo;
@@ -18,6 +18,7 @@ public class SceneManager : MonoBehaviour
     [Header("Scene Settings")]
     // Escena que se cargará automáticamente al arrancar el juego (por defecto, el Menú Principal)
     [SerializeField] string _initialSceneName = "MainMenu";
+    Scene newLoadedScene;
 
     // Banderas de control de estado (Booleans)
     bool _isFading;  // True si la pantalla está cambiando de opacidad en este momento
@@ -52,7 +53,7 @@ public class SceneManager : MonoBehaviour
             _canvasGroup.alpha = Mathf.Lerp(from, to, t);
 
             // Restamos el tiempo del frame anterior al contador
-            timeCounter -= Time.deltaTime;
+            timeCounter -= Time.unscaledDeltaTime;
             yield return null; // Esperamos al siguiente frame
         }
 
@@ -81,28 +82,41 @@ public class SceneManager : MonoBehaviour
         yield return USceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         // Buscamos la última escena que ha sido cargada en la lista interna de Unity
-        Scene newLoadedScene = USceneManager.GetSceneAt(USceneManager.sceneCount - 1);
+        newLoadedScene = USceneManager.GetSceneAt(USceneManager.sceneCount - 1);
 
         // 📢 ¡MUY IMPORTANTE!: Le decimos a Unity que la nueva escena es la ACTIVA.
         // Esto hace que cualquier objeto que instancies (Instantiate) a partir de ahora nazca dentro de este nuevo mapa.
-        USceneManager.SetActiveScene(newLoadedScene);
+        if (newLoadedScene.IsValid())
+        {
+            USceneManager.SetActiveScene(newLoadedScene);
+        }
     }
     // --- FLUJO MAESTRO DE CAMBIO DE MAPA ---
     private IEnumerator FadeAndLoadScene(string sceneName, bool unloadActive)
     {
         _isLoading = true;
-        // 1. Ponemos la pantalla en negro (Fade de 0 a 1). Aquí aparece tu RawImage y la carga en pantalla.
+
+        // Ponemos la pantalla en negro (Fade de 0 a 1). Aquí aparece tu RawImage y la carga en pantalla.
         yield return StartCoroutine(Fade(0, 1));
-        // 2. Si venimos de un nivel anterior (unloadActive es true), lo destruimos de la memoria RAM.
-        if (unloadActive)
+        // 2. Descargamos SOLO la escena del nivel (sin tocar la escena persistente)
+        if (unloadActive && newLoadedScene.IsValid() && newLoadedScene.isLoaded)
         {
-            yield return USceneManager.UnloadSceneAsync(USceneManager.GetActiveScene().buildIndex);
+            yield return USceneManager.UnloadSceneAsync(newLoadedScene);
+        }
+        else if (unloadActive)
+        {
+            // Fallback por si es la primera carga y la variable aún no se ha asignado
+            Scene escenaActiva = USceneManager.GetActiveScene();
+            if (escenaActiva.buildIndex != 0) // Asegúrate de que 0 sea el índice de tu escena Persistente
+            {
+                yield return USceneManager.UnloadSceneAsync(escenaActiva);
+            }
         }
 
-        // 3. Cargamos el nuevo nivel en segundo plano y esperamos a que termine.
+        // 3. Cargamos el nuevo nivel
         yield return StartCoroutine(LoadSceneAndSetActive(sceneName));
 
-        // 4. Retiramos la pantalla de carga de forma suave (Fade de 1 a 0).
+        // 4. Retiramos pantalla de carga
         yield return StartCoroutine(Fade(1, 0));
 
         _isLoading = false;
@@ -111,13 +125,13 @@ public class SceneManager : MonoBehaviour
     // El método que llamará tu menú, zonas de carga o triggers (ej: USceneManager.Instance.LoadScene("Nivel1", true);)
     public void LoadScene(string sceneName, bool transition)
     {
-        GameManager.Instance.DisableCanvasGroup();
         // Evitamos que el jugador intente cargar otra escena si ya hay un proceso de Fade o de Carga en marcha
         if (_isFading || _isLoading)
         {
             Debug.LogWarning("Ya se está cargando una escena o haciendo un fundido. Petición ignorada.");
             return;
         }
+        GameManager.Instance.DisableCanvasGroup();
         // Lanzamos la maquinaria
         StartCoroutine(FadeAndLoadScene(sceneName, transition));
     }

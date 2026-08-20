@@ -47,7 +47,7 @@ public class PlayerControllerEndLess : MonoBehaviour
     bool isActive = false;
     [SerializeField] string siguienteScena;
     [SerializeField] string estaScena;
- 
+
     [Header("CORRUTINA"), SerializeField]
     private Coroutine colorFlaschCoroutine;
     Coroutine _speedBoostCoroutine;
@@ -139,7 +139,13 @@ public class PlayerControllerEndLess : MonoBehaviour
             GameManager.Instance.Pause(isActive);
         }
     }
-
+    public void OnCheatMenu(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            GameManager.Instance.ToggleCheatsMenu();
+        }
+    }
     #endregion
 
 

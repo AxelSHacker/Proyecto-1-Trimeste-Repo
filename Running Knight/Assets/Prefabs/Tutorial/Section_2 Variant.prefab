@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Section_2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 321381008265355268, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 542484785531997570, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 732588470674324044, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}
       propertyPath: prefas.Array.data[0].ratio
       value: 0.5
@@ -1438,6 +1446,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5849249173657824357, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5868683690853793015, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908235753758488002, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6446682539622331855, guid: 16796f08afcffd442a8ee178fe4b7283, type: 3}

@@ -33,8 +33,7 @@ public class TutorialController : MonoBehaviour
     void Start()
     {
 
-        GameManager.Instance.AsignarListenerButton(nombreScena, GameManager.Instance.continueButton);
-        GameManager.Instance.AsignarListenerButton(estaScena, GameManager.Instance.restartButton);
+
         if (FindAnyObjectByType<PlayerControllerEndLess>() != null)
         {
             playerControllerEndLess = FindAnyObjectByType<PlayerControllerEndLess>();
@@ -54,6 +53,8 @@ public class TutorialController : MonoBehaviour
         if (GameManager.Instance.collectableCount >= 10 && _endLess)
         {
             _endLess = false;
+            GameManager.Instance.AsignarListenerButton(nombreScena, GameManager.Instance.continueButton);
+            GameManager.Instance.AsignarListenerButton(estaScena, GameManager.Instance.restartButton);
             GameManager.Instance.ContinueGame();
             if (playerControllerEndLess != null)
             {
