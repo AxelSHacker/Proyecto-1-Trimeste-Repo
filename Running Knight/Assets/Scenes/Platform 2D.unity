@@ -8072,9 +8072,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1348898570031462574, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741594137460655423, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1846923965214543087, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
       propertyPath: m_Name
       value: PlataformasCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237169364962864381, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280734058089535583, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478782098990745543, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752215820098602124, guid: 4c3371151550ae1419557d9982ad8c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
